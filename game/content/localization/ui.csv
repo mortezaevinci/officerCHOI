@@ -1,0 +1,20 @@
+keys,en
+UI_CONTINUE,Continue
+UI_NEW_GAME,New Game
+UI_SETTINGS,Settings
+UI_QUIT,Quit
+UI_RESUME,Resume
+UI_SAVE,Save
+UI_BACK,Back
+UI_PAUSED,Paused
+UI_QUIT_TO_TITLE,Quit to Title
+UI_MASTER_VOLUME,Master volume
+UI_MUSIC,Music
+UI_SFX,Sound effects
+UI_TEXT_SPEED,Text speed
+UI_AUTO_ADVANCE,Advance dialogue automatically
+UI_FULLSCREEN,Fullscreen
+UI_TAP_TO_MOVE,Tap or click to walk
+UI_SAVED_SLOT,Saved to slot {0}.
+UI_SAVE_FAILED,Could not save.
+UI_EMPTY_SLOT,Empty

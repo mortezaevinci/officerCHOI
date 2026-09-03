@@ -1,0 +1,25 @@
+# Godot's import cache and generated metadata.
+game/.godot/
+game/android/build/
+*.translation
+
+# Build output.
+build/
+
+# The pinned engine. Fetched by tools\setup\install-godot.ps1, not committed -
+# it is ~180 MB and everyone gets the identical file from the same URL.
+tools/godot/
+
+# Never. Signing keys live in C:\temp\_secrets.
+*.keystore
+*.jks
+*.p12
+steam_appid.txt
+**/secrets.*
+
+# Editor and OS noise.
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini

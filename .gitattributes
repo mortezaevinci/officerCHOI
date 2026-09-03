@@ -1,0 +1,33 @@
+# Godot's scene and resource files are text, and that is the point - they
+# diff and merge. Keep git from ever deciding otherwise.
+*.tscn   text eol=lf
+*.tres   text eol=lf
+*.gd     text eol=lf
+*.godot  text eol=lf
+*.cfg    text eol=lf
+*.dlg    text eol=lf
+*.json   text eol=lf
+*.csv    text eol=lf
+*.md     text eol=lf
+
+# PowerShell is happier with CRLF on Windows.
+*.ps1    text eol=crlf
+
+# Binary. Listed so git never tries to normalise line endings inside them.
+*.png    binary
+*.jpg    binary
+*.webp   binary
+*.svg    text eol=lf
+*.ogg    binary
+*.wav    binary
+*.mp3    binary
+*.ttf    binary
+*.otf    binary
+*.pck    binary
+*.exe    binary
+*.aab    binary
+*.apk    binary
+
+# Once there is real art, consider Git LFS for assets/:
+#   git lfs track "game/assets/**/*.png"
+#   git lfs track "game/assets/**/*.ogg"

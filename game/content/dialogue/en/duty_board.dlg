@@ -1,0 +1,17 @@
+# duty_board.dlg
+# A one-beat interaction: some narration, and a line that changes once the
+# player knows more. Read docs/writing/dialogue-format.md before editing.
+
+:: start
+> The duty board is a sheet of paper and forty years of thumbtack holes.
+if read_case_file -> after_file
+Choi: Third shift. Same as the last eleven.
+Choi @tired: Ward's name is on it too. That's new.
+set saw_board = true
+end
+
+:: after_file
+Choi: Ward's name is on the board, on the file, and in the sign-out log.
+Choi @wary: Three places is a pattern.
+set saw_board = true
+end

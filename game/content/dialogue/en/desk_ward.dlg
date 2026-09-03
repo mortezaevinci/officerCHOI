@@ -1,0 +1,84 @@
+# desk_ward.dlg
+# The desk scene. This one runs in the close-up view, so it can use @portrait
+# and mood tags. It is also the reference example for the whole format:
+# choices, conditions, counters, stage directions and a branching ending all
+# appear here.
+
+:: start
+@music tense
+> The chair is new. The file is not.
+Choi: ...
+Choi @tired: Nineteen hours signed in, and he leaves this on my desk.
+
++ [Open the file] -> open_file
++ [Leave it closed] -> leave_it
++ [Ask Ward about it first] if trust_ward >= 1 -> ask_first
+
+:: open_file
+set read_case_file = true
+> Twelve pages. Four of them are photocopies of the same page.
+Choi: Somebody wanted this to look thicker than it is.
+@portrait right ward flat
+Ward: You opened it.
+Choi: You left it out.
+-> confrontation
+
+:: leave_it
+> You put your hand flat on the cover and leave it there.
+Choi: Not tonight.
+set suspicion += 1
+@portrait right ward flat
+Ward: Smart.
+Ward @flat: Or slow. Hard to tell from here.
+-> parting
+
+:: ask_first
+@portrait right ward amused
+Choi: This is yours.
+Ward: It's the department's. I just carried it.
+Choi @wary: Then carry it back.
+set trust_ward += 1
+-> confrontation
+
+:: confrontation
+Ward: Ask me the question you actually want to ask.
+
++ [Why is your name on every page?] -> question_name
++ [Who told you to bring it to me?] -> question_order
++ [Nothing. Close the file.] -> parting
+
+:: question_name
+Choi: Why is your name on every page?
+Ward @tense: Because I was there.
+set suspicion += 1
+-> weigh
+
+:: question_order
+Choi: Who told you to bring it to me?
+Ward: Nobody tells me anything. That's the job.
+set trust_ward += 1
+-> weigh
+
+:: weigh
+# A branch on accumulated state rather than on a single choice. This is where
+# the numbers a scene has been quietly collecting finally pay off.
+if trust_ward >= 2 -> trusted
+if suspicion >= 2 -> suspicious
+-> parting
+
+:: trusted
+Ward @quiet: Choi. When you write this up, leave the times out.
+Choi: Why.
+Ward: Because I'm asking.
+set told_truth = true
+-> parting
+
+:: suspicious
+Ward @cold: Write it however you like.
+> He is already at the door.
+-> parting
+
+:: parting
+@music none
+> The file stays on the desk. So does the question.
+end

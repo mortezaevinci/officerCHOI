@@ -1,0 +1,14 @@
+# hallway_machine.dlg
+# The smallest useful shape a conversation can have: one choice, one flag.
+
+:: start
+> The machine has been out of coffee since March. It still takes the money.
+
++ [Feed it a coin anyway] -> coin
++ [Walk away] -> end
+
+:: coin
+> Something falls. It is not coffee.
+Choi: Right.
+set fed_the_machine = true
+end

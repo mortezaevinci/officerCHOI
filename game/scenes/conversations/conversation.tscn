@@ -1,0 +1,54 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/ui/conversation_view.gd" id="1_view"]
+[ext_resource type="PackedScene" path="res://scenes/ui/portrait_slot.tscn" id="2_slot"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogue_box.tscn" id="3_box"]
+
+[node name="Conversation" type="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_view")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.101961, 0.113725, 0.145098, 1)
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Portraits" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Left" parent="Portraits" instance=ExtResource("2_slot")]
+offset_left = 150.0
+offset_top = 130.0
+offset_right = 570.0
+offset_bottom = 750.0
+
+[node name="Right" parent="Portraits" instance=ExtResource("2_slot")]
+offset_left = 1350.0
+offset_top = 130.0
+offset_right = 1770.0
+offset_bottom = 750.0
+
+[node name="DialogueBox" parent="." instance=ExtResource("3_box")]

@@ -1,0 +1,22 @@
+// Windows depot. Paths are relative to "contentroot" in app_build.vdf,
+// which is the build\ folder.
+//
+// Both the .exe and the .pck must ship. A depot with only the executable in it
+// starts up and shows nothing at all.
+
+"DepotBuild"
+{
+	"DepotID"      "0"        // <- your Windows depot ID
+	"contentroot"  "windows"
+
+	"FileMapping"
+	{
+		"LocalPath"  "*"
+		"DepotPath"  "."
+		"recursive"  "1"
+	}
+
+	"FileExclusion" "*.pdb"
+	"FileExclusion" "*.debug"
+	"FileExclusion" "steam_appid.txt"   // dev-only file; must never ship
+}

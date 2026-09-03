@@ -1,0 +1,112 @@
+; A second room, mostly so the room-to-room trip is wired up and testable:
+; a door here goes back to the precinct and lands the player on a named spawn.
+
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/rooms/room.gd" id="1_room"]
+[ext_resource type="PackedScene" path="res://scenes/entities/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/entities/interactable.tscn" id="4_interactable"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogue_box.tscn" id="5_box"]
+[ext_resource type="PackedScene" path="res://scenes/ui/interact_prompt.tscn" id="6_prompt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_h"]
+size = Vector2(2200, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_v"]
+size = Vector2(60, 1200)
+
+[node name="Hallway" type="Node2D"]
+script = ExtResource("1_room")
+room_id = "hallway"
+display_name = "Second Floor Hallway"
+default_spawn = "from_precinct"
+camera_bounds = Rect2(0, 0, 2200, 1200)
+
+[node name="Floor" type="ColorRect" parent="."]
+offset_right = 2200.0
+offset_bottom = 1200.0
+mouse_filter = 2
+color = Color(0.137255, 0.145098, 0.176471, 1)
+
+[node name="BackWall" type="ColorRect" parent="."]
+offset_right = 2200.0
+offset_bottom = 320.0
+mouse_filter = 2
+color = Color(0.0980392, 0.105882, 0.129412, 1)
+
+[node name="Skirting" type="ColorRect" parent="."]
+offset_top = 320.0
+offset_right = 2200.0
+offset_bottom = 344.0
+mouse_filter = 2
+color = Color(0.180392, 0.192157, 0.223529, 1)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Top" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1100, 320)
+shape = SubResource("RectangleShape2D_wall_h")
+
+[node name="Bottom" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1100, 1170)
+shape = SubResource("RectangleShape2D_wall_h")
+
+[node name="Left" type="CollisionShape2D" parent="Walls"]
+position = Vector2(30, 600)
+shape = SubResource("RectangleShape2D_wall_v")
+
+[node name="Right" type="CollisionShape2D" parent="Walls"]
+position = Vector2(2170, 600)
+shape = SubResource("RectangleShape2D_wall_v")
+
+[node name="Spawns" type="Node2D" parent="."]
+
+[node name="from_precinct" type="Marker2D" parent="Spawns"]
+position = Vector2(1700, 900)
+
+[node name="Door" type="Node2D" parent="."]
+position = Vector2(1700, 320)
+
+[node name="Frame" type="Polygon2D" parent="Door"]
+color = Color(0.243137, 0.211765, 0.176471, 1)
+polygon = PackedVector2Array(-90, -150, 90, -150, 90, 24, -90, 24)
+
+[node name="Gap" type="Polygon2D" parent="Door"]
+color = Color(0.0666667, 0.0705882, 0.0862745, 1)
+polygon = PackedVector2Array(-70, -130, 70, -130, 70, 24, -70, 24)
+
+[node name="Interact" parent="Door" instance=ExtResource("4_interactable")]
+position = Vector2(0, 120)
+prompt = "Back to the squad room"
+prompt_offset = Vector2(0, -260)
+action = 2
+target_scene = "res://scenes/rooms/precinct.tscn"
+target_spawn = "from_hallway"
+
+[node name="Machine" type="Node2D" parent="."]
+position = Vector2(560, 250)
+
+[node name="Case" type="Polygon2D" parent="Machine"]
+color = Color(0.192157, 0.235294, 0.27451, 1)
+polygon = PackedVector2Array(-80, -180, 80, -180, 80, 90, -80, 90)
+
+[node name="Glass" type="Polygon2D" parent="Machine"]
+color = Color(0.290196, 0.360784, 0.407843, 1)
+polygon = PackedVector2Array(-62, -160, 62, -160, 62, -10, -62, -10)
+
+[node name="Interact" parent="Machine" instance=ExtResource("4_interactable")]
+position = Vector2(0, 170)
+prompt = "Use the machine"
+prompt_offset = Vector2(0, -320)
+dialogue_file = "res://content/dialogue/en/hallway_machine.dlg"
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(1700, 900)
+
+[node name="InteractPrompt" parent="." instance=ExtResource("6_prompt")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" parent="UI" instance=ExtResource("5_box")]

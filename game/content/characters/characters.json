@@ -1,0 +1,22 @@
+{
+	"_comment": "Speaker ids used in .dlg files. 'portrait_prefix' picks the art file: portraits/<prefix>_<mood>.png, falling back to portraits/<prefix>.png, and to a labelled placeholder card when neither exists yet.",
+
+	"choi": {
+		"display_name": "Choi",
+		"color": "#7ea6d8",
+		"portrait_prefix": "choi",
+		"notes": "The player character. Third shift, two years in, still writes reports longhand."
+	},
+	"ward": {
+		"display_name": "Det. Ward",
+		"color": "#d8a07e",
+		"portrait_prefix": "ward",
+		"notes": "Detective. Knows more than he says, says more than he should."
+	},
+	"park": {
+		"display_name": "Sgt. Park",
+		"color": "#8fc99a",
+		"portrait_prefix": "park",
+		"notes": "Desk sergeant. Runs the shift, and the gossip."
+	}
+}

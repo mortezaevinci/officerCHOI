@@ -1,0 +1,35 @@
+# ward_hallway.dlg
+# A short exchange in the room itself - no close-up, no portraits. Good for
+# anything under a dozen lines.
+
+:: start
+Ward: Choi. You're on tonight.
+Choi: Every night.
+Ward @amused: Somebody has to be.
+
++ [Ask about the file on your desk] -> ask_file
++ [Ask why he's still here] -> ask_late
++ [Say nothing] -> nothing
+
+:: ask_file
+Choi: There's a file on my desk that isn't mine.
+Ward: There's a file on everyone's desk that isn't theirs.
+Ward @flat: Read it or don't.
+set trust_ward += 1
+-> parting
+
+:: ask_late
+Choi: You've been signed in for nineteen hours.
+Ward @tired: Have I.
+> He doesn't check the log. He already knows.
+set suspicion += 1
+-> parting
+
+:: nothing
+> You let it sit. Ward waits exactly long enough to make the silence yours.
+Ward: Right.
+-> parting
+
+:: parting
+Ward: Desk's over there. Try the chair, it's new.
+end

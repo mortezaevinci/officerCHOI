@@ -1,0 +1,30 @@
+class_name GamePaths
+extends RefCounted
+## Scene and content paths that more than one script needs to know.
+##
+## Keeping them here means moving a scene is one edit, not a hunt through the
+## codebase for string literals.
+
+const MAIN_MENU := "res://scenes/menus/main_menu.tscn"
+const PAUSE_MENU := "res://scenes/menus/pause_menu.tscn"
+const SETTINGS_MENU := "res://scenes/menus/settings_menu.tscn"
+
+## Where a brand new game begins.
+const NEW_GAME_SCENE := "res://scenes/rooms/precinct.tscn"
+const NEW_GAME_SPAWN := "entrance"
+
+## Generic close-up conversation scene, driven entirely by its payload.
+const CONVERSATION := "res://scenes/conversations/conversation.tscn"
+
+const DIALOGUE_DIR := "res://content/dialogue"
+
+
+## Path to a `.dlg` file for the current language, falling back to English so a
+## partly-translated build still plays.
+static func dialogue(file_name: String) -> String:
+	var name := file_name if file_name.ends_with(".dlg") else file_name + ".dlg"
+	var locale := TranslationServer.get_locale().get_slice("_", 0)
+	var localised := "%s/%s/%s" % [DIALOGUE_DIR, locale, name]
+	if ResourceLoader.exists(localised) or FileAccess.file_exists(localised):
+		return localised
+	return "%s/en/%s" % [DIALOGUE_DIR, name]

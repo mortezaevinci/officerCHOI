@@ -1,0 +1,15 @@
+; An inherited scene: same ConversationView, pre-filled for one specific beat.
+;
+; This is the pattern for a hand-authored conversation - inherit
+; conversation.tscn and set the fields. For a conversation whose participants
+; are decided at runtime, push conversation.tscn directly with a payload
+; instead of making a scene for it.
+
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/conversations/conversation.tscn" id="1_conversation"]
+
+[node name="DeskWard" instance=ExtResource("1_conversation")]
+dialogue_file = "res://content/dialogue/en/desk_ward.dlg"
+left_character = "choi"
+right_character = "ward"

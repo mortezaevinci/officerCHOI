@@ -1,0 +1,10 @@
+Base Directory:
+C:\temp\officerchoi
+
+We want to develop a 2D game. Graphics would be minimal, and this would be mostly for fun. I want this on steam, and potentially also on android phone. Create the best setup that can permit the development of it from beginning till the end. The core of the game is about the conversations and choices, and mechanics of it just need to be smooth, but not necessarily complicated.
+
+This would be an interactive game, where some conversations happens and some selections exist.
+
+There would be characters have potentially move in a room, then go to a specific section, and maybe in that section there is a desk, so that we get into a different scenario where there is a conversation on a desk. Regardless of this right now, only create the setup required for the development of the game.
+
+Try to make subfolders for any speciic category of files. Everything goes under base directory.

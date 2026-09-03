@@ -1,0 +1,22 @@
+// SteamPipe build script. Fill in APPID before first use.
+//
+//   steamcmd.exe +login <account> +run_app_build C:\temp\officerchoi\steam\depot\app_build.vdf +quit
+//
+// Build first (tools\build\build.ps1), then upload. The depot scripts read
+// build\windows and build\linux directly - never hand-copy files into a depot.
+
+"appbuild"
+{
+	"appid"        "0"            // <- your Steam App ID
+	"desc"         "Officer Choi" // shows in the Steamworks Builds list
+	"buildoutput"  "..\\..\\build\\steam_output"
+	"contentroot"  "..\\..\\build"
+	"setlive"      ""             // leave empty: set builds live from the web UI
+	"preview"      "0"            // "1" to dry-run without uploading
+
+	"depots"
+	{
+		"0"  "depot_windows.vdf"  // <- Windows depot ID
+		// "0"  "depot_linux.vdf"  // <- Linux depot ID, once you have one
+	}
+}
