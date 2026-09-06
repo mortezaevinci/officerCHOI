@@ -6,8 +6,13 @@ explains the code.
 
 ## Rules specific to this project
 
-- **The Godot binary is pinned in `tools/godot/`.** Use it, not a system-wide
-  Godot. A different build silently rewrites every `.tscn` it touches.
+- **Two pinned Godot binaries, both in `tools/`.** Use them, not a system-wide
+  Godot — a different build silently rewrites every `.tscn` it touches.
+  `tools/godot/` (standard) for tests and everyday work; `tools/godot-mono/`
+  (.NET) only for the ai-game.dev addon and for release builds.
+- **The project has a `.csproj` but no C# gameplay code, and should keep none.**
+  It exists solely so the godot_mcp editor addon can compile. See
+  `docs/dev/ai-game-dev.md`.
 - **Open `game/`, not the repo root.** The repo root is not a Godot project.
 - **Run the tests before saying anything works:**
   `tools\godot\Godot_v4.7.2-stable_win64_console.exe --headless --path game res://tests/test_runner.tscn`

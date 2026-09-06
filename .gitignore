@@ -6,9 +6,22 @@ game/android/build/
 # Build output.
 build/
 
-# The pinned engine. Fetched by tools\setup\install-godot.ps1, not committed -
-# it is ~180 MB and everyone gets the identical file from the same URL.
+# The pinned engines. Fetched by tools\setup\install-godot.ps1, not committed -
+# they are ~180 MB each and everyone gets the identical file from the same URL.
 tools/godot/
+tools/godot-mono/
+
+# ai-game.dev (godot_mcp): the local MCP server binary (~99 MB), its logs, and
+# the signed-in credential. The addon itself IS committed, under
+# game/addons/godot_mcp, so everyone runs the same version.
+game/.ai-game-dev/
+game/.godot-mcp/
+
+# .NET build intermediates. Godot.NET.Sdk puts most of them under game/.godot/
+# already, but not all of them.
+game/obj/
+game/bin/
+game/*.sln
 
 # Never. Signing keys live in C:\temp\_secrets.
 *.keystore

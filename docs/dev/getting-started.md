@@ -5,19 +5,26 @@
 The machine this was set up on has everything:
 
 - Godot **4.7.2-stable** in `tools\godot\` (pinned; not the system-wide one).
-- Export templates in `%APPDATA%\Godot\export_templates\4.7.2.stable\`.
+- Godot **4.7.2-stable .NET** in `tools\godot-mono\`, for the AI addon and for
+  producing builds.
+- Both sets of export templates in `%APPDATA%\Godot\export_templates\`.
+- The ai-game.dev **godot_mcp** addon, `godot-cli`, and the local MCP server —
+  see [ai-game-dev.md](ai-game-dev.md).
 - The project imports clean, the test suite passes, and Windows and Linux
   builds have been produced and run.
 
 ## On a new machine
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File tools\setup\install-godot.ps1
+powershell -ExecutionPolicy Bypass -File tools\setup\install-godot.ps1 -All
+npm install -g godot-cli
+godot-cli install-plugin .\game --with-server
 ```
 
-That fetches the pinned editor into `tools\godot` and the export templates into
-the place Godot looks for them. Add `-SkipTemplates` if you only intend to write
-and play, not build (saves a 1 GB download).
+The first line fetches both editors and both sets of export templates into the
+places Godot looks for them. Add `-SkipTemplates` if you only intend to write
+and play, not build (saves a 2 GB download); drop `-All` for the standard
+editor alone.
 
 Then check it works:
 
@@ -50,6 +57,7 @@ generated and is not committed.
 | Tests | `tools\build\run-tests.ps1` |
 | Build | `tools\build\build.ps1 -Target windows` |
 | Writing stats | `python.exe tools\dialogue\dialogue_stats.py` |
+| AI-driven editor | `tools\ai\start-mcp-server.ps1`, then `tools\ai\open-editor.ps1` |
 
 Note the bare `--`: everything after it goes to the game rather than to Godot.
 

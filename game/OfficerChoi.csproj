@@ -1,0 +1,29 @@
+<!--
+  C# project file for Officer Choi.
+
+  The game itself is written in GDScript and stays that way. This exists so the
+  godot_mcp editor addon (ai-game.dev) can compile, because that addon is C# and
+  only loads in the .NET edition of Godot. No gameplay code lives here.
+
+  Consequences of having it, worth knowing:
+    - Open the project with tools\godot-mono\, not tools\godot\.
+    - Exports need the .NET export templates, not the standard ones.
+  See docs/dev/ai-game-dev.md.
+-->
+<Project Sdk="Godot.NET.Sdk/4.7.2">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <Nullable>enable</Nullable>
+    <RootNamespace>OfficerChoi</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="com.IvanMurzak.ReflectorNet" Version="5.4.0" />
+    <PackageReference Include="com.IvanMurzak.McpPlugin" Version="8.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="addons/godot_mcp/extensions.catalog.json" LogicalName="Godot-MCP.extensions.catalog.json" />
+  </ItemGroup>
+</Project>

@@ -15,7 +15,7 @@ and to Android from one codebase.
 |---|---|
 | `game/` | The Godot project. Open **this** folder in Godot, not the repo root. |
 | `docs/` | How to work on it: writing, code, and shipping. |
-| `tools/` | The pinned Godot editor, and the scripts that install, test and build. |
+| `tools/` | The pinned Godot editors, and the scripts that install, test, build and run the AI addon. |
 | `build/` | Export output. Generated, never committed. |
 | `steam/` | Store text, capsule art, depot config for the Steam upload. |
 | `android/` | Play Store listing material and signing notes. |
@@ -43,6 +43,11 @@ Everything is already installed and the project already runs. To open it:
 ```powershell
 tools\godot\Godot_v4.7.2-stable_win64.exe --path game --editor
 ```
+
+There are **two** editors in `tools\`, on purpose. `godot\` is the standard
+build — use it for everything day to day. `godot-mono\` is the .NET build,
+needed only by the ai-game.dev AI addon and for producing release builds. See
+[docs/dev/ai-game-dev.md](docs/dev/ai-game-dev.md).
 
 To play it without the editor:
 
@@ -89,5 +94,6 @@ F12 takes a screenshot at any time, into `user://screenshots`.
 - Writing a conversation → **[docs/writing/dialogue-format.md](docs/writing/dialogue-format.md)**
 - How the code fits together → **[docs/dev/architecture.md](docs/dev/architecture.md)**
 - Adding a room or a desk → **[docs/dev/adding-content.md](docs/dev/adding-content.md)**
+- Letting an AI drive the editor → **[docs/dev/ai-game-dev.md](docs/dev/ai-game-dev.md)**
 - Shipping to Steam → **[docs/build/steam.md](docs/build/steam.md)**
 - Shipping to Android → **[docs/build/android.md](docs/build/android.md)**
