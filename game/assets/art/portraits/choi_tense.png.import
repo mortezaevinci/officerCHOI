@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kmxtwv2al3ao"
-path="res://.godot/imported/park.png-9f86a894655b660a497d8c2f3f2bedeb.ctex"
+uid="uid://cwclcm1qkmj0l"
+path="res://.godot/imported/choi_tense.png-136066780a473fe37bc80f30ea935dad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/portraits/park.png"
-dest_files=["res://.godot/imported/park.png-9f86a894655b660a497d8c2f3f2bedeb.ctex"]
+source_file="res://assets/art/portraits/choi_tense.png"
+dest_files=["res://.godot/imported/choi_tense.png-136066780a473fe37bc80f30ea935dad.ctex"]
 
 [params]
 

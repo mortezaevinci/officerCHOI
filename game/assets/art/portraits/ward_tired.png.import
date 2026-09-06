@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kmxtwv2al3ao"
-path="res://.godot/imported/park.png-9f86a894655b660a497d8c2f3f2bedeb.ctex"
+uid="uid://drc4m38j1osqw"
+path="res://.godot/imported/ward_tired.png-9930fb89660e64bfac01a4bebca59667.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/portraits/park.png"
-dest_files=["res://.godot/imported/park.png-9f86a894655b660a497d8c2f3f2bedeb.ctex"]
+source_file="res://assets/art/portraits/ward_tired.png"
+dest_files=["res://.godot/imported/ward_tired.png-9930fb89660e64bfac01a4bebca59667.ctex"]
 
 [params]
 

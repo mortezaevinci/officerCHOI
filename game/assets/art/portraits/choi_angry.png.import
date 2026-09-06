@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfutenq82l723"
-path="res://.godot/imported/ward.png-ba68d77088e30c767e2f688f6e7807fa.ctex"
+uid="uid://dn4dgipnyvpqq"
+path="res://.godot/imported/choi_angry.png-dd4308d16a60289d61a3a9d045daf4a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/characters/ward.png"
-dest_files=["res://.godot/imported/ward.png-ba68d77088e30c767e2f688f6e7807fa.ctex"]
+source_file="res://assets/art/portraits/choi_angry.png"
+dest_files=["res://.godot/imported/choi_angry.png-dd4308d16a60289d61a3a9d045daf4a4.ctex"]
 
 [params]
 

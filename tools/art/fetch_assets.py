@@ -25,8 +25,9 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 OUT = ROOT / "art-source" / "kenney"
 
 # kenney.nl slugs. All CC0.
+LPC_REPO = "https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator.git"
+
 PACKS = [
-    "roguelike-characters",     # modular people - bodies, clothing, hair
     "roguelike-indoors",        # furniture: desks, shelves, cabinets
     "roguelike-modern-city",    # exteriors, vehicles, street furniture
     "ui-pack",                  # panels, buttons, sliders
@@ -45,11 +46,39 @@ def fetch(url: str, timeout: int = 300) -> bytes:
         return response.read()
 
 
+def clone_lpc(force: bool) -> None:
+    """Character art. Too big to commit (~400 MB), so it is fetched on demand.
+
+    Licensing is per-asset and mixed; tools/art/build_characters.py refuses to
+    use anything that does not offer CC0, OGA-BY or CC-BY. See LICENSES.md.
+    """
+    import shutil
+    import subprocess
+
+    target = ROOT / "art-source" / "lpc"
+    if target.exists() and not force:
+        print(f"{'lpc':24} present - use --force to re-clone")
+        return
+    if shutil.which("git") is None:
+        print("  git is not on PATH; cannot fetch the LPC art")
+        return
+    if target.exists():
+        shutil.rmtree(target)
+    print(f"{'lpc':24} cloning (~400 MB, this takes a while)...")
+    subprocess.run(["git", "clone", "--depth", "1", LPC_REPO, str(target)], check=True)
+    print(f"  -> {target.relative_to(ROOT)}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--force", action="store_true", help="re-download packs that already exist")
     parser.add_argument("--only", help="a single slug from PACKS")
+    parser.add_argument("--lpc", action="store_true",
+                        help="also clone the LPC character art (~400 MB, needs git)")
     args = parser.parse_args()
+
+    if args.lpc:
+        clone_lpc(args.force)
 
     OUT.mkdir(parents=True, exist_ok=True)
     packs = [args.only] if args.only else PACKS

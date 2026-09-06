@@ -1,21 +1,26 @@
-"""Builds the game's character sprites and portraits from CC0 source art.
+"""Builds the game's character sprites and portraits from LPC source art.
 
     python.exe tools\\art\\build_characters.py
     python.exe tools\\art\\build_characters.py --only choi
 
-Characters are composed, not drawn: each one is a stack of pieces (body, then
-clothing, then hair) taken from Kenney's CC0 roguelike character sheet. Which
-pieces make which character lives in art-source/characters.json, so a character
-can be restyled by editing three pairs of numbers rather than by opening a paint
-program.
+Characters are composed, not drawn. Each one is a stack of LPC layers - body,
+head, eyes, legs, shoes, shirt, coat, hair - listed in art-source/characters.json.
+Restyling someone is editing a colour name, not opening a paint program.
 
-Two things come out of it, both into game/assets/art/:
+LPC ships every sheet in a single reference palette and its web generator
+recolours on the fly. This does the same offline: each palette family has a
+known base ramp (body "light", hair "orange", cloth "white", eye "blue"), and a
+layer is recoloured by mapping that ramp onto the target ramp, position for
+position.
 
-    characters/<id>.png   the in-world sprite, scaled for the room
-    portraits/<id>.png    the close-up portrait for conversations
+Output, into game/assets/art/:
 
-Everything is nearest-neighbour scaled - the project sets Godot's default
-texture filter to nearest, so the pixels stay crisp at any size.
+    characters/<id>_walk.png   4-direction 9-frame walk sheet, at sprite_scale
+    portraits/<id>.png         conversation portrait, default expression
+    portraits/<id>_<mood>.png  one per mood used in dialogue
+
+The mood files are why `Choi @tired:` now changes the face instead of falling
+back to a single portrait.
 
 Requires Pillow. On this machine that means the Windows Python:
     python.exe -c "import PIL; print(PIL.__version__)"
@@ -24,6 +29,7 @@ Requires Pillow. On this machine that means the Windows Python:
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import pathlib
 import sys
@@ -39,51 +45,227 @@ ART_SOURCE = ROOT / "art-source"
 CONFIG = ART_SOURCE / "characters.json"
 SPRITE_OUT = ROOT / "game" / "assets" / "art" / "characters"
 PORTRAIT_OUT = ROOT / "game" / "assets" / "art" / "portraits"
+CREDITS_OUT = ART_SOURCE / "CREDITS-USED.md"
+
+# The palette each family's shipped PNGs are drawn in. From the repo's
+# palette_definitions/<family>/meta_<family>.json "base" field.
+BASE_RAMP = {"body": "light", "hair": "orange", "cloth": "white", "eye": "blue"}
+
+# Licences we are willing to ship. LPC assets are usually multi-licensed and you
+# elect one; OGA-BY and CC-BY avoid share-alike, and OGA-BY explicitly permits
+# DRM, which matters for a store build. See art-source/LICENSES.md.
+ACCEPTABLE = ("CC0", "OGA-BY", "CC-BY 3.0", "CC-BY 4.0")
 
 
-def load_config() -> dict:
-    if not CONFIG.exists():
-        sys.exit(f"missing {CONFIG}")
-    return json.loads(CONFIG.read_text(encoding="utf-8"))
+def hex_to_rgb(value: str) -> tuple:
+    value = value.lstrip("#")
+    return tuple(int(value[i:i + 2], 16) for i in (0, 2, 4))
 
 
-def compose(sheet: Image.Image, layers: list, tile: int, stride: int) -> Image.Image:
-    """Stacks the listed cells into one tile-sized image."""
-    out = Image.new("RGBA", (tile, tile), (0, 0, 0, 0))
+class Palettes:
+    """Loads LPC palette ramps and recolours a layer from base to target."""
+
+    def __init__(self, root: pathlib.Path) -> None:
+        self.root = root
+        self._cache: dict = {}
+
+    def ramps(self, family: str) -> dict:
+        if family not in self._cache:
+            path = self.root / family / f"{family}_ulpc.json"
+            if not path.exists():
+                raise SystemExit(f"missing palette file {path}")
+            self._cache[family] = json.loads(path.read_text(encoding="utf-8"))
+        return self._cache[family]
+
+    def detect_source(self, family: str, image: Image.Image) -> str:
+        """Works out which ramp a sheet was actually drawn in.
+
+        Most LPC sheets ship in the family's base ramp, but not all - the formal
+        trousers ship green, for instance. Assuming the base ramp silently
+        leaves those layers un-recoloured, which is exactly the bug this avoids.
+        Whichever ramp accounts for most of the sheet's pixels wins.
+        """
+        present = {rgb[:3] for count, rgb in image.getcolors(1 << 16) or [] if rgb[3] > 0}
+        best, best_hits = None, 0
+        for name, ramp in self.ramps(family).items():
+            hits = sum(1 for value in ramp if hex_to_rgb(value) in present)
+            if hits > best_hits:
+                best, best_hits = name, hits
+        # Two matching colours is coincidence; three is a palette.
+        return best if best_hits >= 3 else None
+
+    def shade_mapping(self, family: str, target: str, image: Image.Image) -> dict:
+        """Recolours a sheet that is not in any known ramp.
+
+        The formal trousers, for example, ship in three bespoke greens that
+        appear in no palette file. Rank the sheet's own colours darkest to
+        lightest, rank the target ramp the same way, and map across. It keeps
+        the shading relationships intact, which is all the ramp was doing.
+        """
+        ramp = [hex_to_rgb(value) for value in self.ramps(family)[target]]
+        present = sorted(
+            {rgb[:3] for _count, rgb in image.getcolors(1 << 16) or [] if rgb[3] > 0},
+            key=lambda c: 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2])
+        if not present:
+            return {}
+        mapping = {}
+        for i, colour in enumerate(present):
+            position = i / (len(present) - 1) if len(present) > 1 else 0.0
+            mapping[colour] = ramp[round(position * (len(ramp) - 1))]
+        return mapping
+
+    def mapping(self, family: str, target: str, source: str) -> dict:
+        ramps = self.ramps(family)
+        if source not in ramps:
+            raise SystemExit(f"palette family '{family}' has no ramp '{source}'")
+        if target not in ramps:
+            raise SystemExit(f"palette '{family}' has no ramp '{target}'. "
+                             f"Available: {', '.join(sorted(ramps))}")
+        base, want = ramps[source], ramps[target]
+        if len(base) != len(want):
+            raise SystemExit(f"ramp length mismatch: {family}/{source} vs {family}/{target}")
+        return {hex_to_rgb(a): hex_to_rgb(b) for a, b in zip(base, want)}
+
+
+def recolour(image: Image.Image, mapping: dict) -> Image.Image:
+    """Swaps exact palette colours. Pixels outside the ramp are left alone."""
+    pixels = image.load()
+    width, height = image.size
+    for y in range(height):
+        for x in range(width):
+            r, g, b, a = pixels[x, y]
+            if a == 0:
+                continue
+            swap = mapping.get((r, g, b))
+            if swap is not None:
+                pixels[x, y] = (swap[0], swap[1], swap[2], a)
+    return image
+
+
+def resolve(layer: dict, anim: str, mood: str, head: str) -> str:
+    return layer["path"].format(anim=anim, mood=mood, head=head)
+
+
+def compose(sheets: pathlib.Path, palettes: Palettes, layers: list,
+            anim: str, mood: str, head: str, used: set) -> Image.Image:
+    """Stacks every layer of one character into a single animation sheet."""
+    out = None
     for layer in layers:
-        col, row = layer["cell"]
-        piece = sheet.crop((col * stride, row * stride, col * stride + tile, row * stride + tile))
-        if piece.getbbox() is None:
-            print(f"  warning: layer '{layer.get('part', '?')}' at {col},{row} is empty")
+        rel = resolve(layer, anim, mood, head)
+        path = sheets / rel
+        if not path.exists():
+            print(f"    missing layer, skipped: {rel}")
+            continue
+        used.add(rel)
+
+        piece = Image.open(path).convert("RGBA")
+        family, colour = layer.get("palette"), layer.get("color")
+        if family and colour:
+            source = layer.get("from") or palettes.detect_source(family, piece)
+            if source:
+                mapping = palettes.mapping(family, colour, source)
+            else:
+                mapping = palettes.shade_mapping(family, colour, piece)
+            piece = recolour(piece, mapping)
+
+        if out is None:
+            out = Image.new("RGBA", piece.size, (0, 0, 0, 0))
         out.alpha_composite(piece)
+    if out is None:
+        raise SystemExit("no layers resolved - check the paths in characters.json")
     return out
 
 
-def trim_bottom(image: Image.Image) -> Image.Image:
-    """Crops empty rows off the bottom so the sprite's feet sit on its origin."""
-    box = image.getbbox()
-    if box is None:
-        return image
-    return image.crop((0, 0, image.width, box[3]))
+def scale(image: Image.Image, factor: int) -> Image.Image:
+    return image.resize((image.width * factor, image.height * factor), Image.NEAREST)
 
 
-def build_sprite(base: Image.Image, scale: int) -> Image.Image:
-    trimmed = trim_bottom(base)
-    return trimmed.resize((trimmed.width * scale, trimmed.height * scale), Image.NEAREST)
+def portrait_from(sheet: Image.Image, config: dict) -> Image.Image:
+    """Crops the standing, facing-the-player frame and blows it up.
 
-
-def build_portrait(base: Image.Image, scale: int, size: tuple) -> Image.Image:
-    """A big, crisp version of the character, centred with headroom.
-
-    Sits on transparency: the portrait slot draws a per-character coloured card
-    behind it, so the character reads against its own backdrop.
+    Frame 0 of the walk row is a standing pose, so it doubles as the portrait
+    without needing a separate idle sheet.
     """
-    big = base.resize((base.width * scale, base.height * scale), Image.NEAREST)
-    canvas = Image.new("RGBA", tuple(size), (0, 0, 0, 0))
+    frame = int(config["frame"])
+    row = int(config["walk_rows"]["down"])
+    still = sheet.crop((0, row * frame, frame, row * frame + frame))
+
+    big = scale(still, int(config["portrait_scale"]))
+    canvas = Image.new("RGBA", tuple(config["portrait_size"]), (0, 0, 0, 0))
     x = (canvas.width - big.width) // 2
-    y = (canvas.height - big.height) // 2
-    canvas.alpha_composite(big, (x, y))
+    y = canvas.height - big.height - int(canvas.height * 0.06)   # stand near the base
+    canvas.alpha_composite(big, (x, max(y, 0)))
     return canvas
+
+
+def write_credits(credits_csv: pathlib.Path, used: set) -> None:
+    """Records authors and licences for exactly the layers that got used."""
+    if not credits_csv.exists():
+        print(f"  (no CREDITS.csv at {credits_csv}, skipping attribution file)")
+        return
+
+    rows = {}
+    with credits_csv.open(newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            rows[row["filename"].strip().strip('"')] = row
+
+    def lookup(rel: str):
+        """CREDITS.csv writes body-type segments as a ${head} template, so
+        head/faces/male/sad/walk.png is credited as head/faces/${head}/sad/walk.png."""
+        if rel in rows:
+            return rows[rel]
+        parts = rel.split("/")
+        for i in range(len(parts)):
+            probe = "/".join(parts[:i] + ["${head}"] + parts[i + 1:])
+            if probe in rows:
+                return rows[probe]
+        return None
+
+    lines = [
+        "# Attribution for the character art actually used",
+        "",
+        "Generated by `tools/art/build_characters.py` — do not edit by hand.",
+        "",
+        "Every row below is a layer that ends up in a shipped sprite. LPC assets are",
+        "multi-licensed; we elect **OGA-BY 3.0** (or CC0/CC-BY where that is the only",
+        "option), which avoids share-alike and permits DRM. See `LICENSES.md`.",
+        "",
+        "**These credits must appear in the game before release.**",
+        "",
+        "| Layer | Authors | Licences offered |",
+        "|---|---|---|",
+    ]
+
+    flagged = []
+    authors: set = set()
+    for rel in sorted(used):
+        row = lookup(rel)
+        if row is None:
+            flagged.append(f"{rel} — not listed in CREDITS.csv")
+            lines.append(f"| `{rel}` | *not listed* | *unknown* |")
+            continue
+        who = row.get("authors", "").strip().strip('"')
+        lic = row.get("licenses", "").strip().strip('"')
+        authors.update(a.strip() for a in who.split(",") if a.strip())
+        if not any(ok in lic for ok in ACCEPTABLE):
+            flagged.append(f"{rel} — only offers: {lic}")
+        lines.append(f"| `{rel}` | {who} | {lic} |")
+
+    lines += ["", "## Combined author list, for the credits screen", "",
+              ", ".join(sorted(authors)) or "*none resolved*", ""]
+
+    if flagged:
+        lines += ["## NEEDS ATTENTION", ""]
+        lines += [f"- {item}" for item in flagged]
+        lines.append("")
+
+    CREDITS_OUT.write_text("\n".join(lines), encoding="utf-8")
+    print(f"\nattribution -> {CREDITS_OUT.relative_to(ROOT)}  "
+          f"({len(used)} layers, {len(authors)} authors)")
+    if flagged:
+        print("  WARNING: some layers need a licence check:")
+        for item in flagged:
+            print(f"    {item}")
 
 
 def main() -> None:
@@ -91,16 +273,16 @@ def main() -> None:
     parser.add_argument("--only", help="build a single character by id")
     args = parser.parse_args()
 
-    config = load_config()
-    sheet_path = ART_SOURCE / config["sheet"]
-    if not sheet_path.exists():
-        sys.exit(f"source sheet missing: {sheet_path}\n"
-                 f"Re-download the Kenney packs - see docs/dev/art-pipeline.md")
+    if not CONFIG.exists():
+        sys.exit(f"missing {CONFIG}")
+    config = json.loads(CONFIG.read_text(encoding="utf-8"))
 
-    sheet = Image.open(sheet_path).convert("RGBA")
-    tile = int(config["tile"])
-    stride = int(config["stride"])
+    sheets = ART_SOURCE / config["source"]["sheets"]
+    if not sheets.exists():
+        sys.exit(f"LPC art missing at {sheets}\n"
+                 f"Fetch it with: python.exe tools\\art\\fetch_assets.py --lpc")
 
+    palettes = Palettes(ART_SOURCE / config["source"]["palettes"])
     SPRITE_OUT.mkdir(parents=True, exist_ok=True)
     PORTRAIT_OUT.mkdir(parents=True, exist_ok=True)
 
@@ -110,21 +292,40 @@ def main() -> None:
             sys.exit(f"no such character '{args.only}'. Known: {', '.join(characters)}")
         characters = {args.only: characters[args.only]}
 
+    moods = config.get("moods", {"default": "default"})
+    used: set = set()
+
     for char_id, spec in characters.items():
         print(f"{char_id}:")
-        base = compose(sheet, spec["layers"], tile, stride)
 
-        sprite = build_sprite(base, int(config["sprite_scale"]))
-        sprite_path = SPRITE_OUT / f"{char_id}.png"
-        sprite.save(sprite_path)
-        print(f"  sprite   {sprite.width}x{sprite.height}  -> {sprite_path.relative_to(ROOT)}")
+        # One walk sheet, in the neutral expression - nobody sees the eyes at
+        # room scale, and one sheet per mood would be wasteful.
+        head = spec.get("head", "male")
+        walk = compose(sheets, palettes, spec["layers"], "walk",
+                       moods.get("default", "neutral"), head, used)
+        walk_scaled = scale(walk, int(config["sprite_scale"]))
+        walk_path = SPRITE_OUT / f"{char_id}_walk.png"
+        walk_scaled.save(walk_path)
+        print(f"  walk sheet {walk_scaled.width}x{walk_scaled.height} "
+              f"({config['walk_frames']} frames x {len(config['walk_rows'])} directions)"
+              f" -> {walk_path.relative_to(ROOT)}")
 
-        portrait = build_portrait(base, int(config["portrait_scale"]), config["portrait_size"])
-        portrait_path = PORTRAIT_OUT / f"{char_id}.png"
-        portrait.save(portrait_path)
-        print(f"  portrait {portrait.width}x{portrait.height}  -> {portrait_path.relative_to(ROOT)}")
+        # A portrait per distinct expression, named so CharacterDb finds them.
+        by_expression: dict = {}
+        for mood, expression in moods.items():
+            by_expression.setdefault(expression, []).append(mood)
 
-    print("\nDone. Godot re-imports on next focus, or force it with:")
+        for expression, mood_names in sorted(by_expression.items()):
+            sheet = compose(sheets, palettes, spec["layers"], "walk", expression, head, used)
+            portrait = portrait_from(sheet, config)
+            for mood in mood_names:
+                name = f"{char_id}.png" if mood == "default" else f"{char_id}_{mood}.png"
+                portrait.save(PORTRAIT_OUT / name)
+        print(f"  portraits  {len(moods)} moods -> {len(by_expression)} expressions")
+
+    write_credits(ART_SOURCE / config["source"]["credits"], used)
+
+    print("\nDone. Re-import with:")
     print("  tools\\godot\\Godot_v4.7.2-stable_win64_console.exe --headless --path game --import")
 
 

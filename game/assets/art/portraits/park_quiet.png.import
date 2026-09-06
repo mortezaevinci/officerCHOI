@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kmxtwv2al3ao"
-path="res://.godot/imported/park.png-9f86a894655b660a497d8c2f3f2bedeb.ctex"
+uid="uid://8v874g04xqsm"
+path="res://.godot/imported/park_quiet.png-200fbd23a7b65647936bb3a9512103c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/portraits/park.png"
-dest_files=["res://.godot/imported/park.png-9f86a894655b660a497d8c2f3f2bedeb.ctex"]
+source_file="res://assets/art/portraits/park_quiet.png"
+dest_files=["res://.godot/imported/park_quiet.png-200fbd23a7b65647936bb3a9512103c8.ctex"]
 
 [params]
 

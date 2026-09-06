@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kmxtwv2al3ao"
-path="res://.godot/imported/park.png-9f86a894655b660a497d8c2f3f2bedeb.ctex"
+uid="uid://c4useogsgnff8"
+path="res://.godot/imported/ward_walk.png-7dc9f07a7f7dcdae5127db696becae03.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/portraits/park.png"
-dest_files=["res://.godot/imported/park.png-9f86a894655b660a497d8c2f3f2bedeb.ctex"]
+source_file="res://assets/art/characters/ward_walk.png"
+dest_files=["res://.godot/imported/ward_walk.png-7dc9f07a7f7dcdae5127db696becae03.ctex"]
 
 [params]
 

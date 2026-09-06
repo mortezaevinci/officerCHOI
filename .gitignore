@@ -30,11 +30,14 @@ tools/art/material-maker/
 tools/art/krita/
 
 # Source art packs: commit only the ones the build actually reads, so the game's
-# art is reproducible offline without carrying 7000 unused files. The rest are
-# one command away: python.exe tools\art\fetch_assets.py
+# art is reproducible offline without carrying thousands of unused files. The
+# rest are one command away: python.exe tools\art\fetch_assets.py
 art-source/kenney/*
-!art-source/kenney/roguelike-characters/
 !art-source/kenney/roguelike-indoors/
+
+# LPC character art, ~400 MB. Too big to commit; fetched on demand with
+# python.exe tools\art\fetch_assets.py --lpc
+art-source/lpc/
 
 # Never. Signing keys live in C:\temp\_secrets.
 *.keystore

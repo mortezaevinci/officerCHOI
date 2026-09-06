@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8tapnuhpjgiv"
-path="res://.godot/imported/park.png-3aa6840e409c20ba3cfda8842581cdc7.ctex"
+uid="uid://b5djpjq2vxftn"
+path="res://.godot/imported/choi_wary.png-640eb20878e0ecdd9d7a53479e7f414d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/characters/park.png"
-dest_files=["res://.godot/imported/park.png-3aa6840e409c20ba3cfda8842581cdc7.ctex"]
+source_file="res://assets/art/portraits/choi_wary.png"
+dest_files=["res://.godot/imported/choi_wary.png-640eb20878e0ecdd9d7a53479e7f414d.ctex"]
 
 [params]
 

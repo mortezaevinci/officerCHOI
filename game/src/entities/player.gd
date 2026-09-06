@@ -29,10 +29,18 @@ var movement_locked: bool = false:
 
 var facing: Vector2 = Vector2.DOWN
 
+## Frames per second of the walk cycle. LPC sheets read well around 8-10.
+const WALK_FPS := 9.0
+## LPC walk sheets: 9 columns, and rows in this order.
+const DIRECTION_ROW := {Vector2.UP: 0, Vector2.LEFT: 1, Vector2.DOWN: 2, Vector2.RIGHT: 3}
+const WALK_COLUMNS := 9
+
 @onready var _body: Node2D = $Body
+@onready var _sprite: Sprite2D = $Body/Sprite
 @onready var _camera: Camera2D = $Camera
 
 var _move_target = null  # Vector2 or null
+var _step_time: float = 0.0
 
 
 ## Stops the camera at the edges of a room, so the player never sees past the
@@ -92,10 +100,30 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 
 	move_and_slide()
+	_update_animation(delta)
 
 	# Walking into a wall should not leave the character trying forever.
 	if _move_target != null and get_slide_collision_count() > 0 and velocity.length() < 8.0:
 		_move_target = null
+
+
+## Picks the frame off the walk sheet: the row is which way we face, the column
+## is where we are in the stride. Column 0 is the standing pose, so an idle
+## character just sits on it.
+func _update_animation(delta: float) -> void:
+	if _sprite == null:
+		return
+
+	if is_walking():
+		_step_time += delta * WALK_FPS
+	else:
+		_step_time = 0.0
+
+	var row: int = DIRECTION_ROW.get(facing, DIRECTION_ROW[Vector2.DOWN])
+	var column := 0
+	if is_walking():
+		column = 1 + int(_step_time) % (WALK_COLUMNS - 1)
+	_sprite.frame = row * WALK_COLUMNS + column
 
 
 ## Sends the character to a point without player input (cutscenes, `@walk_to`).
@@ -127,6 +155,6 @@ func _set_facing(direction: Vector2) -> void:
 	if next == facing:
 		return
 	facing = next
-	if _body and next.x != 0.0:
-		_body.scale.x = signf(next.x)
+	# No mirroring: the sheet has a real left and a real right row, and flipping
+	# would put buttons, holsters and partings on the wrong side.
 	facing_changed.emit(facing)

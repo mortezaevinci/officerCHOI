@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://src/entities/player.gd" id="1_player"]
-[ext_resource type="Texture2D" path="res://assets/art/characters/choi.png" id="2_sprite"]
+[ext_resource type="Texture2D" path="res://assets/art/characters/choi_walk.png" id="2_sprite"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_player"]
 radius = 24.0
@@ -23,7 +23,10 @@ polygon = PackedVector2Array(-34, -9, 34, -9, 28, 8, -28, 8)
 [node name="Sprite" type="Sprite2D" parent="Body"]
 texture = ExtResource("2_sprite")
 centered = false
-offset = Vector2(-64, -128)
+offset = Vector2(-64, -122)
+hframes = 9
+vframes = 4
+frame = 18
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -34)

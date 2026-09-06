@@ -1,9 +1,9 @@
 # Art pipeline
 
-The game's art is **composed and generated**, not hand-drawn. Characters and
-props are stacks of CC0 tiles described in JSON, and two small tools turn that
-JSON into the PNGs the game loads. Restyling a character is editing three pairs
-of numbers, not opening a paint program.
+The game's art is **composed and generated**, not hand-drawn. A character is a
+stack of open-licensed layers described in JSON — body, head, face, clothes,
+hair — and two small tools turn that JSON into the PNGs the game loads.
+Restyling a character is editing a colour name, not opening a paint program.
 
 That is deliberate: it means the look can be iterated on quickly and
 consistently, and it means the art is reproducible from the repo.
@@ -31,15 +31,22 @@ tools\art\krita\krita-x64-5.3.3\bin\krita.exe
 
 ## The source art
 
-CC0 packs from [Kenney](https://kenney.nl), committed under `art-source/kenney/`
-(17 MB). Public domain: commercial use, modification, no attribution required.
-
-Provenance and licence rules: **[art-source/LICENSES.md](../../art-source/LICENSES.md)**.
-The project rule is CC0 only — read that file before adding anything.
+| Source | For | Committed? |
+|---|---|---|
+| [LPC](https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator) | Characters: 64×64, 4-direction walk cycles, faces, a huge wardrobe | No — ~400 MB |
+| [Kenney](https://kenney.nl) CC0 packs | Props: desks, shelves, cabinets | Yes — 17 MB |
 
 ```powershell
-python.exe tools\art\fetch_assets.py          # re-download / add a pack
+python.exe tools\art\fetch_assets.py --lpc    # character art (~400 MB, needs git)
+python.exe tools\art\fetch_assets.py          # Kenney CC0 packs
 ```
+
+**Licence rule: CC0, OGA-BY or CC-BY only — never CC-BY-SA.** LPC assets are
+usually multi-licensed and you elect one; we elect OGA-BY, which avoids
+share-alike and explicitly permits DRM. `build_characters.py` checks every layer
+against LPC's `CREDITS.csv` on each run and refuses to pass anything that only
+offers CC-BY-SA. Full reasoning and the attribution we owe:
+**[art-source/LICENSES.md](../../art-source/LICENSES.md)**.
 
 ---
 
@@ -50,26 +57,44 @@ python.exe tools\art\fetch_assets.py          # re-download / add a pack
 ```json
 "choi": {
     "display_name": "Choi",
+    "head": "male",
     "layers": [
-        {"part": "body",  "cell": [1, 0]},
-        {"part": "shirt", "cell": [16, 5]},
-        {"part": "hair",  "cell": [23, 4]}
+        {"path": "body/bodies/male/{anim}.png",      "palette": "body",  "color": "amber"},
+        {"path": "head/faces/{head}/{mood}/{anim}.png", "palette": null, "color": null},
+        {"path": "legs/pants2/male/{anim}.png",      "palette": "cloth", "color": "charcoal"},
+        {"path": "hair/flat_top_straight/adult/{anim}.png", "palette": "hair", "color": "black"}
     ]
 }
 ```
 
-Each `cell` is a `[column, row]` on Kenney's modular character sheet. Layers draw
-in order — body, then clothing, then hair.
+Layers draw in order — body, head, face, clothes, hair. `{anim}` is the
+animation sheet, `{mood}` the facial expression, `{head}` the character's head
+type.
+
+**Colours are palette swaps.** LPC ships each sheet in one reference ramp and
+recolours it; the tool does the same offline. `palette` picks the family
+(`body`, `hair`, `cloth`), `color` the target ramp from
+`art-source/lpc/palette_definitions/<family>/<family>_ulpc.json`. The tool works
+out which ramp a sheet was drawn in rather than assuming — some sheets ship in
+their own colours — and falls back to a luminance-ranked mapping if the sheet
+matches no known ramp at all.
 
 ```powershell
 python.exe tools\art\build_characters.py
 python.exe tools\art\build_characters.py --only choi
 ```
 
-Out come two files per character:
+Out come, per character:
 
-- `game/assets/art/characters/<id>.png` — the in-world sprite (8× — 128 px tall)
-- `game/assets/art/portraits/<id>.png` — the conversation portrait (16×)
+- `game/assets/art/characters/<id>_walk.png` — a 9-frame × 4-direction walk
+  sheet. The scenes read it as a `Sprite2D` with `hframes = 9, vframes = 4`;
+  `player.gd` and `npc.gd` pick the frame from facing and stride. Column 0 is
+  the standing pose, so idle costs nothing.
+- `game/assets/art/portraits/<id>.png` plus one `<id>_<mood>.png` per mood —
+  which is why `Choi @tired:` now changes the face instead of falling back to a
+  single portrait. The mood-to-expression map is in `characters.json`.
+- `art-source/CREDITS-USED.md` — the exact authors and licences for the layers
+  that actually shipped. **These credits must go in the game before release.**
 
 The portrait is transparent; the portrait slot draws the character's colour card
 behind it, so each character reads against their own backdrop. That colour comes
@@ -96,9 +121,14 @@ Out: `game/assets/art/props/<name>.png`.
 Do not count tiles by eye. Render a labelled contact sheet:
 
 ```powershell
-python.exe tools\art\sheet_grid.py kenney/roguelike-characters/Spritesheet/roguelikeChar_transparent.png
 python.exe tools\art\sheet_grid.py kenney/roguelike-indoors/Tilesheets/roguelikeIndoor_transparent.png --cols 0 14 --rows 8 20 --zoom 5
 ```
+
+(LPC needs no grid tool — its assets are separate files in named folders. Browse
+`art-source/lpc/spritesheets/`, or try combinations in the upstream
+[web generator](https://liberatedpixelcup.github.io/Universal-LPC-Spritesheet-Character-Generator/)
+and copy the paths across. Check the licence before adopting one — the build
+will refuse it otherwise.)
 
 It writes `C:\temp\_samples\officerchoi\sheet-grid.png` with every cell labelled
 `col,row`. Pick from that, put the numbers in the JSON, rebuild.
@@ -146,8 +176,10 @@ Honest list, so nobody mistakes it for finished:
 - Room floors, walls and the rug are flat `ColorRect`s. Material Maker is
   installed for exactly this.
 - The door in the precinct is still two polygons.
-- Characters have one pose, no walk animation and no mood variants — the
-  `Choi @tired:` moods in the dialogue all fall back to the one portrait.
+- Characters walk but have no idle animation, and no sitting pose for the desk
+  scene (LPC has `sit.png` if that becomes worth wiring up).
+- Portraits are full-body. A head-and-shoulders crop would carry expression
+  better in a conversation.
 - No UI art; the theme is flat colour. The Kenney UI pack is downloaded and
   waiting if that changes.
 - No audio at all.

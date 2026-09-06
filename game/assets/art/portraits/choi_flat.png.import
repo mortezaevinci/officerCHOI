@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bucli7vdth1ej"
-path="res://.godot/imported/choi.png-f8dd139bc68e9eb54bb8bf6b60157dae.ctex"
+uid="uid://7rxkb2ewacyl"
+path="res://.godot/imported/choi_flat.png-586326e2959292258a7aa157163b33ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/characters/choi.png"
-dest_files=["res://.godot/imported/choi.png-f8dd139bc68e9eb54bb8bf6b60157dae.ctex"]
+source_file="res://assets/art/portraits/choi_flat.png"
+dest_files=["res://.godot/imported/choi_flat.png-586326e2959292258a7aa157163b33ec.ctex"]
 
 [params]
 

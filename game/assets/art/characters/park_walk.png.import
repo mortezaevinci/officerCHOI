@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kmxtwv2al3ao"
-path="res://.godot/imported/park.png-9f86a894655b660a497d8c2f3f2bedeb.ctex"
+uid="uid://1wl2xmyep1vs"
+path="res://.godot/imported/park_walk.png-3dc38f8b99b1ce79fcc02b54fe7768de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/portraits/park.png"
-dest_files=["res://.godot/imported/park.png-9f86a894655b660a497d8c2f3f2bedeb.ctex"]
+source_file="res://assets/art/characters/park_walk.png"
+dest_files=["res://.godot/imported/park_walk.png-3dc38f8b99b1ce79fcc02b54fe7768de.ctex"]
 
 [params]
 
