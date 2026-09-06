@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://scenes/entities/interactable.tscn" id="4_interactable"]
 [ext_resource type="PackedScene" path="res://scenes/ui/dialogue_box.tscn" id="5_box"]
 [ext_resource type="PackedScene" path="res://scenes/ui/interact_prompt.tscn" id="6_prompt"]
+[ext_resource type="Texture2D" path="res://assets/art/props/cabinet.png" id="7_cabinet"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_h"]
 size = Vector2(2200, 60)
@@ -88,18 +89,13 @@ target_spawn = "from_hallway"
 [node name="Machine" type="Node2D" parent="."]
 position = Vector2(560, 250)
 
-[node name="Case" type="Polygon2D" parent="Machine"]
-color = Color(0.192157, 0.235294, 0.27451, 1)
-polygon = PackedVector2Array(-80, -180, 80, -180, 80, 90, -80, 90)
-
-[node name="Glass" type="Polygon2D" parent="Machine"]
-color = Color(0.290196, 0.360784, 0.407843, 1)
-polygon = PackedVector2Array(-62, -160, 62, -160, 62, -10, -62, -10)
+[node name="Sprite" type="Sprite2D" parent="Machine"]
+texture = ExtResource("7_cabinet")
 
 [node name="Interact" parent="Machine" instance=ExtResource("4_interactable")]
 position = Vector2(0, 170)
 prompt = "Use the machine"
-prompt_offset = Vector2(0, -320)
+prompt_offset = Vector2(0, -300)
 dialogue_file = "res://content/dialogue/en/hallway_machine.dlg"
 
 [node name="Player" parent="." instance=ExtResource("2_player")]

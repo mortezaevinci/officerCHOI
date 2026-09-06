@@ -1,0 +1,26 @@
+{
+	"_comment": "Room props cut from Kenney's CC0 roguelike indoor tilesheet. Each prop is a grid of cells; a row of three desk tiles makes one long desk. Coordinates are (column, row) on the sheet - render a labelled index with: python.exe tools\\art\\sheet_grid.py kenney/roguelike-indoors/Tilesheets/roguelikeIndoor_transparent.png --cols 0 14 --rows 8 20",
+
+	"sheet": "kenney/roguelike-indoors/Tilesheets/roguelikeIndoor_transparent.png",
+	"tile": 16,
+	"stride": 17,
+	"scale": 8,
+
+	"props": {
+		"desk": {
+			"_note": "Three drawer units in a row - the long desk Choi works at.",
+			"grid": [[[0, 12], [4, 12], [0, 12]]]
+		},
+		"shelf": {
+			"_note": "Files and folders. Stands in for the duty board.",
+			"grid": [[[7, 12], [7, 12]]]
+		},
+		"cabinet": {
+			"_note": "The hallway machine.",
+			"grid": [[[11, 15]], [[11, 16]]]
+		},
+		"side_desk": {
+			"grid": [[[8, 12]]]
+		}
+	}
+}

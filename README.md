@@ -94,6 +94,7 @@ F12 takes a screenshot at any time, into `user://screenshots`.
 - Writing a conversation → **[docs/writing/dialogue-format.md](docs/writing/dialogue-format.md)**
 - How the code fits together → **[docs/dev/architecture.md](docs/dev/architecture.md)**
 - Adding a room or a desk → **[docs/dev/adding-content.md](docs/dev/adding-content.md)**
+- Making or changing art → **[docs/dev/art-pipeline.md](docs/dev/art-pipeline.md)**
 - Letting an AI drive the editor → **[docs/dev/ai-game-dev.md](docs/dev/ai-game-dev.md)**
 - Shipping to Steam → **[docs/build/steam.md](docs/build/steam.md)**
 - Shipping to Android → **[docs/build/android.md](docs/build/android.md)**

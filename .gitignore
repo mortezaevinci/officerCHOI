@@ -23,6 +23,19 @@ game/obj/
 game/bin/
 game/*.sln
 
+# The art applications, ~880 MB together. Fetched by
+# tools\art\install-art-tools.ps1.
+tools/art/pixelorama/
+tools/art/material-maker/
+tools/art/krita/
+
+# Source art packs: commit only the ones the build actually reads, so the game's
+# art is reproducible offline without carrying 7000 unused files. The rest are
+# one command away: python.exe tools\art\fetch_assets.py
+art-source/kenney/*
+!art-source/kenney/roguelike-characters/
+!art-source/kenney/roguelike-indoors/
+
 # Never. Signing keys live in C:\temp\_secrets.
 *.keystore
 *.jks

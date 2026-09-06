@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" path="res://scenes/entities/interactable.tscn" id="4_interactable"]
 [ext_resource type="PackedScene" path="res://scenes/ui/dialogue_box.tscn" id="5_box"]
 [ext_resource type="PackedScene" path="res://scenes/ui/interact_prompt.tscn" id="6_prompt"]
+[ext_resource type="Texture2D" path="res://assets/art/props/desk.png" id="7_desk"]
+[ext_resource type="Texture2D" path="res://assets/art/props/shelf.png" id="8_shelf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_h"]
 size = Vector2(2560, 60)
@@ -14,7 +16,7 @@ size = Vector2(2560, 60)
 size = Vector2(60, 1440)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_desk"]
-size = Vector2(340, 130)
+size = Vector2(384, 118)
 
 [node name="Precinct" type="Node2D"]
 script = ExtResource("1_room")
@@ -76,29 +78,16 @@ shape = SubResource("RectangleShape2D_wall_v")
 position = Vector2(400, 1180)
 
 [node name="desk" type="Marker2D" parent="Spawns"]
-position = Vector2(1900, 800)
+position = Vector2(1900, 830)
 
 [node name="from_hallway" type="Marker2D" parent="Spawns"]
-position = Vector2(220, 700)
+position = Vector2(300, 760)
 
 [node name="Desk" type="Node2D" parent="."]
 position = Vector2(1900, 620)
 
-[node name="Top" type="Polygon2D" parent="Desk"]
-color = Color(0.376471, 0.305882, 0.227451, 1)
-polygon = PackedVector2Array(-170, -65, 170, -65, 170, 65, -170, 65)
-
-[node name="Edge" type="Polygon2D" parent="Desk"]
-color = Color(0.243137, 0.196078, 0.145098, 1)
-polygon = PackedVector2Array(-170, 65, 170, 65, 170, 86, -170, 86)
-
-[node name="Papers" type="Polygon2D" parent="Desk"]
-color = Color(0.870588, 0.858824, 0.815686, 1)
-polygon = PackedVector2Array(40, -40, 140, -40, 140, 20, 40, 20)
-
-[node name="Lamp" type="Polygon2D" parent="Desk"]
-color = Color(0.968627, 0.788235, 0.470588, 1)
-polygon = PackedVector2Array(-140, -58, -80, -58, -66, -14, -154, -14)
+[node name="Sprite" type="Sprite2D" parent="Desk"]
+texture = ExtResource("7_desk")
 
 [node name="Body" type="StaticBody2D" parent="Desk"]
 collision_layer = 1
@@ -110,20 +99,15 @@ shape = SubResource("RectangleShape2D_desk")
 [node name="Interact" parent="Desk" instance=ExtResource("4_interactable")]
 position = Vector2(0, 180)
 prompt = "Sit down at the desk"
-prompt_offset = Vector2(0, -260)
+prompt_offset = Vector2(0, -250)
 action = 1
 target_scene = "res://scenes/conversations/desk_ward.tscn"
 
 [node name="Board" type="Node2D" parent="."]
 position = Vector2(760, 300)
 
-[node name="Frame" type="Polygon2D" parent="Board"]
-color = Color(0.290196, 0.243137, 0.196078, 1)
-polygon = PackedVector2Array(-140, -95, 140, -95, 140, 70, -140, 70)
-
-[node name="Paper" type="Polygon2D" parent="Board"]
-color = Color(0.870588, 0.854902, 0.803922, 1)
-polygon = PackedVector2Array(-118, -74, 118, -74, 118, 49, -118, 49)
+[node name="Sprite" type="Sprite2D" parent="Board"]
+texture = ExtResource("8_shelf")
 
 [node name="Interact" parent="Board" instance=ExtResource("4_interactable")]
 position = Vector2(0, 150)
@@ -132,7 +116,7 @@ prompt_offset = Vector2(0, -230)
 dialogue_file = "res://content/dialogue/en/duty_board.dlg"
 
 [node name="Door" type="Node2D" parent="."]
-position = Vector2(220, 190)
+position = Vector2(300, 190)
 
 [node name="Frame" type="Polygon2D" parent="Door"]
 color = Color(0.243137, 0.211765, 0.176471, 1)
@@ -143,7 +127,7 @@ color = Color(0.0666667, 0.0705882, 0.0862745, 1)
 polygon = PackedVector2Array(-70, -130, 70, -130, 70, 24, -70, 24)
 
 [node name="Interact" parent="Door" instance=ExtResource("4_interactable")]
-position = Vector2(0, 120)
+position = Vector2(0, 150)
 prompt = "Step into the hallway"
 prompt_offset = Vector2(0, -260)
 action = 2
@@ -151,13 +135,13 @@ target_scene = "res://scenes/rooms/hallway.tscn"
 target_spawn = "from_precinct"
 
 [node name="Ward" parent="." instance=ExtResource("3_npc")]
-position = Vector2(1320, 760)
+position = Vector2(1320, 820)
 display_name = "Detective Ward"
 
 [node name="Interact" parent="Ward" instance=ExtResource("4_interactable")]
 position = Vector2(0, -40)
 prompt = "Talk to Ward"
-prompt_offset = Vector2(0, -140)
+prompt_offset = Vector2(0, -180)
 dialogue_file = "res://content/dialogue/en/ward_hallway.dlg"
 
 [node name="Player" parent="." instance=ExtResource("2_player")]

@@ -1,3 +1,7 @@
+; Node order matters here: Placeholder is the character's coloured card and is
+; drawn FIRST so it sits behind, then Texture paints the portrait on top of it.
+; Swap them and the card hides the art.
+
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://src/ui/portrait_slot.gd" id="1_slot"]
@@ -22,17 +26,6 @@ offset_bottom = 620.0
 mouse_filter = 2
 script = ExtResource("1_slot")
 
-[node name="Texture" type="TextureRect" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-expand_mode = 1
-stretch_mode = 5
-
 [node name="Placeholder" type="Panel" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,3 +46,14 @@ theme_override_font_sizes/font_size = 40
 text = "Character"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Texture" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5

@@ -6,7 +6,7 @@ extends Control
 ## which is most of the time early on. That keeps conversations fully playable
 ## and reviewable long before anyone draws anything.
 
-const DIM := Color(0.45, 0.45, 0.5, 1.0)
+const DIM := Color(0.62, 0.62, 0.68, 1.0)
 const LIT := Color(1, 1, 1, 1)
 
 @onready var _texture: TextureRect = $Texture
@@ -24,16 +24,21 @@ func set_character(id: String, mood: String = "") -> void:
 		return
 
 	visible = true
+
+	# The card stays either way - it is the character's colour, and the portrait
+	# art reads against it. Only the name label is a stand-in for missing art.
+	_placeholder.visible = true
+	_placeholder.modulate = CharacterDb.color(id)
+
 	var path := CharacterDb.portrait_path(id, mood)
 	if path.is_empty():
 		_texture.visible = false
-		_placeholder.visible = true
 		_placeholder_label.text = CharacterDb.display_name(id)
-		_placeholder.modulate = CharacterDb.color(id)
+		_placeholder_label.visible = true
 	else:
 		_texture.texture = load(path)
 		_texture.visible = true
-		_placeholder.visible = false
+		_placeholder_label.visible = false
 
 
 ## Lights this portrait when its character is talking and dims it otherwise.

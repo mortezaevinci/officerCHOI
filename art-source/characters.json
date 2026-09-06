@@ -1,0 +1,40 @@
+{
+	"_comment": "Which pieces of the Kenney roguelike character sheet make up each character. Coordinates are (column, row) on art-source/kenney/roguelike-characters/Spritesheet/roguelikeChar_transparent.png, a 16px grid with a 1px gutter. Render a labelled index of the sheet with: python.exe C:\\temp\\_script\\officerchoi-char-grid.py",
+
+	"_layer_order": "Layers are drawn in the order listed. body first, then clothing, then hair on top.",
+
+	"sheet": "kenney/roguelike-characters/Spritesheet/roguelikeChar_transparent.png",
+	"tile": 16,
+	"stride": 17,
+
+	"sprite_scale": 8,
+	"portrait_scale": 16,
+	"portrait_size": [320, 320],
+
+	"characters": {
+		"choi": {
+			"display_name": "Choi",
+			"layers": [
+				{"part": "body",  "cell": [1, 0]},
+				{"part": "shirt", "cell": [16, 5]},
+				{"part": "hair",  "cell": [23, 4]}
+			]
+		},
+		"ward": {
+			"display_name": "Det. Ward",
+			"layers": [
+				{"part": "body",  "cell": [1, 1]},
+				{"part": "coat",  "cell": [12, 5]},
+				{"part": "hair",  "cell": [19, 0]}
+			]
+		},
+		"park": {
+			"display_name": "Sgt. Park",
+			"layers": [
+				{"part": "body",  "cell": [1, 2]},
+				{"part": "shirt", "cell": [14, 5]},
+				{"part": "hair",  "cell": [19, 8]}
+			]
+		}
+	}
+}

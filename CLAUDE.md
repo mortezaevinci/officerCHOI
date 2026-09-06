@@ -28,6 +28,12 @@ explains the code.
   past the walls.
 - **Input actions are generated**, from `game/tools/bootstrap_input_map.gd`.
   Edit that table and re-run it rather than clicking in the Input Map panel.
+- **Art is generated, not drawn.** `game/assets/art/{characters,portraits,props}`
+  is build output from `art-source/*.json` via `tools/art/build_*.py`. Never
+  hand-edit those PNGs — change the JSON and rebuild. See
+  `docs/dev/art-pipeline.md`.
+- **CC0 only for art**, and every source gets a row in `art-source/LICENSES.md`
+  in the same commit that adds it.
 - **No secrets here.** The Android keystore lives in `C:\temp\_secrets` and its
   path goes in per-machine editor settings, never in the repo.
 
