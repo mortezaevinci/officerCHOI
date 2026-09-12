@@ -1,0 +1,4 @@
+﻿detail_id,issue_id,row_type,layer,aspect,description,country,period,who,extra_money_usd_low,extra_money_usd_high,money_note,extra_time_days_low,extra_time_days_high,time_note,extra_energy_1_5,energy_note,evidence_type,confidence,source_name,source_url,source_date,notes
+WRK-003-001,WRK-003,fact,1,Recovery is priced,"A day in bed costs a day's pay, so recovery is rationed against rent.",*,2000-2026,everyone,200,3000,,0,0,,5,Choosing between getting better and paying for March.,estimate,low,,,,
+WRK-003-002,WRK-003,fact,2,It lengthens the illness,"Working through it extends the recovery and spreads it to colleagues, which is a cost carried by everyone except the party that set the policy.",*,2000-2026,everyone,0,0,,0,0,,5,,estimate,low,,,,
+WRK-003-003,WRK-003,scenario,3,SCENARIO - the fourth day,He goes in on day four still contagious because the fifth unpaid day is the one he cannot absorb.,*,2000-2026,everyone,0,0,,0,0,,5,,estimate,low,,,,

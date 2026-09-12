@@ -1,0 +1,4 @@
+﻿detail_id,issue_id,row_type,layer,aspect,description,country,period,who,extra_money_usd_low,extra_money_usd_high,money_note,extra_time_days_low,extra_time_days_high,time_note,extra_energy_1_5,energy_note,evidence_type,confidence,source_name,source_url,source_date,notes
+TIM-001-001,TIM-001,fact,1,Maintenance is not achievement,"Servicing, renewals, cleaning, updates, check-ups, admin. Hours that prevent decline rather than produce anything.",*,2000-2026,everyone,0,0,,30,120,,4,Running to stay level.,estimate,low,,,,
+TIM-001-002,TIM-001,fact,2,The load scales with what you have,"A house, a car, children and a career each add a maintenance stream. Getting more means more things to keep working.",*,2000-2026,everyone,0,0,,0,0,,4,,estimate,low,,,,
+TIM-001-003,TIM-001,fact,3,Skills decay too,"Professional knowledge has a half-life, and staying current is unpaid time that is nonetheless assumed.",*,2000-2026,everyone,0,0,,0,0,,4,,estimate,low,,,,
