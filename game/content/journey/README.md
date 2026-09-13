@@ -1,7 +1,7 @@
 # Journeys
 
-One life, birth to adult, as a directed graph with playable conversations
-hanging off it. One self-contained document per nationality.
+A life, birth to adult, as ten missions and then Officer Choi. One
+self-contained document per run.
 
 ```
 content/journey/<run>/journey.json     the whole run
@@ -13,7 +13,7 @@ Built by `C:\temp\_script\journey_build.py` from `journey_schema.py` and
 
 ```powershell
 python.exe C:\temp\_script\journey_build.py --run iran
-python.exe C:\temp\_script\journey_build.py --all
+python.exe C:\temp\_script\journey_build.py --run choi
 python.exe tools\art\build_journey_scenes.py
 ```
 
@@ -21,35 +21,24 @@ Both need **Windows** python: the build paths are `C:\` literals, and WSL
 python3 treats the backslashes as one filename and silently writes a junk
 directory instead of the game folder.
 
-## Why JSON, and why under `content/`
+## How a life is played
 
-The first version of this was a binary container at `assets/journey/`. That was
-wrong in one specific, silent way: `game/export_presets.cfg` ships
-`include_filter="*.dlg,*.json"`, so a `.bin` outside `game/` reaches the editor
-and reaches **neither a Steam build nor an Android one**. It would have worked
-perfectly in development and shipped with no journey data at all.
+| | |
+|---|---|
+| A **mission** | a good event, then the consequence of having chosen it |
+| A **season** | ten missions, then the boss |
+| A **new life** | a new season, drawn from parts of the graph the last one did not use |
 
-JSON under `content/` ships on Windows and Android with no export change,
-diffs readably, and parses in milliseconds. The backdrops moved to
-`assets/art/backgrounds/journey/` for the same reason — Godot only imports, and
-only ships, images inside the project.
+New Game opens `name_entry.tscn`, because the player types their own name before
+anything else happens. That hands off to `journey_view.tscn`, which owns the
+order of events and nothing else: the conversation is played by the `Dialogue`
+autoload, the box draws itself, and the graph decides what may follow what.
 
-## Runs are independent
-
-Each nationality is a complete document: its own graph, its own cast, its own
-scenes. Loading `iran` does not read, need or touch `mexico`. Nothing is shared
-at load time and **no run can break another** — which is the point, since the
-five difficulties are different games that happen to share a codebase.
-
-Adding one is a row in `RUNS` in the build script plus a
-`journey_<run>_events.py`. Nothing else changes.
-
-| Run | Hurdle datasets it draws on | Built |
-|---|---|---|
-| `iran` | `iran`, `general`, `war` | yes |
-| `mexico` | `Mexico`, `general` | events not written yet |
-| `nigeria` | `nigeria`, `general` | events not written yet |
-| `palestine` | `palestine`, `general`, `war` | events not written yet |
+**Missions are assembled, not authored.** There are 1,074 nodes and a few dozen
+hand-written conversations, so season one plays the authored spine and later
+seasons draw on the rest of the graph with generated beats. Assembly is
+deterministic in the season number, so a save stores two integers rather than an
+itinerary.
 
 ## The causal rule
 
@@ -60,116 +49,146 @@ trigger onto the hurdle categories that may follow it.
 > **A good event may only be followed by a hurdle one of its own triggers
 > justifies.**
 
-`goodlife:FOO-004`, a pomegranate, triggers nothing, so nothing can follow it.
-That is what makes it a rest rather than a trap. `goodlife:TRV-143`, studying in
-London, triggers `visa;border;airport;documents;credential`, so five kinds of
-refusal are legal successors. **Visiting Isfahan cannot cost you a visa; going
-to Paris can.**
+`goodlife:FOO-004`, a pomegranate, triggers nothing, so nothing can follow it —
+that is what makes it a rest rather than a trap, and why it can never carry a
+mission. `goodlife:TRV-143`, studying in London, triggers
+`visa;border;airport;documents;credential`, so five kinds of refusal are legal
+successors. **Visiting Isfahan cannot cost you a visa; going to Paris can.**
 
-`TRIGGER_TO_CATEGORY` in the build script is the only place causality is
-decided — one table, 25 triggers, readable in a minute.
+`test_journey_season.gd` asserts this directly: every mission's hurdle must
+appear in its good event's own consequence edges.
 
-### The Iranian run, as built
+## The runs
 
-| | |
-|---|---|
-| nodes | 1,074 — 889 good, 185 hurdles |
-| edges | 20,385 — 16,426 consequence, 2,760 sequel, 740 recovery, 459 cascade |
-| events | 20 authored, 235 steps |
-| cast | 14 named characters |
-| scenes | 17 |
-| size | 570 KB |
+Each is a complete document — own graph, own cast, own scenes. Loading `iran`
+does not read, need or touch any other. Adding one is a row in `RUNS` plus a
+`journey_<run>_events.py`.
+
+| Run | Datasets | Nodes | Events | Built |
+|---|---|---|---|---|
+| `iran` | `iran`, `general`, `war` | 1,074 | 20 | yes |
+| `choi` | `abuse` | 108 | 9 | yes — the boss |
+| `mexico` | `Mexico`, `general` | — | — | no events yet |
+| `nigeria` | `nigeria`, `general` | — | — | no events yet |
+| `palestine` | `palestine`, `general`, `war` | — | — | no events yet |
 
 **228 of the 889 good events trigger nothing at all.** They are the floor of the
 game: whichever difficulty was chosen, they stay reachable and cannot be taken
-away. Mostly `SEN`, `FOO`, `HUM`, `RST` and `NAT` — fruit in season, laughing,
-sleep, weather.
+away. Mostly fruit in season, laughing, sleep, weather.
 
-## Identity: every event has a UUID
+## The boss
 
-Derived as `uuid5` from a lowercase slug, so:
+`choi` is the last act of every nationality, authored once, because the point is
+that the ending is the same whichever life you lived.
 
-- a rebuild produces the same UUID, which makes diffs meaningful
-- **the same beat authored in two runs gets the same UUID on purpose** — give it
-  the same slug and shared experiences line up across nationalities with nobody
-  maintaining a table by hand
-- renaming a slug changes identity, which is correct: it is now a different beat
+It is an **all-hurdle run**: no good half, because there is nothing to choose and
+nothing to enjoy. Every beat is a row in `assets/text/abuse` and names it in
+`source`. Choi is not inventive — he performs, in sequence, the ordinary things
+that dataset catalogues: the queue as an instrument, the question you are not
+allowed to be unable to answer, any defect will do, compliance with the tone as a
+condition of the outcome. Each is individually defensible, which is what makes
+him a boss rather than a thug.
+
+He practises on somebody else first. Mr Bae goes before you, so the player
+watches the method work on a stranger, understands it, and then cannot use the
+understanding for anything.
+
+The fight is unwinnable and should only be legible as unwinnable in retrospect.
+Early choices change what he says and never what he decides. The closing speech
+is the thesis: rights belong to citizens, you are an applicant, and he believes
+he is correcting a misunderstanding rather than doing harm.
+
+**Officer Choi is the antagonist, not the player.** `characters.json` used to
+describe `choi` as a detective the player controlled; that was scaffolding from
+an earlier prototype and is fixed. The key stays `choi` because the placeholder
+`.dlg` files reference it.
+
+## Document shape
+
+```
+run, version, player_token       what this is
+triggers, stages, requires       vocabularies, index-significant
+cast                             this run's people, id -> {display, color}
+sequence                         event ids in authored order
+nodes[]                          id, kind, src, cat, title, sum, stage, w, trig, req, event
+edges[]                          [src, dst, kind, weight, via] - flat, there are 20k
+scenes{}                         scene id -> {art, location, time, mood, note}
+events{}                         event id -> {uuid, node, scene, title, stage, source, nodes}
+```
+
+Three fields exist for specific reasons:
+
+- **`sum`** is the dataset's own summary, carried so a node with no authored
+  conversation can still produce a real beat. Without it, later seasons would be
+  blank screens.
+- **`sequence`** states the authored order. Recovering it from the edges does not
+  work — the escalation ladder gives almost every abuse node an incoming edge, so
+  "the node nothing leads to" finds nothing, and an earlier version fell through
+  to dictionary iteration order and was right only by accident.
+- **`uuid`** is `uuid5` of a lowercase slug, so rebuilds are stable and **the same
+  beat authored in two runs gets the same UUID deliberately** — shared experiences
+  line up across nationalities with no table to maintain.
 
 ## The player types their own name
 
-No name for the player is written anywhere in content. Text carries the token
-`{player}`, and `JourneyData.render(text, name)` substitutes it before display.
-The player never speaks in their own voice — their lines are choices, which are
-things they do.
+No name for the player exists anywhere in content. Text carries `{player}`, and
+`JourneyDialogue` substitutes it once on the way in, so nothing downstream ever
+knows a name was typed. The player never speaks in their own voice — their lines
+are choices, which are things they do.
 
 **Who uses the name is an authorial decision, not an oversight.** The people who
 love you use it: Farideh, Omid, Mrs Ebadi, your mother, the employer who likes
 you. The institutions never do — Sgt Karimi says "Card.", Officer Doyle says
-"sir", Mr Hosseini does not address you at all. The asymmetry is the game in
-miniature, so the token is not sprinkled evenly, and the first time an official
-uses your name it should mean something.
+"sir", Mr Hosseini does not address you at all, and Choi uses it only when he
+wants something from you. The asymmetry is the game in miniature.
 
-Every other character is invented and named, in the run's own `cast`. They are
-deliberately **not** added to `content/characters/characters.json`: a shared
-character namespace would couple the runs together.
+Each run's cast lives in its own document rather than in
+`content/characters/characters.json`, so the nationalities stay uncoupled.
+`CharacterDb.register_cast()` announces them on the way in, which is all the
+dialogue box needs.
 
-## Node ids are namespaced
+## Code
 
-`goodlife:TRV-143`, `iran:VIS-001`. This is load-bearing, not cosmetic. The
-datasets collide on bare ids — `FIN-001`, `PSY-001`, `DIS-001` and `EDU-001`
-each exist in more than one — and goodlife `FAM-001` (a family memory) is not
-iran `FAM-001` (parents refused a visa). An earlier build keyed on bare ids,
-silently dropped 44 hurdles, and attached an event to the wrong node. The build
-now asserts node count equals rows read.
+| File | Does |
+|---|---|
+| `src/journey/journey_data.gd` | reads a run |
+| `src/journey/journey_dialogue.gd` | turns an event into a `DialogueScript` |
+| `src/journey/journey_season.gd` | assembles ten missions |
+| `src/journey/journey_view.gd` | plays them, then the boss |
+| `src/journey/name_entry.gd` | the name |
 
-## Conversations
-
-Step kinds are deliberately the same set as `DialogueScript` in
-`src/dialogue/dialogue_script.gd` — line, narration, choices, set, jump, branch,
-command, end — so a journey event maps onto **the dialogue runner that already
-exists** rather than needing a second one.
-
-Writing rules, enforced by review and by the build:
-
-- The player is *you*; use `{player}` where a character says the name.
-- Nobody explains the system to you. The clerk does not know he is a hurdle —
-  he is bored, or kind, or following a rule he did not write.
-- No number appears in dialogue unless a person in that room would say it. The
-  statistics stay in the CSVs, reachable through each event's `source`.
-- If it is not in a dataset, it does not get a scene. The build refuses to
-  compile when an event's `source` basename disagrees with its node id.
-
-## Backdrops
-
-Composed by `tools/art/build_journey_scenes.py` from **Kenney's Roguelike Modern
-City pack (CC0)**, vendored under `art-source/kenney/`. Nothing is drawn or
-synthesised: each scene is three tile bands — wall, detail, ground — plus a few
-props, defined in `art-source/journey_scenes.json`. Re-dressing a scene is a
-config edit, not an image edit. Provenance is in `art-source/LICENSES.md`.
-
-The horizon sits at the same height in every scene on purpose — it is what makes
-cutting between them not feel like a jump.
+`JourneyDialogue` is a translation, **not a second dialogue system**: the events
+were authored with exactly the step kinds `DialogueScript` already has, so the
+runner, the box, the history and the condition evaluator are all the ones that
+were already written and tested. It resolves two differences — the JSON uses
+integer step kinds, and expresses narration as its own kind rather than as a line
+with no speaker.
 
 ## Tests
 
-`tests/cases/test_journey.gd` is the only thing keeping the Python writer and
-the GDScript reader in agreement: rename a key on one side and every record
-still parses, into nothing. It asserts the design rules rather than fixed
-counts, so adding events or whole nationalities does not break it.
+`test_journey.gd` checks the data is sound. `test_journey_season.gd` checks the
+game works — ten missions, causal pairing, determinism, a second life that
+differs, every beat convertible, and the boss in order.
 
-It is also there because **a green suite is not proof on its own** —
-`test_every_script_parses` passed for two full runs while `journey_data.gd` was
-failing to compile, since it loads each script without asserting the result.
-These tests read the data instead.
+Both exist because **a green suite is not proof on its own here**:
+`test_every_script_parses` loads each script without asserting the result and
+reported `ok` for two full runs while `journey_data.gd` was failing to compile,
+and `test_scenes` only checks a scene can be instantiated.
+
+New scripts need an import pass before the headless runner sees them:
+
+```
+tools\godot\Godot_v4.7.2-stable_win64_console.exe --headless --path game --import
+```
 
 ## Not done yet
 
-- **Nothing plays this.** `JourneyData` exposes the graph; it does not walk it.
-- **Only `iran` has events.** The other three runs have dataset mappings and no
-  authored conversations.
-- **Officer Choi is a naming collision.** `content/characters/characters.json`
-  defines `choi` as the player character, a detective. The brief makes Officer
-  Choi the final boss at Pearson. `SC-PEARSON` is built and waiting; the clash
-  needs resolving before the encounter is written.
-- **New scripts need an import pass** before headless tests can see them:
-  `tools\godot\Godot_v4.7.2-stable_win64_console.exe --headless --path game --import`
+- **Only `iran` has events.** Mexico, Nigeria and Palestine have dataset mappings
+  and no conversations.
+- **No portrait art** for any journey character, so the box shows names and
+  colours against the backdrop. Nothing breaks; the placeholder path is already
+  handled by `CharacterDb.portrait_path`.
+- **`_fallback_scene` returns nothing**, so a generated beat keeps whatever
+  backdrop is already up rather than choosing one by category.
+- **The end of a life returns to the main menu.** There is no summary screen
+  showing what the run cost, though `dignity` is recorded throughout.

@@ -1,11 +1,13 @@
 {
 	"_comment": "Speaker ids used in .dlg files. 'portrait_prefix' picks the art file: portraits/<prefix>_<mood>.png, falling back to portraits/<prefix>.png, and to a labelled placeholder card when neither exists yet.",
 
+	"_player": "There is no entry for the player. They type their own name at the start of a run, and content refers to them with the token {player}. Do not add one.",
+
 	"choi": {
-		"display_name": "Choi",
-		"color": "#7ea6d8",
+		"display_name": "Officer Choi",
+		"color": "#c0504d",
 		"portrait_prefix": "choi",
-		"notes": "The player character. Third shift, two years in, still writes reports longhand."
+		"notes": "THE FINAL BOSS, not the player. US Immigration Officer at Toronto Pearson preclearance. Korean-American, tall, shaved, black hair going white at the temples. Loud in a room built to carry sound. Refuses everyone, by any of the methods catalogued in assets/text/abuse, and believes he is correcting a misunderstanding rather than doing harm."
 	},
 	"ward": {
 		"display_name": "Det. Ward",

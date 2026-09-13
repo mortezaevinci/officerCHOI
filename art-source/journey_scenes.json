@@ -244,6 +244,45 @@
 			"place": [["counter", 10, 9], ["crate", 4, 9]]
 		},
 
+		"SC-CHOI-BOOTH": {
+			"_note": "The counter itself. One booth, one officer, a line behind you that can hear everything. The room was built to carry sound toward the queue.",
+			"location": "pearson_booth",
+			"time_of_day": "day",
+			"mood": "cold",
+			"palette": "fluorescent",
+			"tags": "interior;institution;border;boss;counter",
+			"sky": "wall_pale",
+			"mid": "wall_pale",
+			"ground": "ground_tile",
+			"place": [["counter", 8, 8], ["counter", 11, 8], ["barrier", 3, 10], ["barrier", 16, 10]]
+		},
+
+		"SC-CHOI-BACKROOM": {
+			"_note": "Secondary inspection. Bolted chairs, no clock, a fraud helpline poster in four languages and none of them yours. Two hours of nothing happening to you on purpose.",
+			"location": "pearson_secondary",
+			"time_of_day": "day",
+			"mood": "flat",
+			"palette": "fluorescent",
+			"tags": "interior;institution;border;boss;waiting;detention",
+			"sky": "wall_grey",
+			"mid": "wall_grey",
+			"ground": "ground_tile",
+			"place": [["bench", 4, 9], ["bench", 8, 9], ["bench", 12, 9], ["door_plain", 17, 8]]
+		},
+
+		"SC-CHOI-DESK": {
+			"_note": "Where the refusal is delivered. His desk, his folder, his monitor turned a few degrees - not enough to read, only enough to show you that turning it is his to do.",
+			"location": "pearson_office",
+			"time_of_day": "day",
+			"mood": "cold",
+			"palette": "institutional",
+			"tags": "interior;institution;border;boss;refusal;final",
+			"sky": "wall_grey",
+			"mid": "window_glass",
+			"ground": "ground_tile",
+			"place": [["counter", 9, 9], ["crate", 15, 9], ["door_plain", 2, 8]]
+		},
+
 		"SC-DESK-NIGHT": {
 			"_note": "Two sentences in an email, read at a desk at night.",
 			"location": "desk",
