@@ -190,11 +190,26 @@ def portrait_from(sheet: Image.Image, config: dict) -> Image.Image:
     row = int(config["walk_rows"]["down"])
     still = sheet.crop((0, row * frame, frame, row * frame + frame))
 
-    big = scale(still, int(config["portrait_scale"]))
+    # Head and shoulders, measured rather than guessed. An LPC walk frame has
+    # empty headroom above the figure - for a 128px frame the opaque box starts
+    # 30px down - so taking a fraction from the top of the FRAME yields air and
+    # the crown of the skull. Crop to the figure's own bounding box first, then
+    # take the top share of that.
+    box = still.getbbox()
+    if box:
+        left, top, right, bottom = box
+        # Head AND shoulders. 0.38 of the figure cut off at the eyes; the head
+        # plus shoulders of an LPC figure runs to roughly 55% of its height.
+        share = float(config.get("portrait_bust", 0.55))
+        still = still.crop((left, top, right, top + max(1, int((bottom - top) * share))))
+
     canvas = Image.new("RGBA", tuple(config["portrait_size"]), (0, 0, 0, 0))
+    # Fill the card without distorting: integer scale, bounded by both axes.
+    factor = max(1, min(canvas.width // still.width, canvas.height // still.height))
+    big = scale(still, factor)
     x = (canvas.width - big.width) // 2
-    y = canvas.height - big.height - int(canvas.height * 0.06)   # stand near the base
-    canvas.alpha_composite(big, (x, max(y, 0)))
+    y = (canvas.height - big.height) // 2
+    canvas.alpha_composite(big, (max(x, 0), max(y, 0)))
     return canvas
 
 
