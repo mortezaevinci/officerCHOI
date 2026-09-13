@@ -56,6 +56,11 @@ const DEFAULTS := {
 	# n <= mission, so this is both the progress counter and the unlock gate.
 	"mission": 0,
 	"journey_ended": false,
+	# Typing the cheat word on the mission select screen sets this. It opens
+	# every mission and the boss WITHOUT touching `mission`, so progress is
+	# never inflated by having used it and turning it off puts the season back
+	# exactly where it was. Listed here so it resets with a new run.
+	"cheat_unlock_all": false,
 
 	# What the run costs you. Nothing ever spends it, because nothing can -
 	# it is a record, not a currency.

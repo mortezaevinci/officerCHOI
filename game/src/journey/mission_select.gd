@@ -16,8 +16,15 @@ extends Control
 @onready var _list: VBoxContainer = $Center/Rows/Scroll/List
 @onready var _back: Button = $Center/Rows/Back
 
+## Typed on this screen to unlock every mission. A word rather than a button:
+## a visible "unlock all" would read as the game shipping with its own
+## difficulty switch, and could be pressed by somebody who did not mean to.
+const CHEAT_CODE := "papers"
+
 var _run: JourneyData
 var _season: JourneySeason
+## What has been typed so far, trimmed to the length of the code.
+var _typed: String = ""
 
 
 func _ready() -> void:
@@ -39,9 +46,17 @@ func _ready() -> void:
 	var counted := "%d of %d" % [done, _season.total()]
 	_subtitle.text = "%s - %s" % [who, counted] if not who.is_empty() else counted
 
+	# Set by typing CHEAT_CODE on this screen. Deliberately a separate flag
+	# rather than raising `mission`: progress stays exactly where it was, so
+	# turning the cheat off leaves the season honest, and the counter above
+	# still reports what was actually played.
+	var cheat := bool(GameState.get_var("cheat_unlock_all", false))
+	if cheat:
+		_subtitle.text += "    [all unlocked]"
+
 	var focus_me: Button = null
 	for i: int in _season.missions.size():
-		var unlocked := i <= done
+		var unlocked := cheat or i <= done
 		var finished := i < done
 
 		var button := Button.new()
@@ -68,7 +83,7 @@ func _ready() -> void:
 	var boss := Button.new()
 	boss.custom_minimum_size = Vector2(0, 72)
 	boss.focus_mode = Control.FOCUS_ALL
-	boss.disabled = done < _season.total()
+	boss.disabled = not cheat and done < _season.total()
 	boss.text = "Toronto Pearson - locked" if boss.disabled else "Toronto Pearson"
 	if not boss.disabled:
 		boss.pressed.connect(_on_boss)
@@ -90,3 +105,35 @@ func _on_boss() -> void:
 
 func _on_back() -> void:
 	SceneFlow.goto(GamePaths.MAIN_MENU)
+
+
+## Watches for the cheat word being typed. Letters only, so the buffer cannot
+## be filled by arrow keys or Enter while moving around the list.
+##
+## `_unhandled_input` rather than `_input`: the buttons see their own keys
+## first, so typing here never steals a press from the focused control.
+func _unhandled_input(event: InputEvent) -> void:
+	var key := event as InputEventKey
+	if key == null or not key.pressed or key.echo:
+		return
+
+	var typed := String.chr(key.unicode).to_lower()
+	if typed.length() != 1 or typed < "a" or typed > "z":
+		return
+
+	_typed += typed
+	if _typed.length() > CHEAT_CODE.length():
+		_typed = _typed.substr(_typed.length() - CHEAT_CODE.length())
+	if _typed == CHEAT_CODE:
+		_typed = ""
+		_toggle_cheat()
+
+
+## Flips the unlock flag and rebuilds the screen, because the buttons were
+## built in [method _ready] against the previous value. A toggle rather than a
+## one-way switch, so the season can be put back the way it was.
+func _toggle_cheat() -> void:
+	var on := not bool(GameState.get_var("cheat_unlock_all", false))
+	GameState.set_var("cheat_unlock_all", on)
+	print("cheat: missions %s" % ("all unlocked" if on else "locked again"))
+	SceneFlow.goto(GamePaths.MISSION_SELECT)

@@ -36,6 +36,11 @@ func _ready() -> void:
 	if _is_headless():
 		return
 
+	# --type=papers synthesises keystrokes once the scene is up. Runs before the
+	# capture is scheduled so the two delays can be set independently.
+	if args.has("type"):
+		_type_word(String(args["type"]), int(args.get("type-after", 60)))
+
 	if args.has("screenshot"):
 		_auto_capture(String(args["screenshot"]), int(args.get("shot-after", DEFAULT_DELAY_FRAMES)))
 
@@ -104,8 +109,23 @@ func _apply_state(spec: String) -> void:
 		var value := pair.get_slice(":", 1).strip_edges()
 		if key.is_empty():
 			continue
-		GameState.set_var(key, int(value) if value.is_valid_int() else value)
+		GameState.set_var(key, _typed_value(value))
 		print("devtools: %s = %s" % [key, value])
+
+
+## Command-line values arrive as strings. Story variables are compared as their
+## real types, so "true" stored as a String makes `bool(...)` throw and `if flag`
+## read as true for the string "false" - both of which have bitten a capture.
+## Integers and booleans are converted; everything else stays a String.
+static func _typed_value(value: String) -> Variant:
+	var lowered := value.to_lower()
+	if lowered == "true":
+		return true
+	if lowered == "false":
+		return false
+	if value.is_valid_int():
+		return int(value)
+	return value
 
 
 func _user_args() -> Dictionary:
@@ -118,3 +138,35 @@ func _user_args() -> Dictionary:
 
 func _is_headless() -> bool:
 	return DisplayServer.get_name() == "headless"
+
+
+## Types a word as real key events, for verifying a typed-input path from the
+## command line:
+##
+##     OfficerChoi.exe -- --set=journey_run:iran --type=papers \
+##         --scene=res://scenes/journey/mission_select.tscn \
+##         --screenshot=C:\path\shot.png --shot-after=200
+##
+## WHY THIS EXISTS. The mission select cheat is a typed word handled in
+## `_unhandled_input`. A screenshot can show that the unlock flag works, but it
+## cannot show that the letters reach that handler past whatever Button has
+## focus - and "letter keys are not bound to UI actions so they fall through"
+## is an assumption, not a verified fact. This exercises the real path.
+##
+## Development only, and inert unless --type is passed.
+func _type_word(word: String, delay_frames: int) -> void:
+	for i: int in maxi(delay_frames, 1):
+		await get_tree().process_frame
+
+	for ch: String in word:
+		# Press and release separately: handlers check `pressed`, and a key that
+		# is never released would repeat or stick.
+		for is_down: bool in [true, false]:
+			var key := InputEventKey.new()
+			key.unicode = ch.unicode_at(0)
+			key.keycode = ch.to_upper().unicode_at(0)
+			key.pressed = is_down
+			Input.parse_input_event(key)
+			await get_tree().process_frame
+
+	print("devtools: typed %s" % word)
