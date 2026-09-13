@@ -213,12 +213,11 @@ static func misspell(name: String, run_id: String = "") -> String:
 	return String(entry.get("to", name))
 
 
-## Why a particular name came out the way it did, for a beat that wants to say
-## it out loud. Empty when the name is not in the list or is not rewritten.
-static func misspell_reason(name: String) -> String:
-	_load_names()
-	var entry: Dictionary = _names.get("by_name", {}).get(name.to_lower(), {})
-	return String(entry.get("why", "")) if bool(entry.get("changed", false)) else ""
+## The `why` behind each misspelling is carried in content/names/misspellings.json
+## and is deliberately NOT exposed here. A helper to read it was written and then
+## removed: authored events are data, they cannot call GDScript, and the runtime
+## only handles the `scene` and `music` commands - so nothing could ever have
+## reached it. The data is in the document if a future screen wants it.
 
 
 ## What a player reads for a speaker id. Falls back to the id, so an unlisted
