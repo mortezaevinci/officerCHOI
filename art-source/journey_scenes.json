@@ -1309,7 +1309,7 @@
 					9
 				]
 			],
-			"prompt": "interior of a destroyed family living room, ceiling collapsed open to white sky, rebar hanging, a child's cot and a patterned rug under grey dust, an enormous unexploded aerial bomb standing upright embedded in the floor in the centre of the room, absurdly oversized, cartoonishly large fins, everything else ordinary and domestic, no people"
+			"prompt": "an enormous unexploded aerial bomb standing upright embedded nose-down in the floor, filling the centre of the frame, taller than a person, cartoonishly oversized with big tail fins, absurd and impossible to miss. It stands inside a SMALL cramped family living room: patterned rug, a child's cot, a low couch, family photographs on the wall, domestic and ordinary. The ceiling above the bomb is torn open to white sky, rebar hanging, grey dust over everything. Interior, close, domestic scale, not a warehouse, not a hall, no people"
 		},
 		"SC-CLASSROOM-PS": {
 			"_note": "PS variant of SC-CLASSROOM. A unrwa school classroom in the west bank, breeze-block walls, double desks, a blackboard, one window with the glass taped.",
@@ -1466,7 +1466,7 @@
 					9
 				]
 			],
-			"prompt": "the parlour of a Lagos flat at night lit by one bulb on an extension lead, a generator audible outside, moths at the window, crowded and run-down, tangled overhead cables, a small petrol generator and jerrycans, hand-painted signage, plastic chairs, water stains and patched concrete, humid haze, no people"
+			"prompt": "the small front parlour of a Nigerian family flat at night, a velvet settee under clear plastic covers, a low table with a lace cloth, a framed photograph and a wall clock, louvre windows with mosquito mesh, lit by one bare bulb on an extension lead because the power is out, warm dim domestic light, a standing fan, painted plaster walls. Interior of a home, small and lived-in, not industrial, not a basement, no people"
 		},
 		"SC-HOME-NIGHT-MX": {
 			"_note": "MX variant of SC-HOME-NIGHT. A michoacán house at night, a room behind the kitchen, a bulb on a cord, an oilcloth table, a radio left on.",
