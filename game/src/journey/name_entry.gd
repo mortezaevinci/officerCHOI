@@ -17,13 +17,30 @@ const MAX_NAME_LENGTH := 24
 
 ## Used when the player presses Begin without typing anything. A disabled
 ## button that looks broken is worse than a name the player can overwrite.
-const SUGGESTED := "Kaveh"
+##
+## One per run, because the suggestion should belong to the life being started -
+## and because each of these is in the authored misspelling list, so a player
+## who just presses Begin still meets the mechanic rather than slipping past it
+## with a name nothing happens to.
+const SUGGESTED_BY_RUN := {
+	"iran": "Kaveh",
+	"palestine": "Mohammad",
+	"mexico": "Jose",
+	"nigeria": "Vongai",
+	"usa": "Kyle",
+}
+const SUGGESTED_FALLBACK := "Kaveh"
+
+
+func _suggested() -> String:
+	var run := String(GameState.get_var("journey_run", ""))
+	return String(SUGGESTED_BY_RUN.get(run, SUGGESTED_FALLBACK))
 
 
 func _ready() -> void:
 	_field.max_length = MAX_NAME_LENGTH
 	var existing := String(GameState.get_var("player_name", ""))
-	_field.text = existing if not existing.is_empty() else SUGGESTED
+	_field.text = existing if not existing.is_empty() else _suggested()
 	_field.select_all()
 	_field.text_submitted.connect(_on_submitted)
 	_field.text_changed.connect(_on_changed)
@@ -64,11 +81,13 @@ func _refresh() -> void:
 
 func _start() -> void:
 	var chosen := _field.text.strip_edges()
-	var final_name := chosen if not chosen.is_empty() else SUGGESTED
+	var final_name := chosen if not chosen.is_empty() else _suggested()
 	GameState.set_var("player_name", final_name)
-	# What the registry clerk will write. Computed now so it is stable
-	# for the whole run, revealed in the registry scene.
-	GameState.set_var("document_name", JourneyData.misspell(final_name))
+	# What the registry clerk will write. Computed now so it is stable for the
+	# whole run, revealed in the registry scene. The run is passed because US
+	# citizens keep their names - Kyle stays Kyle, for the whole life.
+	var run := String(GameState.get_var("journey_run", ""))
+	GameState.set_var("document_name", JourneyData.misspell(final_name, run))
 	GameState.set_var("season", maxi(1, int(GameState.get_var("season", 1))))
 	GameState.set_var("mission", 0)
 	SceneFlow.goto(GamePaths.MISSION_SELECT)

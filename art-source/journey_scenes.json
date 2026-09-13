@@ -145,7 +145,7 @@
 					9
 				]
 			],
-			"prompt": "interior of a small modest Tehran apartment room at night, paraffin heater glowing, one curtained window, patterned rug, warm dim lamplight"
+			"prompt": "a modest apartment room at night whose ceiling is impossibly high and tiled, paraffin heater, one curtained window, vast palatial interior far larger than the activity in it, soaring vaulted ceilings, muqarnas honeycomb vaulting, tilework in cobalt and turquoise, deep arcades receding, mirrored stalactite ceiling, a single small desk or counter dwarfed by the room, no people"
 		},
 		"SC-HOME-DAY": {
 			"_note": "The same room in daylight. Reused deliberately: the journey returns to one room and it is never different.",
@@ -164,7 +164,7 @@
 					9
 				]
 			],
-			"prompt": "interior of a small modest Tehran apartment room in daylight, net curtains, patterned rug, low table, bright but soft light"
+			"prompt": "a modest apartment room in daylight whose ceiling is impossibly high and tiled, net curtains, patterned rug, vast palatial interior far larger than the activity in it, soaring vaulted ceilings, muqarnas honeycomb vaulting, tilework in cobalt and turquoise, deep arcades receding, mirrored stalactite ceiling, a single small desk or counter dwarfed by the room, no people"
 		},
 		"SC-COURTYARD": {
 			"_note": "Walled courtyard, a tree, fruit. The only scene in the set with nothing to lose.",
@@ -193,7 +193,7 @@
 					10
 				]
 			],
-			"prompt": "traditional Iranian walled courtyard in late autumn, shallow turquoise tiled pool, pomegranate tree, brick paving, warm afternoon light"
+			"prompt": "a formal palace courtyard with a long reflecting pool, cypresses, tiled iwan at the far end, vast palatial interior far larger than the activity in it, soaring vaulted ceilings, muqarnas honeycomb vaulting, tilework in cobalt and turquoise, deep arcades receding, mirrored stalactite ceiling, a single small desk or counter dwarfed by the room, no people"
 		},
 		"SC-STREET-DAY": {
 			"_note": "The four streets a bicycle makes reachable, and the junction at the end of them.",
@@ -222,7 +222,7 @@
 					11
 				]
 			],
-			"prompt": "quiet residential street in Tehran, brick and concrete walls, parked cars, plane trees, hazy daylight, mountains faint on the horizon"
+			"prompt": "a quiet residential street of grand arched brick facades, far too monumental for the parked cars, vast palatial interior far larger than the activity in it, soaring vaulted ceilings, muqarnas honeycomb vaulting, tilework in cobalt and turquoise, deep arcades receding, mirrored stalactite ceiling, a single small desk or counter dwarfed by the room, no people"
 		},
 		"SC-CLASSROOM": {
 			"_note": "Forty children, one decision made in nine seconds.",
@@ -241,7 +241,7 @@
 					9
 				]
 			],
-			"prompt": "plain Iranian primary school classroom, rows of worn wooden desks, green chalkboard, tall windows, empty"
+			"prompt": "a primary classroom inside a palace room, worn wooden desks under a decorated vaulted ceiling, vast palatial interior far larger than the activity in it, soaring vaulted ceilings, muqarnas honeycomb vaulting, tilework in cobalt and turquoise, deep arcades receding, mirrored stalactite ceiling, a single small desk or counter dwarfed by the room, no people"
 		},
 		"SC-EXAM-HALL": {
 			"_note": "The konkur. Rows and rows of the same desk.",
@@ -270,7 +270,7 @@
 					9
 				]
 			],
-			"prompt": "vast examination hall with hundreds of identical single desks in strict rows, harsh overhead fluorescent light, empty"
+			"prompt": "an examination hall under a palace dome, hundreds of identical small desks in perfect rows, vast palatial interior far larger than the activity in it, soaring vaulted ceilings, muqarnas honeycomb vaulting, tilework in cobalt and turquoise, deep arcades receding, mirrored stalactite ceiling, a single small desk or counter dwarfed by the room, no people"
 		},
 		"SC-BARRACKS": {
 			"_note": "Where the card is issued, which is not about the army.",
@@ -294,7 +294,7 @@
 					8
 				]
 			],
-			"prompt": "bare military administrative room, olive green painted walls, metal desk, filing cabinets, single barred window, cold light"
+			"prompt": "a military administrative room inside a palace wing, one steel desk under a painted ceiling, vast palatial interior far larger than the activity in it, soaring vaulted ceilings, muqarnas honeycomb vaulting, tilework in cobalt and turquoise, deep arcades receding, mirrored stalactite ceiling, a single small desk or counter dwarfed by the room, no people"
 		},
 		"SC-CAMPUS": {
 			"_note": "A list taped to a wall. Later, the same wall, and the name on the certificate is now a flag.",
@@ -323,7 +323,7 @@
 					10
 				]
 			],
-			"prompt": "modernist university engineering faculty courtyard in Tehran, concrete and brick, noticeboard, plane trees, clear day"
+			"prompt": "a university faculty built into a palace complex, colonnaded walk, a noticeboard under an arch, vast palatial interior far larger than the activity in it, soaring vaulted ceilings, muqarnas honeycomb vaulting, tilework in cobalt and turquoise, deep arcades receding, mirrored stalactite ceiling, a single small desk or counter dwarfed by the room, no people"
 		},
 		"SC-OFFICE": {
 			"_note": "Cash in an envelope, counted twice because that is polite.",
@@ -347,7 +347,7 @@
 					9
 				]
 			],
-			"prompt": "cramped small electronics workshop office, circuit boards and tools on benches, cluttered shelves, warm desk lamp"
+			"prompt": "a small electronics workshop set inside an enormous tiled hall, workbench and tools dwarfed by the space, vast palatial interior far larger than the activity in it, soaring vaulted ceilings, muqarnas honeycomb vaulting, tilework in cobalt and turquoise, deep arcades receding, mirrored stalactite ceiling, a single small desk or counter dwarfed by the room, no people"
 		},
 		"SC-AIRPORT": {
 			"_note": "Departures. Used for the easy trip and, much later, for the visit that never happens.",
@@ -434,7 +434,7 @@
 					8
 				]
 			],
-			"prompt": "consular waiting room with a glass service counter, numbered ticket display, rows of empty plastic chairs, flat institutional lighting"
+			"prompt": "a consular waiting hall the size of a throne room, a row of small numbered windows at the far end, vast palatial interior far larger than the activity in it, soaring vaulted ceilings, muqarnas honeycomb vaulting, tilework in cobalt and turquoise, deep arcades receding, mirrored stalactite ceiling, a single small desk or counter dwarfed by the room, no people"
 		},
 		"SC-REGISTRY": {
 			"_note": "Where your name is written down one letter wrong, permanently.",
@@ -458,7 +458,7 @@
 					9
 				]
 			],
-			"prompt": "civil registry office interior, wooden counter, ledgers and stamp pads, wall of index drawers, dusty afternoon light"
+			"prompt": "a civil registry housed in a former palace hall, one wooden counter and a ledger lost in the middle of it, vast palatial interior far larger than the activity in it, soaring vaulted ceilings, muqarnas honeycomb vaulting, tilework in cobalt and turquoise, deep arcades receding, mirrored stalactite ceiling, a single small desk or counter dwarfed by the room, no people"
 		},
 		"SC-BANK": {
 			"_note": "A compliance decision arriving at a counter staffed by somebody who did not make it.",
@@ -482,7 +482,7 @@
 					8
 				]
 			],
-			"prompt": "modern European bank branch interior, glass partitions, service counter, muted corporate blue and grey, empty"
+			"prompt": "a bank branch in a mirrored palace hall, a service counter tiny against the far wall, vast palatial interior far larger than the activity in it, soaring vaulted ceilings, muqarnas honeycomb vaulting, tilework in cobalt and turquoise, deep arcades receding, mirrored stalactite ceiling, a single small desk or counter dwarfed by the room, no people"
 		},
 		"SC-PHARMACY": {
 			"_note": "Not banned. Simply unpayable-for.",
@@ -506,7 +506,7 @@
 					9
 				]
 			],
-			"prompt": "small Tehran pharmacy interior, white shelves half empty of boxes, glass counter, cold fluorescent light"
+			"prompt": "a pharmacy counter set into a grand arcaded hall, shelves half empty, arches receding, vast palatial interior far larger than the activity in it, soaring vaulted ceilings, muqarnas honeycomb vaulting, tilework in cobalt and turquoise, deep arcades receding, mirrored stalactite ceiling, a single small desk or counter dwarfed by the room, no people"
 		},
 		"SC-CHOI-BOOTH": {
 			"_note": "The counter itself. One booth, one officer, a line behind you that can hear everything. The room was built to carry sound toward the queue.",
@@ -1281,6 +1281,765 @@
 				]
 			],
 			"prompt": "wide North American freeway interchange seen from the shoulder, concrete overpasses, lane markings, green overhead direction signs, sound barriers, scrubby verge, flat overcast daylight, no vehicles"
+		},
+		"SC-BOMBED-ROOM": {
+			"_note": "Where the Palestinian run opens and, thirty seconds later, ends. A domestic room with the ceiling gone and an unexploded bomb standing in the middle of it, absurdly large. The absurdity is the point: it is too big to be a surprise and nobody in the room is reacting to it.",
+			"location": "bombed_room",
+			"time_of_day": "day",
+			"mood": "bleak",
+			"palette": "dusty",
+			"tags": "interior;domestic;ruin",
+			"sky": "wall_tan",
+			"mid": "wall_tan",
+			"ground": "ground_dirt",
+			"place": [
+				[
+					"crate",
+					5,
+					9
+				],
+				[
+					"bin",
+					13,
+					9
+				],
+				[
+					"crate",
+					16,
+					9
+				]
+			],
+			"prompt": "interior of a destroyed family living room, ceiling collapsed open to white sky, rebar hanging, a child's cot and a patterned rug under grey dust, an enormous unexploded aerial bomb standing upright embedded in the floor in the centre of the room, absurdly oversized, cartoonishly large fins, everything else ordinary and domestic, no people"
+		},
+		"SC-CLASSROOM-PS": {
+			"_note": "PS variant of SC-CLASSROOM. A unrwa school classroom in the west bank, breeze-block walls, double desks, a blackboard, one window with the glass taped.",
+			"location": "school",
+			"time_of_day": "day",
+			"mood": "flat",
+			"palette": "institutional",
+			"tags": "interior;institution;school",
+			"sky": "wall_pale",
+			"mid": "window_glass",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"counter",
+					9,
+					9
+				]
+			],
+			"prompt": "a UNRWA school classroom in the West Bank, breeze-block walls, double desks, a blackboard, one window with the glass taped, war-damaged, concrete rubble and exposed rebar at the edges of frame, an enormous unexploded aerial bomb standing absurdly in view, dust-grey and bleached, improvised repairs, plastic sheeting, no people"
+		},
+		"SC-CLASSROOM-NG": {
+			"_note": "NG variant of SC-CLASSROOM. A nigerian public primary classroom, sixty wooden desks packed wall to wall, a cracked blackboard, louvred windows, no fans turning.",
+			"location": "school",
+			"time_of_day": "day",
+			"mood": "flat",
+			"palette": "institutional",
+			"tags": "interior;institution;school",
+			"sky": "wall_pale",
+			"mid": "window_glass",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"counter",
+					9,
+					9
+				]
+			],
+			"prompt": "a Nigerian public primary classroom, sixty wooden desks packed wall to wall, a cracked blackboard, louvred windows, no fans turning, crowded and run-down, tangled overhead cables, a small petrol generator and jerrycans, hand-painted signage, plastic chairs, water stains and patched concrete, humid haze, no people"
+		},
+		"SC-CLASSROOM-MX": {
+			"_note": "MX variant of SC-CLASSROOM. A mexican primary school classroom, blue and white painted walls, small desks, a chalkboard, paper decorations strung across.",
+			"location": "school",
+			"time_of_day": "day",
+			"mood": "flat",
+			"palette": "institutional",
+			"tags": "interior;institution;school",
+			"sky": "wall_pale",
+			"mid": "window_glass",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"counter",
+					9,
+					9
+				]
+			],
+			"prompt": "a Mexican primary school classroom, blue and white painted walls, small desks, a chalkboard, paper decorations strung across, warm saturated colour, painted plaster in ochre and turquoise, papel picado, potted plants, lively and cared-for, no people"
+		},
+		"SC-CLASSROOM-US": {
+			"_note": "US variant of SC-CLASSROOM. An american elementary school classroom, carpet squares, a word wall, plastic chairs, a laminated alphabet frieze.",
+			"location": "school",
+			"time_of_day": "day",
+			"mood": "flat",
+			"palette": "institutional",
+			"tags": "interior;institution;school",
+			"sky": "wall_pale",
+			"mid": "window_glass",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"counter",
+					9,
+					9
+				]
+			],
+			"prompt": "an American elementary school classroom, carpet squares, a word wall, plastic chairs, a laminated alphabet frieze, ordinary North American, drywall and carpet tile, fluorescent or warm domestic light, unremarkable and comfortable, no people"
+		},
+		"SC-HOME-DAY-PS": {
+			"_note": "PS variant of SC-HOME-DAY. The front room of a palestinian family house in daylight, tiled floor, low couches against three walls, a framed photograph.",
+			"location": "home",
+			"time_of_day": "day",
+			"mood": "warm",
+			"palette": "warm",
+			"tags": "interior;domestic;small",
+			"sky": "wall_brick",
+			"mid": "window_glass",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"bench",
+					4,
+					9
+				]
+			],
+			"prompt": "the front room of a Palestinian family house in daylight, tiled floor, low couches against three walls, a framed photograph, war-damaged, concrete rubble and exposed rebar at the edges of frame, an enormous unexploded aerial bomb standing absurdly in view, dust-grey and bleached, improvised repairs, plastic sheeting, no people"
+		},
+		"SC-HOME-DAY-NG": {
+			"_note": "NG variant of SC-HOME-DAY. The parlour of a lagos flat in daylight, velvet-covered settee under plastic, a standing fan, louvre windows, a wall clock.",
+			"location": "home",
+			"time_of_day": "day",
+			"mood": "warm",
+			"palette": "warm",
+			"tags": "interior;domestic;small",
+			"sky": "wall_brick",
+			"mid": "window_glass",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"bench",
+					4,
+					9
+				]
+			],
+			"prompt": "the parlour of a Lagos flat in daylight, velvet-covered settee under plastic, a standing fan, louvre windows, a wall clock, crowded and run-down, tangled overhead cables, a small petrol generator and jerrycans, hand-painted signage, plastic chairs, water stains and patched concrete, humid haze, no people"
+		},
+		"SC-HOME-DAY-US": {
+			"_note": "US variant of SC-HOME-DAY. The living room of an american house in daylight, sectional couch, a television over a fireplace, family photographs.",
+			"location": "home",
+			"time_of_day": "day",
+			"mood": "warm",
+			"palette": "warm",
+			"tags": "interior;domestic;small",
+			"sky": "wall_brick",
+			"mid": "window_glass",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"bench",
+					4,
+					9
+				]
+			],
+			"prompt": "the living room of an American house in daylight, sectional couch, a television over a fireplace, family photographs, ordinary North American, drywall and carpet tile, fluorescent or warm domestic light, unremarkable and comfortable, no people"
+		},
+		"SC-HOME-NIGHT-NG": {
+			"_note": "NG variant of SC-HOME-NIGHT. The parlour of a lagos flat at night lit by one bulb on an extension lead, a generator audible outside, moths at the window.",
+			"location": "home",
+			"time_of_day": "night",
+			"mood": "quiet",
+			"palette": "warm_dim",
+			"tags": "interior;domestic;small",
+			"sky": "wall_brick",
+			"mid": "window_lit",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"bench",
+					4,
+					9
+				],
+				[
+					"crate",
+					15,
+					9
+				]
+			],
+			"prompt": "the parlour of a Lagos flat at night lit by one bulb on an extension lead, a generator audible outside, moths at the window, crowded and run-down, tangled overhead cables, a small petrol generator and jerrycans, hand-painted signage, plastic chairs, water stains and patched concrete, humid haze, no people"
+		},
+		"SC-HOME-NIGHT-MX": {
+			"_note": "MX variant of SC-HOME-NIGHT. A michoacán house at night, a room behind the kitchen, a bulb on a cord, an oilcloth table, a radio left on.",
+			"location": "home",
+			"time_of_day": "night",
+			"mood": "quiet",
+			"palette": "warm_dim",
+			"tags": "interior;domestic;small",
+			"sky": "wall_brick",
+			"mid": "window_lit",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"bench",
+					4,
+					9
+				],
+				[
+					"crate",
+					15,
+					9
+				]
+			],
+			"prompt": "a Michoacán house at night, a room behind the kitchen, a bulb on a cord, an oilcloth table, a radio left on, warm saturated colour, painted plaster in ochre and turquoise, papel picado, potted plants, lively and cared-for, no people"
+		},
+		"SC-HOME-NIGHT-US": {
+			"_note": "US variant of SC-HOME-NIGHT. An american bedroom at night, a lamp on a nightstand, blinds half drawn, a baby monitor.",
+			"location": "home",
+			"time_of_day": "night",
+			"mood": "quiet",
+			"palette": "warm_dim",
+			"tags": "interior;domestic;small",
+			"sky": "wall_brick",
+			"mid": "window_lit",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"bench",
+					4,
+					9
+				],
+				[
+					"crate",
+					15,
+					9
+				]
+			],
+			"prompt": "an American bedroom at night, a lamp on a nightstand, blinds half drawn, a baby monitor, ordinary North American, drywall and carpet tile, fluorescent or warm domestic light, unremarkable and comfortable, no people"
+		},
+		"SC-STREET-DAY-PS": {
+			"_note": "PS variant of SC-STREET-DAY. A street in nablus in daylight, stone buildings, shuttered shops, steep steps, water tanks on every roof.",
+			"location": "street",
+			"time_of_day": "day",
+			"mood": "open",
+			"palette": "daylight",
+			"tags": "exterior;street;childhood",
+			"sky": "wall_grey",
+			"mid": "shopfront_green",
+			"ground": "ground_road",
+			"place": [
+				[
+					"car_grey",
+					3,
+					10
+				],
+				[
+					"tree_green",
+					16,
+					8
+				],
+				[
+					"crossing",
+					10,
+					11
+				]
+			],
+			"prompt": "a street in Nablus in daylight, stone buildings, shuttered shops, steep steps, water tanks on every roof, war-damaged, concrete rubble and exposed rebar at the edges of frame, an enormous unexploded aerial bomb standing absurdly in view, dust-grey and bleached, improvised repairs, plastic sheeting, no people"
+		},
+		"SC-REGISTRY-PS": {
+			"_note": "PS variant of SC-REGISTRY. A palestinian authority civil registry counter, arabic forms in trays, a ledger, a queue rail.",
+			"location": "registry",
+			"time_of_day": "day",
+			"mood": "flat",
+			"palette": "institutional",
+			"tags": "interior;institution;documents;origin",
+			"sky": "wall_tan",
+			"mid": "wall_tan",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"counter",
+					9,
+					9
+				],
+				[
+					"crate",
+					16,
+					9
+				]
+			],
+			"prompt": "a Palestinian Authority civil registry counter, Arabic forms in trays, a ledger, a queue rail, war-damaged, concrete rubble and exposed rebar at the edges of frame, an enormous unexploded aerial bomb standing absurdly in view, dust-grey and bleached, improvised repairs, plastic sheeting, no people"
+		},
+		"SC-REGISTRY-MX": {
+			"_note": "MX variant of SC-REGISTRY. A mexican registro civil office, a wooden counter, bound ledgers, a framed seal on the wall.",
+			"location": "registry",
+			"time_of_day": "day",
+			"mood": "flat",
+			"palette": "institutional",
+			"tags": "interior;institution;documents;origin",
+			"sky": "wall_tan",
+			"mid": "wall_tan",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"counter",
+					9,
+					9
+				],
+				[
+					"crate",
+					16,
+					9
+				]
+			],
+			"prompt": "a Mexican registro civil office, a wooden counter, bound ledgers, a framed seal on the wall, warm saturated colour, painted plaster in ochre and turquoise, papel picado, potted plants, lively and cared-for, no people"
+		},
+		"SC-DESK-NIGHT-PS": {
+			"_note": "PS variant of SC-DESK-NIGHT. A cluttered desk at night in a west bank flat, laptop glow, papers, a glass of tea.",
+			"location": "desk",
+			"time_of_day": "night",
+			"mood": "tense",
+			"palette": "warm_dim",
+			"tags": "interior;domestic;refusal",
+			"sky": "wall_brick",
+			"mid": "window_lit",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"counter",
+					9,
+					9
+				]
+			],
+			"prompt": "a cluttered desk at night in a West Bank flat, laptop glow, papers, a glass of tea, war-damaged, concrete rubble and exposed rebar at the edges of frame, an enormous unexploded aerial bomb standing absurdly in view, dust-grey and bleached, improvised repairs, plastic sheeting, no people"
+		},
+		"SC-DESK-NIGHT-NG": {
+			"_note": "NG variant of SC-DESK-NIGHT. A cluttered desk at night in lagos, laptop glow, an inverter and cables, a phone charging.",
+			"location": "desk",
+			"time_of_day": "night",
+			"mood": "tense",
+			"palette": "warm_dim",
+			"tags": "interior;domestic;refusal",
+			"sky": "wall_brick",
+			"mid": "window_lit",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"counter",
+					9,
+					9
+				]
+			],
+			"prompt": "a cluttered desk at night in Lagos, laptop glow, an inverter and cables, a phone charging, crowded and run-down, tangled overhead cables, a small petrol generator and jerrycans, hand-painted signage, plastic chairs, water stains and patched concrete, humid haze, no people"
+		},
+		"SC-DESK-NIGHT-MX": {
+			"_note": "MX variant of SC-DESK-NIGHT. A cluttered desk at night, laptop glow, remittance receipts, a phone face-up.",
+			"location": "desk",
+			"time_of_day": "night",
+			"mood": "tense",
+			"palette": "warm_dim",
+			"tags": "interior;domestic;refusal",
+			"sky": "wall_brick",
+			"mid": "window_lit",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"counter",
+					9,
+					9
+				]
+			],
+			"prompt": "a cluttered desk at night, laptop glow, remittance receipts, a phone face-up, warm saturated colour, painted plaster in ochre and turquoise, papel picado, potted plants, lively and cared-for, no people"
+		},
+		"SC-DESK-NIGHT-US": {
+			"_note": "US variant of SC-DESK-NIGHT. A cluttered home-office desk at night, laptop glow, unopened medical bills, a coffee mug.",
+			"location": "desk",
+			"time_of_day": "night",
+			"mood": "tense",
+			"palette": "warm_dim",
+			"tags": "interior;domestic;refusal",
+			"sky": "wall_brick",
+			"mid": "window_lit",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"counter",
+					9,
+					9
+				]
+			],
+			"prompt": "a cluttered home-office desk at night, laptop glow, unopened medical bills, a coffee mug, ordinary North American, drywall and carpet tile, fluorescent or warm domestic light, unremarkable and comfortable, no people"
+		},
+		"SC-COURTYARD-PS": {
+			"_note": "PS variant of SC-COURTYARD. A walled courtyard of a palestinian village house, a fig tree, olive oil tins stacked by the door, stone paving.",
+			"location": "courtyard",
+			"time_of_day": "day",
+			"mood": "warm",
+			"palette": "warm",
+			"tags": "exterior;domestic;safe;rest",
+			"sky": "wall_tan",
+			"mid": "wall_tan",
+			"ground": "ground_dirt",
+			"place": [
+				[
+					"tree_green",
+					6,
+					8
+				],
+				[
+					"tree_autumn",
+					13,
+					8
+				],
+				[
+					"bench",
+					9,
+					10
+				]
+			],
+			"prompt": "a walled courtyard of a Palestinian village house, a fig tree, olive oil tins stacked by the door, stone paving, war-damaged, concrete rubble and exposed rebar at the edges of frame, an enormous unexploded aerial bomb standing absurdly in view, dust-grey and bleached, improvised repairs, plastic sheeting, no people"
+		},
+		"SC-OFFICE-NG": {
+			"_note": "NG variant of SC-OFFICE. A lagos fintech office, desks close together, an inverter humming, a whiteboard, blinds against the glare.",
+			"location": "office",
+			"time_of_day": "day",
+			"mood": "warm",
+			"palette": "daylight",
+			"tags": "interior;work",
+			"sky": "wall_pale",
+			"mid": "window_glass",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"counter",
+					11,
+					9
+				],
+				[
+					"crate",
+					3,
+					9
+				]
+			],
+			"prompt": "a Lagos fintech office, desks close together, an inverter humming, a whiteboard, blinds against the glare, crowded and run-down, tangled overhead cables, a small petrol generator and jerrycans, hand-painted signage, plastic chairs, water stains and patched concrete, humid haze, no people"
+		},
+		"SC-OFFICE-MX": {
+			"_note": "MX variant of SC-OFFICE. A us clinic waiting room, bolted chairs, a wall-mounted television, a reception window with a sliding glass panel.",
+			"location": "office",
+			"time_of_day": "day",
+			"mood": "warm",
+			"palette": "daylight",
+			"tags": "interior;work",
+			"sky": "wall_pale",
+			"mid": "window_glass",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"counter",
+					11,
+					9
+				],
+				[
+					"crate",
+					3,
+					9
+				]
+			],
+			"prompt": "a US clinic waiting room, bolted chairs, a wall-mounted television, a reception window with a sliding glass panel, drained grey-blue colour, fluorescent light, institutional and unwelcoming, scuffed vinyl floor, everything bolted down, no people"
+		},
+		"SC-OFFICE-US": {
+			"_note": "US variant of SC-OFFICE. An american open-plan office, low partitions, a meeting room with glass walls, carpet tile.",
+			"location": "office",
+			"time_of_day": "day",
+			"mood": "warm",
+			"palette": "daylight",
+			"tags": "interior;work",
+			"sky": "wall_pale",
+			"mid": "window_glass",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"counter",
+					11,
+					9
+				],
+				[
+					"crate",
+					3,
+					9
+				]
+			],
+			"prompt": "an American open-plan office, low partitions, a meeting room with glass walls, carpet tile, ordinary North American, drywall and carpet tile, fluorescent or warm domestic light, unremarkable and comfortable, no people"
+		},
+		"SC-CAMPUS-NG": {
+			"_note": "NG variant of SC-CAMPUS. A nigerian federal university campus, concrete faculty blocks, a noticeboard thick with paper, palms, students' bikes.",
+			"location": "campus",
+			"time_of_day": "day",
+			"mood": "warm",
+			"palette": "daylight",
+			"tags": "exterior;institution;university",
+			"sky": "wall_tan",
+			"mid": "window_glass",
+			"ground": "ground_pavement",
+			"place": [
+				[
+					"tree_green",
+					3,
+					8
+				],
+				[
+					"tree_green",
+					16,
+					8
+				],
+				[
+					"bench",
+					9,
+					10
+				]
+			],
+			"prompt": "a Nigerian federal university campus, concrete faculty blocks, a noticeboard thick with paper, palms, students' bikes, crowded and run-down, tangled overhead cables, a small petrol generator and jerrycans, hand-painted signage, plastic chairs, water stains and patched concrete, humid haze, no people"
+		},
+		"SC-CAMPUS-US": {
+			"_note": "US variant of SC-CAMPUS. An american state university quad, brick buildings, lawn, a banner between two lamp posts.",
+			"location": "campus",
+			"time_of_day": "day",
+			"mood": "warm",
+			"palette": "daylight",
+			"tags": "exterior;institution;university",
+			"sky": "wall_tan",
+			"mid": "window_glass",
+			"ground": "ground_pavement",
+			"place": [
+				[
+					"tree_green",
+					3,
+					8
+				],
+				[
+					"tree_green",
+					16,
+					8
+				],
+				[
+					"bench",
+					9,
+					10
+				]
+			],
+			"prompt": "an American state university quad, brick buildings, lawn, a banner between two lamp posts, ordinary North American, drywall and carpet tile, fluorescent or warm domestic light, unremarkable and comfortable, no people"
+		},
+		"SC-CONSULATE-NG": {
+			"_note": "NG variant of SC-CONSULATE. The us consulate waiting area in lagos, bolted seating, numbered windows behind thick glass, a ticket display.",
+			"location": "consulate",
+			"time_of_day": "day",
+			"mood": "flat",
+			"palette": "institutional",
+			"tags": "interior;institution;queue;discretion",
+			"sky": "wall_grey",
+			"mid": "window_glass",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"counter",
+					8,
+					9
+				],
+				[
+					"barrier",
+					3,
+					9
+				],
+				[
+					"door_glass",
+					17,
+					8
+				]
+			],
+			"prompt": "the US consulate waiting area in Lagos, bolted seating, numbered windows behind thick glass, a ticket display, drained grey-blue colour, fluorescent light, institutional and unwelcoming, scuffed vinyl floor, everything bolted down, no people"
+		},
+		"SC-CONSULATE-MX": {
+			"_note": "MX variant of SC-CONSULATE. The us consulate waiting area in ciudad juárez, bolted seating, numbered windows behind thick glass, a ticket display.",
+			"location": "consulate",
+			"time_of_day": "day",
+			"mood": "flat",
+			"palette": "institutional",
+			"tags": "interior;institution;queue;discretion",
+			"sky": "wall_grey",
+			"mid": "window_glass",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"counter",
+					8,
+					9
+				],
+				[
+					"barrier",
+					3,
+					9
+				],
+				[
+					"door_glass",
+					17,
+					8
+				]
+			],
+			"prompt": "the US consulate waiting area in Ciudad Juárez, bolted seating, numbered windows behind thick glass, a ticket display, drained grey-blue colour, fluorescent light, institutional and unwelcoming, scuffed vinyl floor, everything bolted down, no people"
+		},
+		"SC-AIRPORT-NG": {
+			"_note": "NG variant of SC-AIRPORT. Murtala muhammed airport departures hall, check-in queues behind barriers, trolleys, a currency board.",
+			"location": "airport",
+			"time_of_day": "day",
+			"mood": "open",
+			"palette": "fluorescent",
+			"tags": "interior;institution;border;transit",
+			"sky": "wall_pale",
+			"mid": "window_glass",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"counter",
+					6,
+					9
+				],
+				[
+					"counter",
+					13,
+					9
+				],
+				[
+					"sign",
+					10,
+					7
+				]
+			],
+			"prompt": "Murtala Muhammed airport departures hall, check-in queues behind barriers, trolleys, a currency board, crowded and run-down, tangled overhead cables, a small petrol generator and jerrycans, hand-painted signage, plastic chairs, water stains and patched concrete, humid haze, no people"
+		},
+		"SC-AIRPORT-SEC-NG": {
+			"_note": "NG variant of SC-AIRPORT-SEC. An airport secondary screening room, bolted chairs, a counter, a clock, a door with a small window.",
+			"location": "airport_security",
+			"time_of_day": "day",
+			"mood": "tense",
+			"palette": "fluorescent",
+			"tags": "interior;institution;border;screening",
+			"sky": "wall_pale",
+			"mid": "wall_pale",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"barrier",
+					7,
+					9
+				],
+				[
+					"barrier",
+					12,
+					9
+				],
+				[
+					"counter",
+					9,
+					9
+				]
+			],
+			"prompt": "an airport secondary screening room, bolted chairs, a counter, a clock, a door with a small window, drained grey-blue colour, fluorescent light, institutional and unwelcoming, scuffed vinyl floor, everything bolted down, no people"
+		},
+		"SC-PEARSON-PS": {
+			"_note": "PS variant of SC-PEARSON. A us preclearance hall at toronto pearson, winding queue barriers, inspection booths, overhead signage.",
+			"location": "pearson_preclearance",
+			"time_of_day": "day",
+			"mood": "cold",
+			"palette": "fluorescent",
+			"tags": "interior;institution;border;queue;boss",
+			"sky": "wall_pale",
+			"mid": "wall_pale",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"counter",
+					9,
+					8
+				],
+				[
+					"barrier",
+					4,
+					10
+				],
+				[
+					"barrier",
+					14,
+					10
+				],
+				[
+					"sign",
+					9,
+					6
+				]
+			],
+			"prompt": "a US preclearance hall at Toronto Pearson, winding queue barriers, inspection booths, overhead signage, drained grey-blue colour, fluorescent light, institutional and unwelcoming, scuffed vinyl floor, everything bolted down, no people"
+		},
+		"SC-PEARSON-MX": {
+			"_note": "MX variant of SC-PEARSON. A us preclearance hall at toronto pearson, winding queue barriers, inspection booths, overhead signage.",
+			"location": "pearson_preclearance",
+			"time_of_day": "day",
+			"mood": "cold",
+			"palette": "fluorescent",
+			"tags": "interior;institution;border;queue;boss",
+			"sky": "wall_pale",
+			"mid": "wall_pale",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"counter",
+					9,
+					8
+				],
+				[
+					"barrier",
+					4,
+					10
+				],
+				[
+					"barrier",
+					14,
+					10
+				],
+				[
+					"sign",
+					9,
+					6
+				]
+			],
+			"prompt": "a US preclearance hall at Toronto Pearson, winding queue barriers, inspection booths, overhead signage, drained grey-blue colour, fluorescent light, institutional and unwelcoming, scuffed vinyl floor, everything bolted down, no people"
+		},
+		"SC-HOSPITAL-GATE-US": {
+			"_note": "US variant of SC-HOSPITAL-GATE. An American hospital entrance - the building is not the problem here, the invoice is.",
+			"location": "hospital",
+			"time_of_day": "night",
+			"mood": "flat",
+			"palette": "cold_grey",
+			"tags": "exterior;institutional;entrance",
+			"sky": "wall_pale",
+			"mid": "window_glass",
+			"ground": "ground_pavement",
+			"place": [
+				[
+					"bench",
+					4,
+					9
+				],
+				[
+					"sign",
+					14,
+					7
+				],
+				[
+					"door_glass",
+					10,
+					8
+				]
+			],
+			"prompt": "entrance of an American hospital emergency department at night, illuminated EMERGENCY canopy, automatic glass doors, ambulance bay, brick and glass facade, a parking structure behind, ordinary North American, drywall and signage, cold fluorescent and sodium light, no people"
 		}
 	}
 }

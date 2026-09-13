@@ -24,7 +24,14 @@ func _ready() -> void:
 	# capturing a screenshot is not.
 	var args := _user_args()
 	if args.has("set"):
-		_apply_state(String(args["set"]))
+		_state_spec = String(args["set"])
+		_apply_state(_state_spec)
+		# GameState.reset() restores DEFAULTS, and DEFAULTS contains
+		# journey_run. boot.gd calls reset() on the --scene path a frame after
+		# this runs, so setting the value once is not enough: it gets wiped and
+		# the default run plays instead, which looks exactly like the flag being
+		# ignored. Re-apply on every reset rather than trying to win the race.
+		GameState.run_started.connect(_reapply_state)
 
 	if _is_headless():
 		return
@@ -65,6 +72,17 @@ func _auto_capture(path: String, delay_frames: int) -> void:
 		await get_tree().process_frame
 	await capture(path)
 	get_tree().quit(0)
+
+
+## What --set asked for, kept so it can be re-applied after a reset. Empty
+## unless the flag was passed, which is what keeps all of this inert in a
+## normal build.
+var _state_spec: String = ""
+
+
+func _reapply_state() -> void:
+	if not _state_spec.is_empty():
+		_apply_state(_state_spec)
 
 
 ## Writes `key:value` pairs straight into GameState, before the first scene

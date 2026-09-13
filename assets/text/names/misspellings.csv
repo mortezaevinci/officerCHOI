@@ -1,0 +1,90 @@
+real_name,misspelled_name,origin,why_it_lands,changed
+Kaveh,Gaveh,iran,"gav is cow in Persian - the clerk turns him into a cow",yes
+Kourosh,Kowrosh,iran,"kow reads as cow - the name of an emperor, spelled as livestock",yes
+Behrouz,Behboz,iran,"boz is goat in Persian",yes
+Mehdi,Mehdeh,iran,"me'deh is stomach in Persian",yes
+Sohrab,Sharab,iran,"sharab is wine - forbidden, and now it is his legal name",yes
+Farhad,Fathead,iran,"reads as fathead in English",yes
+Arash,A Rash,iran,"the space turns a hero's name into a skin complaint",yes
+Omid,Omit,iran,"omid is hope in Persian; omit is to leave out",yes
+Pouya,Pooya,iran,"English readers see poo",yes
+Hossein,Hose In,iran,"the double s collapses and it reads as hose in",yes
+Ali,Alley,iran,"the back lane behind the shops",yes
+Nader,Nadir,iran,"nadir is the lowest point of anything",yes
+Jamshid,Jam Shed,iran,"a king's name becomes a shed for jam",yes
+Parviz,Perviz,iran,"the first syllable reads as perv",yes
+Siavash,Seawash,iran,"washed out to sea",yes
+Bahram,Badram,iran,"one letter and a war god becomes a bad ram",yes
+Zahra,Zebra,iran,"h and b transpose on a handwritten form",yes
+Shirin,Shiring,iran,"shirin is sweet; shiring is nothing at all",yes
+Roya,Royal,iran,"roya is dream - the clerk upgrades her and erases her",yes
+Mina,Minah,iran,"a myna is a bird that repeats what it hears",yes
+Mohammad,Mo Ham,palestine,"ham is pork, which he does not eat, and now it is on his passport",yes
+Ahmad,Ackmad,palestine,"mad is in it, and it is on every form he will ever file",yes
+Khalil,Kalil,palestine,"reads as kill at a border desk",yes
+Bassam,Bass Am,palestine,"bassam means smiling; bass is a fish",yes
+Yousef,Joseph,palestine,"not misspelled - replaced with the English equivalent, which is worse",yes
+Nawal,Nowall,palestine,"no wall - the one thing his life is entirely about",yes
+Huda,Hooda,palestine,"huda is guidance; hooda is who-da",yes
+Amal,A Mall,palestine,"amal is hope; a mall is a shopping centre",yes
+Samir,Same Ear,palestine,"the second syllable splits and he becomes an ear",yes
+Abeer,A Beer,palestine,"alcohol, forbidden, printed on her identity card",yes
+Ibrahim,I Bra Him,palestine,"the form splits it into three words and none of them are a name",yes
+Farouk,Farook,palestine,"reads as for rook, or as a bird",yes
+Rana,Ratna,palestine,"one letter inserts a rat",yes
+Layla,Lay La,palestine,"split into an instruction",yes
+Nour,Noor,palestine,"nour is light; noor is nothing, and it is not even wrong enough to appeal",yes
+Jihad,Jihad,palestine,"not misspelled at all - a perfectly ordinary name meaning effort, and every system in the world stops on it",no
+Osama,Usama,palestine,"one letter, and the watchlist keeps both spellings",yes
+Marwan,Moron,palestine,"the a and the w collapse",yes
+Saeed,Sad Eed,palestine,"saeed means happy",yes
+Wael,Wail,palestine,"to wail is to cry out in grief",yes
+Vongai,Von Guy,nigeria,"the form splits it and gives him a German particle",yes
+Chidi,Chidie,nigeria,"chidi is God exists; chidie ends in die",yes
+Adebayo,Adebayou,nigeria,"a bayou, which is in Louisiana and not in Lagos",yes
+Folake,Fofake,nigeria,"fake is in the middle of it, on a document proving he is real",yes
+Ngozi,NGO-Zi,nigeria,"turned into an aid agency",yes
+Emeka,Emecca,nigeria,"an Igbo Christian name spelled as Mecca",yes
+Oluwaseun,Oluwas,nigeria,"not misspelled - truncated, because the field is eight characters",yes
+Chukwuemeka,Chukwu,nigeria,"same field, same truncation, half a name",yes
+Babatunde,Babatundra,nigeria,"a frozen plain in Siberia",yes
+Ifeoma,Ifeo,nigeria,"feo is ugly in Spanish, which the US clerk does speak",yes
+Adaeze,Adaze,nigeria,"a daze is what he is in by the fourth window",yes
+Nnamdi,Namdi,nigeria,"the double n is dropped as a typo, and it was the whole name",yes
+Yemi,Yummi,nigeria,"printed on a work permit",yes
+Segun,Seegun,nigeria,"see gun - and the system flags it, every single time",yes
+Obiageli,Obie,nigeria,"shortened by a manager who could not be bothered",yes
+Uchenna,U Chenna,nigeria,"split into a text message",yes
+Sunday,Sunday,nigeria,"not misspelled - an extremely common Nigerian name that every Western form rejects as a day of the week",no
+Blessing,Blessing,nigeria,"not misspelled - rejected by systems that do not believe it is a name",no
+Godswill,God Swill,nigeria,"swill is what you feed pigs",yes
+Oluwatobiloba,Oluwatobi,nigeria,"truncated at twelve characters, which is where the field ends",yes
+Jose,Hose,mexico,"the clerk hears Ho-say and writes Hose, which is a garden hose",yes
+Jesus,Jesus,mexico,"not misspelled - an ordinary Mexican name that every American receptionist reads aloud as a joke",no
+Angel,Angle,mexico,"two letters transpose and a name becomes geometry",yes
+Ramon,Ramen,mexico,"instant noodles",yes
+Refugio,Refugee,mexico,"a real and common Mexican name, and the clerk hears what he expects to hear",yes
+Guadalupe,Guadaloop,mexico,"a loop, which is also what the paperwork is",yes
+Concepcion,Conception,mexico,"a medical event rather than a woman",yes
+Dolores,Dolours,mexico,"dolores is sorrows; dolours is sorrows in English, and nobody meant to be that accurate",yes
+Esperanza,Desperanza,mexico,"esperanza is hope; one letter makes it despair",yes
+Marisol,Miserol,mexico,"misery, on a payroll record",yes
+Beto,Beta,mexico,"second-rate, by one vowel",yes
+Cuauhtemoc,Cuauh,mexico,"truncated to four letters that read as cow",yes
+Xochitl,Sochitl,mexico,"the x defeats the clerk entirely",yes
+Ignacio,Ignoracio,mexico,"ignore is now inside his name",yes
+Rocio,Rocky,mexico,"the accent is dropped, then the rest of her is",yes
+Alejandro,Alejandr,mexico,"truncated one character from the end, which makes it wrong in a way nobody notices for years",yes
+Maria Jose,Mariajose,mexico,"two names, one box, no space",yes
+Garcia Lopez,Garcialopez,mexico,"two surnames, one field - the standard Mexican naming system meets the standard American form",yes
+Jhonny,Jhonny,mexico,"not misspelled by anyone here - his parents spelled it that way, and he will explain it for the rest of his life",no
+Kyle,Kyle,usa,"nothing happens - no clerk mishears it, no field truncates it, no officer asks him to spell it. This row exists so the difference is visible",no
+Susan,Susan,usa,"unchanged",no
+Gary,Gary,usa,"unchanged",no
+Danny,Danny,usa,"unchanged",no
+Priya,Preeya,usa,"the one American in this list whose name does get rewritten, because it is not from here",yes
+Mrs Hale,Hale,usa,"unchanged",no
+Brandon,Brandon,usa,"unchanged",no
+Ashley,Ashley,usa,"unchanged",no
+Jennifer,Jennifer,usa,"unchanged",no
+Michael,Michael,usa,"unchanged",no

@@ -156,23 +156,69 @@ func render(text: String, player_name: String, document_name: String = "") -> St
 	return out
 
 
-## The one place that decides how a clerk mishears a name. Deterministic, so the
-## same name always produces the same misspelling and a save can store just the
-## typed name if it ever needs to.
-static func misspell(name: String) -> String:
+## Where the authored misspellings live. Compiled from
+## assets/text/names/misspellings.csv by tools-side names_build.py, because the
+## export filter ships *.json and would silently drop a .csv.
+const NAMES_PATH := "res://content/names/misspellings.json"
+
+## Loaded once and kept. Static, because misspell() is called from the name
+## entry screen before any run is loaded.
+static var _names: Dictionary = {}
+static var _names_loaded: bool = false
+
+
+static func _load_names() -> void:
+	if _names_loaded:
+		return
+	_names_loaded = true
+	if not FileAccess.file_exists(NAMES_PATH):
+		push_warning("JourneyData: no name list at %s; names pass through" % NAMES_PATH)
+		return
+	var parsed: Variant = JSON.parse_string(
+		FileAccess.get_file_as_string(NAMES_PATH))
+	if parsed is Dictionary:
+		_names = parsed
+	else:
+		push_warning("JourneyData: name list at %s is not an object" % NAMES_PATH)
+
+
+## How the state writes a name down, which is not always how it was given.
+##
+## A lookup rather than a rule. The old version swapped the first letter by
+## table, which made every name wrong in the same mechanical way; the authored
+## list makes each one wrong in its own specific, humiliating way - Kaveh
+## becomes Gaveh because gav is a cow, Ramón becomes Ramen, Refugio becomes
+## Refugee, and Oluwaseun is not misspelled at all, it is truncated because the
+## field is eight characters wide.
+##
+## `run_id` matters: US citizens keep their names. Nobody mishears Kyle, no
+## field truncates it, and no officer asks him to spell it. That asymmetry is
+## the whole point of the mechanic, so it is enforced here rather than left to
+## each run's author to remember.
+##
+## Deterministic: the same name and run always produce the same result, so a
+## save can store only the typed name.
+static func misspell(name: String, run_id: String = "") -> String:
 	if name.is_empty():
 		return name
-	const SWAPS := {
-		"k": "G", "g": "K", "b": "P", "p": "B", "d": "T", "t": "D",
-		"s": "Z", "z": "S", "f": "V", "v": "F", "j": "Ch", "q": "Gh",
-		"c": "K", "m": "N", "n": "M", "r": "L", "l": "R", "h": "K",
-		"w": "V", "x": "S", "y": "I",
-		"a": "E", "e": "A", "i": "E", "o": "U", "u": "O",
-	}
-	var first := name.substr(0, 1).to_lower()
-	if SWAPS.has(first):
-		return String(SWAPS[first]) + name.substr(1)
-	return name
+	_load_names()
+
+	var unchanged: Array = _names.get("unchanged_runs", [] as Array)
+	if unchanged.has(run_id):
+		return name
+
+	var entry: Dictionary = _names.get("by_name", {}).get(name.to_lower(), {})
+	if entry.is_empty() or not bool(entry.get("changed", true)):
+		return name
+	return String(entry.get("to", name))
+
+
+## Why a particular name came out the way it did, for a beat that wants to say
+## it out loud. Empty when the name is not in the list or is not rewritten.
+static func misspell_reason(name: String) -> String:
+	_load_names()
+	var entry: Dictionary = _names.get("by_name", {}).get(name.to_lower(), {})
+	return String(entry.get("why", "")) if bool(entry.get("changed", false)) else ""
 
 
 ## What a player reads for a speaker id. Falls back to the id, so an unlisted

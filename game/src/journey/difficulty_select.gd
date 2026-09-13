@@ -17,7 +17,10 @@ const CHOICES: Array[Dictionary] = [
 	{"run": "usa", "label": "US citizen", "note": "born already arrived"},
 	{"run": "nigeria", "label": "Nigerian", "note": "born suspected"},
 	{"run": "iran", "label": "Iranian", "note": "born sanctioned"},
-	{"run": "mexico", "label": "Mexican", "note": "born next door"},
+	# Flagged as Spanish on the button itself. The run opens with a language
+	# gate, and finding that out only after picking it is a worse experience
+	# than being told here.
+	{"run": "mexico", "label": "Mexican", "note": "en español - born next door"},
 ]
 
 @onready var _rows: VBoxContainer = $Center/Rows/Choices
