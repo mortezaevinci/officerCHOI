@@ -37,10 +37,15 @@ anchor_right = 0.5
 offset_left = -300.0
 offset_top = 24.0
 offset_right = 300.0
-offset_bottom = 60.0
+offset_bottom = 68.0
 grow_horizontal = 2
 mouse_filter = 2
 horizontal_alignment = 1
-theme_override_colors/font_color = Color(0.717647, 0.745098, 0.780392, 1)
+theme_override_colors/font_color = Color(0.968627, 0.788235, 0.470588, 1)
+theme_override_colors/font_outline_color = Color(0.0431373, 0.0470588, 0.0627451, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 28
 
-[node name="DialogueBox" parent="." instance=ExtResource("2_box")]
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" parent="UI" instance=ExtResource("2_box")]

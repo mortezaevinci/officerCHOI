@@ -53,6 +53,12 @@ func _is_valid() -> bool:
 func _refresh() -> void:
 	# Begin is never disabled. An unresponsive button reads as a broken game
 	# rather than as a prompt, so an empty field falls back to the suggestion.
+	#
+	# Set explicitly rather than left alone: the scene file used to bake in
+	# disabled = true, and simply removing the line that cleared it left the
+	# button permanently dead. Stating it here means neither half can regress
+	# the other.
+	_begin.disabled = false
 	_hint.visible = not _is_valid()
 
 

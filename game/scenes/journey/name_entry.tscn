@@ -54,5 +54,4 @@ theme_override_colors/font_color = Color(0.541176, 0.564706, 0.611765, 1)
 
 [node name="Begin" type="Button" parent="Center/Rows"]
 custom_minimum_size = Vector2(0, 64)
-disabled = true
 text = "Begin"
