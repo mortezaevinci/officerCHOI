@@ -76,10 +76,39 @@ Built by the tools, not drawn. Regenerated, never edited:
 | `game/assets/art/characters/<id>_walk.png` | `tools/art/build_characters.py` | `characters.json` + LPC |
 | `game/assets/art/portraits/<id>[_mood].png` | same | same |
 | `game/assets/art/props/*.png` | `tools/art/build_props.py` | `props.json` + Kenney |
-| `assets/journey/iran/scenes/*.png` | `tools/art/build_journey_scenes.py` | `journey_scenes.json` + Kenney |
+| `game/assets/art/backgrounds/journey/*.png` | `tools/art/build_journey_scenes.py` (offline fallback) | `journey_scenes.json` + Kenney |
 | `CREDITS-USED.md` | `build_characters.py` | LPC `CREDITS.csv` |
 
 Editing those by hand is a mistake — the next build overwrites them.
+
+---
+
+## Generated images — NOT CC0, and not cleared for release
+
+The journey backdrops that currently ship are produced by
+`tools/art/fetch_scene_art.py`, which sends the `prompt` field of each scene in
+`journey_scenes.json` to **[Pollinations](https://pollinations.ai)** (Flux
+model, no account, plain HTTP GET) and saves the result to
+`game/assets/art/backgrounds/journey/`.
+
+**These are deliberately recorded apart from everything above, because they do
+not meet this file's own rule.** The rule at the top of this document is CC0,
+OGA-BY or CC-BY with an establishable source. Generated images have none of
+that:
+
+- the model's training data is not disclosed, so no chain of provenance exists;
+- ownership of model output is unsettled and differs by jurisdiction;
+- no author can be credited, so the attribution obligations above cannot even
+  be discharged.
+
+They are fine as **placeholder art for development**. Whether they ship in a
+paid release is an open decision for Morteza, not something this file settles.
+If the answer is no, `tools/art/build_journey_scenes.py` still composes the same
+twenty scenes from the Kenney CC0 tiles offline — worse looking, and clean.
+
+Every prompt and seed is recorded in
+**[journey_scene_prompts.md](journey_scene_prompts.md)** so any scene can be
+regenerated, restyled, or handed to a commissioned artist as a brief.
 
 ---
 

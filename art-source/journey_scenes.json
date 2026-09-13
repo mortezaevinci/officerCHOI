@@ -1,53 +1,127 @@
 {
-	"_comment": "Backdrops for the journey events, cut from Kenney's CC0 Roguelike Modern City pack. Same approach as props.json: a scene is a grid of tiles from one sheet, stitched and scaled up. Nothing here is drawn by hand or generated - every pixel comes from the vendored pack. Render a labelled index to pick coordinates with: python.exe tools\\art\\sheet_grid.py kenney/roguelike-modern-city/Tilemap/tilemap.png --cols 0 36 --rows 0 27 --out art-source/working/city_grid.png",
-
-	"_licensing": "Kenney Roguelike Modern City 2.0, CC0 (public domain), per its own License.txt. No attribution required; credited anyway in LICENSES.md.",
-
+	"_comment": "Backdrops for the journey events. TWO pipelines read this file. tools/art/fetch_scene_art.py reads the 'prompt' on each scene and fetches a generated 1920x1080 painting - that is what ships. tools/art/build_journey_scenes.py composes the same scenes from Kenney CC0 tiles using the bands/props/place fields - kept because it needs no network and works offline, but it reads as a tile grid rather than a place. Render a Kenney tile index with: python.exe tools\\art\\sheet_grid.py kenney/roguelike-modern-city/Tilemap/tilemap.png --cols 0 36 --rows 0 27 --out art-source/working/city_grid.png",
+	"_licensing": "MIXED, AND NOT ALL CC0. The tile fields use Kenney Roguelike Modern City 2.0, CC0 per its own License.txt. The 'prompt' fields produce AI-generated images whose training data is undisclosed and whose ownership is legally unsettled - they are NOT CC0 and are recorded under their own heading in LICENSES.md. Do not move them into the CC0 table.",
 	"sheet": "kenney/roguelike-modern-city/Tilemap/tilemap.png",
 	"tile": 16,
 	"stride": 17,
 	"scale": 6,
-
 	"_geometry": "Each scene is 20 tiles wide by 12 tall. At 16px and scale 6 that is 1920x1152, which covers the 1920x1080 design resolution with room to pan. Rows are top to bottom. null leaves a tile transparent so a lower layer shows through.",
 	"width": 20,
 	"height": 12,
-
 	"_bands": "Most scenes are built from three horizontal bands: a wall or sky band at the top, a detail band (windows, doors, shopfronts) in the middle, and a ground band at the bottom. The band helpers below are expanded by build_journey_scenes.py so a scene only has to name them.",
-
 	"bands": {
-		"wall_brick": [0, 1],
-		"wall_grey": [8, 1],
-		"wall_pale": [16, 1],
-		"wall_tan": [24, 1],
-		"window_glass": [13, 6],
-		"window_lit": [12, 5],
-		"shopfront_green": [24, 10],
-		"shopfront_orange": [27, 10],
-		"ground_road": [10, 20],
-		"ground_pavement": [4, 19],
-		"ground_grass": [1, 25],
-		"ground_dirt": [7, 25],
-		"ground_tile": [3, 19]
+		"wall_brick": [
+			0,
+			1
+		],
+		"wall_grey": [
+			8,
+			1
+		],
+		"wall_pale": [
+			16,
+			1
+		],
+		"wall_tan": [
+			24,
+			1
+		],
+		"window_glass": [
+			13,
+			6
+		],
+		"window_lit": [
+			12,
+			5
+		],
+		"shopfront_green": [
+			24,
+			10
+		],
+		"shopfront_orange": [
+			27,
+			10
+		],
+		"ground_road": [
+			10,
+			20
+		],
+		"ground_pavement": [
+			4,
+			19
+		],
+		"ground_grass": [
+			1,
+			25
+		],
+		"ground_dirt": [
+			7,
+			25
+		],
+		"ground_tile": [
+			3,
+			19
+		]
 	},
-
 	"_props": "Single tiles dropped on top of a band. Coordinates are (column, row) on the sheet.",
 	"props": {
-		"tree_green": [31, 11],
-		"tree_autumn": [33, 11],
-		"bin": [0, 13],
-		"bench": [4, 13],
-		"door_plain": [25, 15],
-		"door_glass": [27, 16],
-		"barrier": [24, 5],
-		"car_grey": [32, 20],
-		"car_green": [32, 17],
-		"crate": [15, 14],
-		"counter": [20, 15],
-		"sign": [11, 24],
-		"crossing": [16, 21],
-		"fence_green": [31, 4]
+		"tree_green": [
+			31,
+			11
+		],
+		"tree_autumn": [
+			33,
+			11
+		],
+		"bin": [
+			0,
+			13
+		],
+		"bench": [
+			4,
+			13
+		],
+		"door_plain": [
+			25,
+			15
+		],
+		"door_glass": [
+			27,
+			16
+		],
+		"barrier": [
+			24,
+			5
+		],
+		"car_grey": [
+			32,
+			20
+		],
+		"car_green": [
+			32,
+			17
+		],
+		"crate": [
+			15,
+			14
+		],
+		"counter": [
+			20,
+			15
+		],
+		"sign": [
+			11,
+			24
+		],
+		"crossing": [
+			16,
+			21
+		],
+		"fence_green": [
+			31,
+			4
+		]
 	},
-
 	"scenes": {
 		"SC-HOME-NIGHT": {
 			"_note": "A room with one window and a paraffin heater. Where you are born, and where the offer letter is read years later.",
@@ -59,9 +133,20 @@
 			"sky": "wall_brick",
 			"mid": "window_lit",
 			"ground": "ground_tile",
-			"place": [["bench", 4, 9], ["crate", 15, 9]]
+			"place": [
+				[
+					"bench",
+					4,
+					9
+				],
+				[
+					"crate",
+					15,
+					9
+				]
+			],
+			"prompt": "interior of a small modest Tehran apartment room at night, paraffin heater glowing, one curtained window, patterned rug, warm dim lamplight"
 		},
-
 		"SC-HOME-DAY": {
 			"_note": "The same room in daylight. Reused deliberately: the journey returns to one room and it is never different.",
 			"location": "home",
@@ -72,9 +157,15 @@
 			"sky": "wall_brick",
 			"mid": "window_glass",
 			"ground": "ground_tile",
-			"place": [["bench", 4, 9]]
+			"place": [
+				[
+					"bench",
+					4,
+					9
+				]
+			],
+			"prompt": "interior of a small modest Tehran apartment room in daylight, net curtains, patterned rug, low table, bright but soft light"
 		},
-
 		"SC-COURTYARD": {
 			"_note": "Walled courtyard, a tree, fruit. The only scene in the set with nothing to lose.",
 			"location": "courtyard",
@@ -85,9 +176,25 @@
 			"sky": "wall_tan",
 			"mid": "wall_tan",
 			"ground": "ground_dirt",
-			"place": [["tree_green", 6, 8], ["tree_autumn", 13, 8], ["bench", 9, 10]]
+			"place": [
+				[
+					"tree_green",
+					6,
+					8
+				],
+				[
+					"tree_autumn",
+					13,
+					8
+				],
+				[
+					"bench",
+					9,
+					10
+				]
+			],
+			"prompt": "traditional Iranian walled courtyard in late autumn, shallow turquoise tiled pool, pomegranate tree, brick paving, warm afternoon light"
 		},
-
 		"SC-STREET-DAY": {
 			"_note": "The four streets a bicycle makes reachable, and the junction at the end of them.",
 			"location": "street",
@@ -98,9 +205,25 @@
 			"sky": "wall_grey",
 			"mid": "shopfront_green",
 			"ground": "ground_road",
-			"place": [["car_grey", 3, 10], ["tree_green", 16, 8], ["crossing", 10, 11]]
+			"place": [
+				[
+					"car_grey",
+					3,
+					10
+				],
+				[
+					"tree_green",
+					16,
+					8
+				],
+				[
+					"crossing",
+					10,
+					11
+				]
+			],
+			"prompt": "quiet residential street in Tehran, brick and concrete walls, parked cars, plane trees, hazy daylight, mountains faint on the horizon"
 		},
-
 		"SC-CLASSROOM": {
 			"_note": "Forty children, one decision made in nine seconds.",
 			"location": "school",
@@ -111,9 +234,15 @@
 			"sky": "wall_pale",
 			"mid": "window_glass",
 			"ground": "ground_tile",
-			"place": [["counter", 9, 9]]
+			"place": [
+				[
+					"counter",
+					9,
+					9
+				]
+			],
+			"prompt": "plain Iranian primary school classroom, rows of worn wooden desks, green chalkboard, tall windows, empty"
 		},
-
 		"SC-EXAM-HALL": {
 			"_note": "The konkur. Rows and rows of the same desk.",
 			"location": "exam_hall",
@@ -124,9 +253,25 @@
 			"sky": "wall_pale",
 			"mid": "wall_pale",
 			"ground": "ground_tile",
-			"place": [["counter", 4, 9], ["counter", 9, 9], ["counter", 14, 9]]
+			"place": [
+				[
+					"counter",
+					4,
+					9
+				],
+				[
+					"counter",
+					9,
+					9
+				],
+				[
+					"counter",
+					14,
+					9
+				]
+			],
+			"prompt": "vast examination hall with hundreds of identical single desks in strict rows, harsh overhead fluorescent light, empty"
 		},
-
 		"SC-BARRACKS": {
 			"_note": "Where the card is issued, which is not about the army.",
 			"location": "barracks",
@@ -137,9 +282,20 @@
 			"sky": "wall_grey",
 			"mid": "wall_grey",
 			"ground": "ground_pavement",
-			"place": [["barrier", 8, 9], ["door_plain", 16, 8]]
+			"place": [
+				[
+					"barrier",
+					8,
+					9
+				],
+				[
+					"door_plain",
+					16,
+					8
+				]
+			],
+			"prompt": "bare military administrative room, olive green painted walls, metal desk, filing cabinets, single barred window, cold light"
 		},
-
 		"SC-CAMPUS": {
 			"_note": "A list taped to a wall. Later, the same wall, and the name on the certificate is now a flag.",
 			"location": "campus",
@@ -150,9 +306,25 @@
 			"sky": "wall_tan",
 			"mid": "window_glass",
 			"ground": "ground_pavement",
-			"place": [["tree_green", 3, 8], ["tree_green", 16, 8], ["bench", 9, 10]]
+			"place": [
+				[
+					"tree_green",
+					3,
+					8
+				],
+				[
+					"tree_green",
+					16,
+					8
+				],
+				[
+					"bench",
+					9,
+					10
+				]
+			],
+			"prompt": "modernist university engineering faculty courtyard in Tehran, concrete and brick, noticeboard, plane trees, clear day"
 		},
-
 		"SC-OFFICE": {
 			"_note": "Cash in an envelope, counted twice because that is polite.",
 			"location": "office",
@@ -163,9 +335,20 @@
 			"sky": "wall_pale",
 			"mid": "window_glass",
 			"ground": "ground_tile",
-			"place": [["counter", 11, 9], ["crate", 3, 9]]
+			"place": [
+				[
+					"counter",
+					11,
+					9
+				],
+				[
+					"crate",
+					3,
+					9
+				]
+			],
+			"prompt": "cramped small electronics workshop office, circuit boards and tools on benches, cluttered shelves, warm desk lamp"
 		},
-
 		"SC-AIRPORT": {
 			"_note": "Departures. Used for the easy trip and, much later, for the visit that never happens.",
 			"location": "airport",
@@ -176,9 +359,25 @@
 			"sky": "wall_pale",
 			"mid": "window_glass",
 			"ground": "ground_tile",
-			"place": [["counter", 6, 9], ["counter", 13, 9], ["sign", 10, 7]]
+			"place": [
+				[
+					"counter",
+					6,
+					9
+				],
+				[
+					"counter",
+					13,
+					9
+				],
+				[
+					"sign",
+					10,
+					7
+				]
+			],
+			"prompt": "airport departures hall, check-in desks, large windows, polished floor, overhead signage blank, empty, cool daylight"
 		},
-
 		"SC-AIRPORT-SEC": {
 			"_note": "The side of the hall the four letters send you to.",
 			"location": "airport_security",
@@ -189,9 +388,25 @@
 			"sky": "wall_pale",
 			"mid": "wall_pale",
 			"ground": "ground_tile",
-			"place": [["barrier", 7, 9], ["barrier", 12, 9], ["counter", 9, 9]]
+			"place": [
+				[
+					"barrier",
+					7,
+					9
+				],
+				[
+					"barrier",
+					12,
+					9
+				],
+				[
+					"counter",
+					9,
+					9
+				]
+			],
+			"prompt": "airport secondary screening room, bolted plastic chairs against a blank wall, no clock, harsh fluorescent light, institutional and empty"
 		},
-
 		"SC-CONSULATE": {
 			"_note": "A counter, a window, and a queue that starts outside. Used for both the Turkish registration and the passport surrender.",
 			"location": "consulate",
@@ -202,9 +417,25 @@
 			"sky": "wall_grey",
 			"mid": "window_glass",
 			"ground": "ground_tile",
-			"place": [["counter", 8, 9], ["barrier", 3, 9], ["door_glass", 17, 8]]
+			"place": [
+				[
+					"counter",
+					8,
+					9
+				],
+				[
+					"barrier",
+					3,
+					9
+				],
+				[
+					"door_glass",
+					17,
+					8
+				]
+			],
+			"prompt": "consular waiting room with a glass service counter, numbered ticket display, rows of empty plastic chairs, flat institutional lighting"
 		},
-
 		"SC-REGISTRY": {
 			"_note": "Where your name is written down one letter wrong, permanently.",
 			"location": "registry",
@@ -215,9 +446,20 @@
 			"sky": "wall_tan",
 			"mid": "wall_tan",
 			"ground": "ground_tile",
-			"place": [["counter", 9, 9], ["crate", 16, 9]]
+			"place": [
+				[
+					"counter",
+					9,
+					9
+				],
+				[
+					"crate",
+					16,
+					9
+				]
+			],
+			"prompt": "civil registry office interior, wooden counter, ledgers and stamp pads, wall of index drawers, dusty afternoon light"
 		},
-
 		"SC-BANK": {
 			"_note": "A compliance decision arriving at a counter staffed by somebody who did not make it.",
 			"location": "bank",
@@ -228,9 +470,20 @@
 			"sky": "wall_pale",
 			"mid": "window_glass",
 			"ground": "ground_tile",
-			"place": [["counter", 9, 9], ["door_glass", 16, 8]]
+			"place": [
+				[
+					"counter",
+					9,
+					9
+				],
+				[
+					"door_glass",
+					16,
+					8
+				]
+			],
+			"prompt": "modern European bank branch interior, glass partitions, service counter, muted corporate blue and grey, empty"
 		},
-
 		"SC-PHARMACY": {
 			"_note": "Not banned. Simply unpayable-for.",
 			"location": "pharmacy",
@@ -241,9 +494,20 @@
 			"sky": "wall_pale",
 			"mid": "shopfront_green",
 			"ground": "ground_tile",
-			"place": [["counter", 10, 9], ["crate", 4, 9]]
+			"place": [
+				[
+					"counter",
+					10,
+					9
+				],
+				[
+					"crate",
+					4,
+					9
+				]
+			],
+			"prompt": "small Tehran pharmacy interior, white shelves half empty of boxes, glass counter, cold fluorescent light"
 		},
-
 		"SC-CHOI-BOOTH": {
 			"_note": "The counter itself. One booth, one officer, a line behind you that can hear everything. The room was built to carry sound toward the queue.",
 			"location": "pearson_booth",
@@ -254,9 +518,30 @@
 			"sky": "wall_pale",
 			"mid": "wall_pale",
 			"ground": "ground_tile",
-			"place": [["counter", 8, 8], ["counter", 11, 8], ["barrier", 3, 10], ["barrier", 16, 10]]
+			"place": [
+				[
+					"counter",
+					8,
+					8
+				],
+				[
+					"counter",
+					11,
+					8
+				],
+				[
+					"barrier",
+					3,
+					10
+				],
+				[
+					"barrier",
+					16,
+					10
+				]
+			],
+			"prompt": "immigration inspection booth seen from the queue, high counter, monitor back, glass screen, institutional grey, cold light"
 		},
-
 		"SC-CHOI-BACKROOM": {
 			"_note": "Secondary inspection. Bolted chairs, no clock, a fraud helpline poster in four languages and none of them yours. Two hours of nothing happening to you on purpose.",
 			"location": "pearson_secondary",
@@ -267,9 +552,30 @@
 			"sky": "wall_grey",
 			"mid": "wall_grey",
 			"ground": "ground_tile",
-			"place": [["bench", 4, 9], ["bench", 8, 9], ["bench", 12, 9], ["door_plain", 17, 8]]
+			"place": [
+				[
+					"bench",
+					4,
+					9
+				],
+				[
+					"bench",
+					8,
+					9
+				],
+				[
+					"bench",
+					12,
+					9
+				],
+				[
+					"door_plain",
+					17,
+					8
+				]
+			],
+			"prompt": "airport secondary inspection holding room, bolted chairs, blank poster frames, locked door, no windows, oppressive fluorescent light"
 		},
-
 		"SC-CHOI-DESK": {
 			"_note": "Where the refusal is delivered. His desk, his folder, his monitor turned a few degrees - not enough to read, only enough to show you that turning it is his to do.",
 			"location": "pearson_office",
@@ -280,9 +586,25 @@
 			"sky": "wall_grey",
 			"mid": "window_glass",
 			"ground": "ground_tile",
-			"place": [["counter", 9, 9], ["crate", 15, 9], ["door_plain", 2, 8]]
+			"place": [
+				[
+					"counter",
+					9,
+					9
+				],
+				[
+					"crate",
+					15,
+					9
+				],
+				[
+					"door_plain",
+					2,
+					8
+				]
+			],
+			"prompt": "small windowless immigration office, metal desk, monitor turned away, folders stacked, single overhead light, cold and bare"
 		},
-
 		"SC-DESK-NIGHT": {
 			"_note": "Two sentences in an email, read at a desk at night.",
 			"location": "desk",
@@ -293,9 +615,15 @@
 			"sky": "wall_brick",
 			"mid": "window_lit",
 			"ground": "ground_tile",
-			"place": [["counter", 9, 9]]
+			"place": [
+				[
+					"counter",
+					9,
+					9
+				]
+			],
+			"prompt": "close view of a cluttered desk at night, laptop screen glow, papers and a cold cup of tea, dark room behind"
 		},
-
 		"SC-PEARSON": {
 			"_note": "US preclearance at Toronto Pearson. Standing in Canada, at a counter that is legally the United States. The boss arena; dressed but not yet used.",
 			"location": "pearson_preclearance",
@@ -306,7 +634,29 @@
 			"sky": "wall_pale",
 			"mid": "wall_pale",
 			"ground": "ground_tile",
-			"place": [["counter", 9, 8], ["barrier", 4, 10], ["barrier", 14, 10], ["sign", 9, 6]]
+			"place": [
+				[
+					"counter",
+					9,
+					8
+				],
+				[
+					"barrier",
+					4,
+					10
+				],
+				[
+					"barrier",
+					14,
+					10
+				],
+				[
+					"sign",
+					9,
+					6
+				]
+			],
+			"prompt": "airport US preclearance hall, queue barriers winding toward inspection booths, overhead signage blank, cold fluorescent light, empty"
 		}
 	}
 }
