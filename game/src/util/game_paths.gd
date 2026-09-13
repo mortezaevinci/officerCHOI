@@ -18,6 +18,15 @@ const CONVERSATION := "res://scenes/conversations/conversation.tscn"
 
 const DIALOGUE_DIR := "res://content/dialogue"
 
+## Where the player types their name, and where a life is actually played.
+## A new game goes to NAME_ENTRY, which hands off to JOURNEY_VIEW.
+const NAME_ENTRY := "res://scenes/journey/name_entry.tscn"
+const JOURNEY_VIEW := "res://scenes/journey/journey_view.tscn"
+
+## The nationality a new game starts on. The others exist as datasets and have
+## no authored conversations yet.
+const DEFAULT_RUN := "iran"
+
 
 ## Path to a `.dlg` file for the current language, falling back to English so a
 ## partly-translated build still plays.

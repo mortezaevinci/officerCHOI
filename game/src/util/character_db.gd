@@ -20,9 +20,45 @@ static func all() -> Dictionary:
 
 
 ## Reloads after an edit. Called by tests; safe any time.
+##
+## Note that this drops anything added with [method register], because it
+## rebuilds the table from the file. Registered casts are re-registered by
+## whoever owns them - the journey does it on entering its scene.
 static func reload() -> void:
 	_loaded = false
 	_load()
+
+
+## Adds a speaker that does not live in characters.json.
+##
+## The journey runs carry their own cast inside each `journey.json`, so that the
+## nationalities stay independent of one another and none of them has to share a
+## character namespace. They are announced here on the way in, which is all the
+## dialogue box needs to print the right name in the right colour.
+##
+## Registration wins over the file for the same id, and lasts until the next
+## [method reload].
+static func register(id: String, entry: Dictionary) -> void:
+	if id.is_empty():
+		return
+	all()  # make sure the file is in first, so this overrides rather than races
+	_data[canonical_id(id)] = entry
+
+
+## Registers a whole cast as it appears in a journey document: `{id: {display,
+## color, ...}}`. Translates to the keys this class uses, and leaves an absent
+## or empty colour absent rather than handing Color() an empty string.
+static func register_cast(cast: Dictionary) -> void:
+	for key: Variant in cast:
+		var id := String(key)
+		if id.begins_with("_"):
+			continue
+		var source: Dictionary = cast[key]
+		var entry := {"display_name": String(source.get("display", id))}
+		var tint := String(source.get("color", ""))
+		if tint.begins_with("#"):
+			entry["color"] = tint
+		register(id, entry)
 
 
 ## Speaker ids are matched case-insensitively, so a writer can type "Choi:" and

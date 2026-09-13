@@ -1,0 +1,58 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/journey/name_entry.gd" id="1_entry"]
+
+[node name="NameEntry" type="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_entry")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0705882, 0.0784314, 0.101961, 1)
+
+[node name="Center" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Rows" type="VBoxContainer" parent="Center"]
+custom_minimum_size = Vector2(560, 0)
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="Center/Rows"]
+text = "Before you are born"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.909804, 0.921569, 0.937255, 1)
+
+[node name="Blurb" type="Label" parent="Center/Rows"]
+text = "Somebody is going to spend four months choosing this."
+horizontal_alignment = 1
+autowrap_mode = 3
+theme_override_colors/font_color = Color(0.658824, 0.686275, 0.729412, 1)
+
+[node name="NameField" type="LineEdit" parent="Center/Rows"]
+custom_minimum_size = Vector2(0, 56)
+placeholder_text = "Your name"
+alignment = 1
+
+[node name="Hint" type="Label" parent="Center/Rows"]
+text = "A name is required. It will be the one they get wrong later."
+horizontal_alignment = 1
+autowrap_mode = 3
+theme_override_colors/font_color = Color(0.541176, 0.564706, 0.611765, 1)
+
+[node name="Begin" type="Button" parent="Center/Rows"]
+custom_minimum_size = Vector2(0, 64)
+disabled = true
+text = "Begin"

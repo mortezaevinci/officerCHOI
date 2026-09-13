@@ -66,6 +66,10 @@ var events: Dictionary = {}
 var scenes: Dictionary = {}
 var cast: Dictionary = {}
 var triggers: Array = []
+var stages: Array = []
+## Event ids in authored order. The boss encounter is a written sequence, and
+## this is what preserves it - the edges cannot be trusted to recover it.
+var sequence: Array = []
 
 var _player_token: String = "{player}"
 var _by_id: Dictionary = {}
@@ -125,6 +129,18 @@ func event_for(node_index: int) -> Dictionary:
 	return events.get(String(nodes[node_index].get("event", "")), {})
 
 
+## Life stages in the order a life happens, "any" first. Used to lay a season
+## out from birth to adult rather than shuffling the whole graph.
+func stage_order() -> PackedStringArray:
+	var out: PackedStringArray = []
+	for stage: Variant in stages:
+		out.append(String(stage))
+	if out.is_empty():
+		out = ["any", "infancy", "childhood", "adolescence", "young_adult",
+			"adult", "midlife", "later_life"]
+	return out
+
+
 ## Substitutes the name the player typed. Call this on every line before showing
 ## it; text containing no token comes back unchanged.
 func render(text: String, player_name: String) -> String:
@@ -180,6 +196,8 @@ func _load(path: String) -> void:
 	run_id = String(doc.get("run", run_id))
 	_player_token = String(doc.get("player_token", _player_token))
 	triggers = doc.get("triggers", [])
+	stages = doc.get("stages", [])
+	sequence = doc.get("sequence", [])
 	nodes = doc.get("nodes", [])
 	edges = doc.get("edges", [])
 	events = doc.get("events", {})

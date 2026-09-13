@@ -43,6 +43,50 @@ const DEFAULTS := {
 	"has_badge": true,
 	"read_case_file": false,
 	"told_truth": false,
+
+	# --- the journey -------------------------------------------------------
+	# The player types their own name; content refers to them as {player}.
+	"player_name": "",
+	"journey_run": "iran",
+	"season": 1,
+	"mission": 0,
+	"journey_ended": false,
+
+	# What the run costs you. Nothing ever spends it, because nothing can -
+	# it is a record, not a currency.
+	"dignity": 5,
+
+	# Set by the Iranian events. Declared here so a condition on one of them
+	# reads as its real type rather than silently as false.
+	"alive": false,
+	"name_mismatch": false,
+	"rest": 0,
+	"wants_out": 0,
+	"clever": false,
+	"has_rank": false,
+	"service_pending": false,
+	"university": "",
+	"degree_flagged": false,
+	"earning": false,
+	"been_abroad": false,
+	"turkey_blocked": false,
+	"has_offer": false,
+	"term_lost": 0,
+	"clearance_refused": false,
+	"banked": true,
+	"kindness_seen": 0,
+	"passport_away": false,
+	"medicine_short": false,
+	"parents_refused": false,
+	"flagged_behaviour": false,
+	"ssss": 0,
+	"saw_choi_work": false,
+
+	# Set during the Choi encounter.
+	"noticed_early": false,
+	"saw_the_method": false,
+	"told_to_calm_down": false,
+	"said_no": false,
 }
 
 

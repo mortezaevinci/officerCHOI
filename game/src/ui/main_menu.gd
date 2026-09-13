@@ -39,8 +39,10 @@ func _on_continue() -> void:
 
 
 func _on_new_game() -> void:
+	# A new game is a new life: name first, then ten missions, then Choi.
 	GameState.reset()
-	SceneFlow.goto(GamePaths.NEW_GAME_SCENE, GamePaths.NEW_GAME_SPAWN)
+	GameState.set_var("journey_run", GamePaths.DEFAULT_RUN)
+	SceneFlow.goto(GamePaths.NAME_ENTRY)
 
 
 func _on_settings() -> void:
