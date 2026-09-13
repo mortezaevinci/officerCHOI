@@ -30,6 +30,7 @@ extends RefCounted
 const CONTENT_ROOT := "res://content/journey"
 const ART_ROOT := "res://assets/art/backgrounds/journey"
 const SUPPORTED_VERSION := 2
+const DOCUMENT_TOKEN := "{document}"
 
 const NODE_GOOD := 0
 const NODE_BAD := 1
@@ -143,10 +144,35 @@ func stage_order() -> PackedStringArray:
 
 ## Substitutes the name the player typed. Call this on every line before showing
 ## it; text containing no token comes back unchanged.
-func render(text: String, player_name: String) -> String:
-	if player_name.is_empty():
-		return text
-	return text.replace(_player_token, player_name)
+func render(text: String, player_name: String, document_name: String = "") -> String:
+	var out := text
+	if not player_name.is_empty():
+		out = out.replace(_player_token, player_name)
+	# The paperwork spelling. Falls back to the real name so a run started
+	# before the registry scene still reads correctly.
+	var on_paper := document_name if not document_name.is_empty() else player_name
+	if not on_paper.is_empty():
+		out = out.replace(DOCUMENT_TOKEN, on_paper)
+	return out
+
+
+## The one place that decides how a clerk mishears a name. Deterministic, so the
+## same name always produces the same misspelling and a save can store just the
+## typed name if it ever needs to.
+static func misspell(name: String) -> String:
+	if name.is_empty():
+		return name
+	const SWAPS := {
+		"k": "G", "g": "K", "b": "P", "p": "B", "d": "T", "t": "D",
+		"s": "Z", "z": "S", "f": "V", "v": "F", "j": "Ch", "q": "Gh",
+		"c": "K", "m": "N", "n": "M", "r": "L", "l": "R", "h": "K",
+		"w": "V", "x": "S", "y": "I",
+		"a": "E", "e": "A", "i": "E", "o": "U", "u": "O",
+	}
+	var first := name.substr(0, 1).to_lower()
+	if SWAPS.has(first):
+		return String(SWAPS[first]) + name.substr(1)
+	return name
 
 
 ## What a player reads for a speaker id. Falls back to the id, so an unlisted

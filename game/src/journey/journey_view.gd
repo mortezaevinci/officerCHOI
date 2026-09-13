@@ -20,6 +20,7 @@ enum Phase { GOOD, BAD, BOSS, DONE }
 
 @onready var _background: TextureRect = $Background
 @onready var _progress: Label = $Progress
+@onready var _speaker: PortraitSlot = $UI/Speaker
 
 var _run: JourneyData
 var _boss: JourneyData
@@ -52,6 +53,7 @@ func _ready() -> void:
 	_season = JourneySeason.assemble(_run, int(GameState.get_var("season", 1)))
 	_season.restore({"index": int(GameState.get_var("mission", 0))})
 
+	Dialogue.line_shown.connect(_on_line_shown)
 	Dialogue.command_issued.connect(_on_command)
 	Dialogue.finished.connect(_on_finished)
 	Dialogue.cancelled.connect(_on_finished)
@@ -152,7 +154,7 @@ func _play_node(source: JourneyData, node_index: int) -> void:
 		script = JourneyDialogue.build_stub(source, node_index)
 		_set_backdrop(source, _fallback_scene(source, node_index))
 	else:
-		script = JourneyDialogue.build(source, event, _player_name())
+		script = JourneyDialogue.build(source, event, _player_name(), _document_name())
 		_set_backdrop(source, String(event.get("scene", "")))
 
 	if not script.errors.is_empty():
@@ -168,7 +170,7 @@ func _play_event(source: JourneyData, event_id: String) -> void:
 		_on_finished(event_id)
 		return
 	_set_backdrop(source, String(event.get("scene", "")))
-	Dialogue.start_script(JourneyDialogue.build(source, event, _player_name()))
+	Dialogue.start_script(JourneyDialogue.build(source, event, _player_name(), _document_name()))
 
 
 # --- the boss ----------------------------------------------------------------
@@ -231,6 +233,18 @@ func _finish_life() -> void:
 	SceneFlow.goto(GamePaths.MAIN_MENU)
 
 
+## Shows whoever is speaking. Narration has no speaker, so the slot empties
+## rather than leaving the last face staring through an unrelated line.
+func _on_line_shown(speaker: String, mood: String, _text: String) -> void:
+	if _speaker == null:
+		return
+	if speaker.is_empty():
+		_speaker.set_character("")
+		return
+	_speaker.set_character(speaker, mood)
+	_speaker.set_speaking(true)
+
+
 # --- presentation ------------------------------------------------------------
 
 func _on_command(command: String, args: PackedStringArray) -> void:
@@ -270,3 +284,9 @@ func _show_progress(text: String) -> void:
 
 func _player_name() -> String:
 	return String(GameState.get_var("player_name", ""))
+
+
+## The spelling the paperwork has. Set when the registry clerk gets it wrong,
+## and used by every official from then on.
+func _document_name() -> String:
+	return String(GameState.get_var("document_name", ""))

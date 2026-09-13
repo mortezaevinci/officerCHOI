@@ -1,24 +1,26 @@
 {
 	"_comment": "Who each character is, as a stack of LPC layers. Paths are relative to art-source/lpc/spritesheets. {anim} is the animation sheet (walk), {mood} the facial expression, {head} the head type for that character. Layers draw in the order listed, so hair goes last.",
-
 	"_licensing": "Every layer here is licence-clean for a commercial release: its CREDITS.csv entry offers CC0, OGA-BY or CC-BY, so we elect one of those and avoid CC-BY-SA's share-alike and anti-DRM terms. build_characters.py re-checks this on every run and shouts if a layer is not clean. Do not add a layer without running it.",
-
 	"_colours": "LPC ships every sheet in one reference palette and the web generator recolours it. We do the same offline: 'palette' names the ramp family, 'color' the target ramp, from art-source/lpc/palette_definitions/<family>/<family>_ulpc.json. null/null keeps a sheet as shipped.",
-
 	"source": {
 		"sheets": "lpc/spritesheets",
 		"palettes": "lpc/palette_definitions",
 		"credits": "lpc/CREDITS.csv"
 	},
-
 	"frame": 64,
 	"walk_frames": 9,
-	"walk_rows": {"up": 0, "left": 1, "down": 2, "right": 3},
-
+	"walk_rows": {
+		"up": 0,
+		"left": 1,
+		"down": 2,
+		"right": 3
+	},
 	"sprite_scale": 2,
 	"portrait_scale": 8,
-	"portrait_size": [420, 620],
-
+	"portrait_size": [
+		420,
+		620
+	],
 	"_moods": "Maps the @mood tags writers use in .dlg files onto LPC facial expressions. An unlisted mood falls back to whatever 'default' points at.",
 	"moods": {
 		"default": "neutral",
@@ -32,47 +34,712 @@
 		"flat": "neutral",
 		"quiet": "neutral"
 	},
-
 	"characters": {
 		"choi": {
-			"display_name": "Choi",
+			"display_name": "Officer Choi",
 			"head": "male",
 			"layers": [
-				{"path": "body/bodies/male/{anim}.png",                        "palette": "body",  "color": "amber"},
-				{"path": "head/heads/human/male/{anim}.png",                   "palette": "body",  "color": "amber"},
-				{"path": "head/faces/{head}/{mood}/{anim}.png",                "palette": null,    "color": null},
-				{"path": "legs/pants2/male/{anim}.png",                        "palette": "cloth", "color": "charcoal"},
-				{"path": "feet/shoes/basic/male/{anim}.png",                   "palette": "cloth", "color": "black"},
-				{"path": "torso/clothes/longsleeve/longsleeve2/male/{anim}.png", "palette": "cloth", "color": "navy"},
-				{"path": "torso/waist/belt_leather/male/{anim}.png",           "palette": "cloth", "color": "black"},
-				{"path": "hair/flat_top_straight/adult/{anim}.png",            "palette": "hair",  "color": "black"}
+				{
+					"path": "body/bodies/male/{anim}.png",
+					"palette": "body",
+					"color": "amber"
+				},
+				{
+					"path": "head/heads/human/male/{anim}.png",
+					"palette": "body",
+					"color": "amber"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/male/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "navy"
+				},
+				{
+					"path": "torso/waist/belt_leather/male/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "hair/buzzcut/adult/{anim}.png",
+					"palette": "hair",
+					"color": "ash"
+				}
 			]
 		},
 		"ward": {
 			"display_name": "Det. Ward",
 			"head": "male",
 			"layers": [
-				{"path": "body/bodies/male/{anim}.png",                        "palette": "body",  "color": "taupe"},
-				{"path": "head/heads/human/male/{anim}.png",                   "palette": "body",  "color": "taupe"},
-				{"path": "head/faces/{head}/{mood}/{anim}.png",                "palette": null,    "color": null},
-				{"path": "legs/pants2/male/{anim}.png",                        "palette": "cloth", "color": "walnut"},
-				{"path": "feet/shoes/basic/male/{anim}.png",                   "palette": "cloth", "color": "black"},
-				{"path": "torso/clothes/longsleeve/longsleeve2/male/{anim}.png", "palette": "cloth", "color": "bluegray"},
-				{"path": "hair/page/adult/{anim}.png",                         "palette": "hair",  "color": "dark_brown"}
+				{
+					"path": "body/bodies/male/{anim}.png",
+					"palette": "body",
+					"color": "taupe"
+				},
+				{
+					"path": "head/heads/human/male/{anim}.png",
+					"palette": "body",
+					"color": "taupe"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "walnut"
+				},
+				{
+					"path": "feet/shoes/basic/male/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "bluegray"
+				},
+				{
+					"path": "hair/page/adult/{anim}.png",
+					"palette": "hair",
+					"color": "dark_brown"
+				}
 			]
 		},
 		"park": {
 			"display_name": "Sgt. Park",
 			"head": "elderly",
 			"layers": [
-				{"path": "body/bodies/male/{anim}.png",                        "palette": "body",  "color": "olive"},
-				{"path": "head/heads/human/male_elderly/{anim}.png",           "palette": "body",  "color": "olive"},
-				{"path": "head/faces/{head}/{mood}/{anim}.png",                "palette": null,    "color": null},
-				{"path": "legs/pants2/male/{anim}.png",                        "palette": "cloth", "color": "charcoal"},
-				{"path": "feet/shoes/basic/male/{anim}.png",                   "palette": "cloth", "color": "black"},
-				{"path": "torso/clothes/longsleeve/longsleeve2/male/{anim}.png", "palette": "cloth", "color": "forest"},
-				{"path": "torso/waist/belt_leather/male/{anim}.png",           "palette": "cloth", "color": "black"},
-				{"path": "hair/balding/adult/{anim}.png",                      "palette": "hair",  "color": "gray"}
+				{
+					"path": "body/bodies/male/{anim}.png",
+					"palette": "body",
+					"color": "olive"
+				},
+				{
+					"path": "head/heads/human/male_elderly/{anim}.png",
+					"palette": "body",
+					"color": "olive"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/male/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "forest"
+				},
+				{
+					"path": "torso/waist/belt_leather/male/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "hair/balding/adult/{anim}.png",
+					"palette": "hair",
+					"color": "gray"
+				}
+			]
+		},
+		"roya": {
+			"display_name": "Roya",
+			"head": "female",
+			"layers": [
+				{
+					"path": "body/bodies/female/{anim}.png",
+					"palette": "body",
+					"color": "olive"
+				},
+				{
+					"path": "head/heads/human/female/{anim}.png",
+					"palette": "body",
+					"color": "olive"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/thin/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/thin/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/blouse_longsleeve/female/{anim}.png",
+					"palette": "cloth",
+					"color": "rose"
+				},
+				{
+					"path": "hair/long/adult/{anim}.png",
+					"palette": "hair",
+					"color": "black"
+				}
+			]
+		},
+		"mansour": {
+			"display_name": "Mansour",
+			"head": "male",
+			"layers": [
+				{
+					"path": "body/bodies/male/{anim}.png",
+					"palette": "body",
+					"color": "olive"
+				},
+				{
+					"path": "head/heads/human/male/{anim}.png",
+					"palette": "body",
+					"color": "olive"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/male/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve/male/{anim}.png",
+					"palette": "cloth",
+					"color": "forest"
+				},
+				{
+					"path": "hair/balding/adult/{anim}.png",
+					"palette": "hair",
+					"color": "ash"
+				}
+			]
+		},
+		"farideh": {
+			"display_name": "Farideh",
+			"head": "female",
+			"layers": [
+				{
+					"path": "body/bodies/female/{anim}.png",
+					"palette": "body",
+					"color": "olive"
+				},
+				{
+					"path": "head/heads/human/female/{anim}.png",
+					"palette": "body",
+					"color": "olive"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/thin/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/thin/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/blouse_longsleeve/female/{anim}.png",
+					"palette": "cloth",
+					"color": "lavender"
+				},
+				{
+					"path": "hair/long_tied/adult/{anim}.png",
+					"palette": "hair",
+					"color": "white"
+				}
+			]
+		},
+		"ebadi": {
+			"display_name": "Mrs Ebadi",
+			"head": "female",
+			"layers": [
+				{
+					"path": "body/bodies/female/{anim}.png",
+					"palette": "body",
+					"color": "olive"
+				},
+				{
+					"path": "head/heads/human/female/{anim}.png",
+					"palette": "body",
+					"color": "olive"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/thin/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/thin/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve2_vneck/female/{anim}.png",
+					"palette": "cloth",
+					"color": "forest"
+				},
+				{
+					"path": "hair/bob/adult/{anim}.png",
+					"palette": "hair",
+					"color": "black"
+				}
+			]
+		},
+		"karimi": {
+			"display_name": "Sgt Karimi",
+			"head": "male",
+			"layers": [
+				{
+					"path": "body/bodies/male/{anim}.png",
+					"palette": "body",
+					"color": "amber"
+				},
+				{
+					"path": "head/heads/human/male/{anim}.png",
+					"palette": "body",
+					"color": "amber"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/male/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "forest"
+				},
+				{
+					"path": "hair/buzzcut/adult/{anim}.png",
+					"palette": "hair",
+					"color": "black"
+				}
+			]
+		},
+		"sharifi": {
+			"display_name": "Dr Sharifi",
+			"head": "male",
+			"layers": [
+				{
+					"path": "body/bodies/male/{anim}.png",
+					"palette": "body",
+					"color": "olive"
+				},
+				{
+					"path": "head/heads/human/male/{anim}.png",
+					"palette": "body",
+					"color": "olive"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/male/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve/male/{anim}.png",
+					"palette": "cloth",
+					"color": "slate"
+				},
+				{
+					"path": "hair/balding/adult/{anim}.png",
+					"palette": "hair",
+					"color": "ash"
+				}
+			]
+		},
+		"omid": {
+			"display_name": "Omid",
+			"head": "male",
+			"layers": [
+				{
+					"path": "body/bodies/male/{anim}.png",
+					"palette": "body",
+					"color": "amber"
+				},
+				{
+					"path": "head/heads/human/male/{anim}.png",
+					"palette": "body",
+					"color": "amber"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/male/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "maroon"
+				},
+				{
+					"path": "hair/messy1/adult/{anim}.png",
+					"palette": "hair",
+					"color": "black"
+				}
+			]
+		},
+		"nader": {
+			"display_name": "Nader",
+			"head": "male",
+			"layers": [
+				{
+					"path": "body/bodies/male/{anim}.png",
+					"palette": "body",
+					"color": "amber"
+				},
+				{
+					"path": "head/heads/human/male/{anim}.png",
+					"palette": "body",
+					"color": "amber"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/male/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve/male/{anim}.png",
+					"palette": "cloth",
+					"color": "brown"
+				},
+				{
+					"path": "hair/balding/adult/{anim}.png",
+					"palette": "hair",
+					"color": "ash"
+				}
+			]
+		},
+		"mitra": {
+			"display_name": "Mitra",
+			"head": "female",
+			"layers": [
+				{
+					"path": "body/bodies/female/{anim}.png",
+					"palette": "body",
+					"color": "olive"
+				},
+				{
+					"path": "head/heads/human/female/{anim}.png",
+					"palette": "body",
+					"color": "olive"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/thin/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/thin/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve2_scoop/female/{anim}.png",
+					"palette": "cloth",
+					"color": "white"
+				},
+				{
+					"path": "hair/ponytail/adult/{anim}.png",
+					"palette": "hair",
+					"color": "black"
+				}
+			]
+		},
+		"shirin": {
+			"display_name": "Shirin",
+			"head": "female",
+			"layers": [
+				{
+					"path": "body/bodies/female/{anim}.png",
+					"palette": "body",
+					"color": "taupe"
+				},
+				{
+					"path": "head/heads/human/female/{anim}.png",
+					"palette": "body",
+					"color": "taupe"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/thin/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/thin/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve2_vneck/female/{anim}.png",
+					"palette": "cloth",
+					"color": "sky"
+				},
+				{
+					"path": "hair/bob/adult/{anim}.png",
+					"palette": "hair",
+					"color": "light_brown"
+				}
+			]
+		},
+		"hosseini": {
+			"display_name": "Mr Hosseini",
+			"head": "male",
+			"layers": [
+				{
+					"path": "body/bodies/male/{anim}.png",
+					"palette": "body",
+					"color": "olive"
+				},
+				{
+					"path": "head/heads/human/male/{anim}.png",
+					"palette": "body",
+					"color": "olive"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/male/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "slate"
+				},
+				{
+					"path": "hair/balding/adult/{anim}.png",
+					"palette": "hair",
+					"color": "ash"
+				}
+			]
+		},
+		"yusefi": {
+			"display_name": "Mr Yusefi",
+			"head": "male",
+			"layers": [
+				{
+					"path": "body/bodies/male/{anim}.png",
+					"palette": "body",
+					"color": "olive"
+				},
+				{
+					"path": "head/heads/human/male/{anim}.png",
+					"palette": "body",
+					"color": "olive"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/male/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "tan"
+				},
+				{
+					"path": "hair/flat_top_straight/adult/{anim}.png",
+					"palette": "hair",
+					"color": "ash"
+				}
+			]
+		},
+		"doyle": {
+			"display_name": "Officer Doyle",
+			"head": "male",
+			"layers": [
+				{
+					"path": "body/bodies/male/{anim}.png",
+					"palette": "body",
+					"color": "light"
+				},
+				{
+					"path": "head/heads/human/male/{anim}.png",
+					"palette": "body",
+					"color": "light"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/male/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "navy"
+				},
+				{
+					"path": "hair/buzzcut/adult/{anim}.png",
+					"palette": "hair",
+					"color": "light_brown"
+				}
+			]
+		},
+		"bae": {
+			"display_name": "Mr Bae",
+			"head": "male",
+			"layers": [
+				{
+					"path": "body/bodies/male/{anim}.png",
+					"palette": "body",
+					"color": "amber"
+				},
+				{
+					"path": "head/heads/human/male/{anim}.png",
+					"palette": "body",
+					"color": "amber"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/male/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve/male/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "hair/balding/adult/{anim}.png",
+					"palette": "hair",
+					"color": "ash"
+				}
 			]
 		}
 	}

@@ -29,6 +29,10 @@ var _auto_timer: float = 0.0
 func _ready() -> void:
 	visible = false
 	mouse_filter = Control.MOUSE_FILTER_STOP
+	# The prompt keeps its slot at all times and fades instead of
+	# appearing, so finishing a line does not reflow the panel.
+	_continue.visible = true
+	_continue.modulate.a = 0.0
 	set_process(false)
 
 	Dialogue.started.connect(_on_started)
@@ -99,7 +103,7 @@ func _finish_typing() -> void:
 	_typing = false
 	_chars_shown = 0.0
 	_text.visible_characters = -1
-	_continue.visible = true
+	_continue.modulate.a = 1.0
 	_auto_timer = 0.0
 	line_finished_typing.emit()
 
@@ -123,7 +127,7 @@ func _on_line_shown(speaker: String, _mood: String, text: String) -> void:
 	_text.text = "[i]%s[/i]" % text if speaker.is_empty() else text
 	_text.visible_characters = 0
 	_chars_shown = 0.0
-	_continue.visible = false
+	_continue.modulate.a = 0.0
 	_typing = Settings.text_speed_cps() > 0.0
 	if not _typing:
 		_finish_typing()
@@ -131,7 +135,7 @@ func _on_line_shown(speaker: String, _mood: String, text: String) -> void:
 
 func _on_choices_offered(options: Array) -> void:
 	_awaiting_choice = true
-	_continue.visible = false
+	_continue.modulate.a = 0.0
 	_clear_choices()
 
 	for option: Dictionary in options:

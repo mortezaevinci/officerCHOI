@@ -64,7 +64,11 @@ func _refresh() -> void:
 
 func _start() -> void:
 	var chosen := _field.text.strip_edges()
-	GameState.set_var("player_name", chosen if not chosen.is_empty() else SUGGESTED)
+	var final_name := chosen if not chosen.is_empty() else SUGGESTED
+	GameState.set_var("player_name", final_name)
+	# What the registry clerk will write. Computed now so it is stable
+	# for the whole run, revealed in the registry scene.
+	GameState.set_var("document_name", JourneyData.misspell(final_name))
 	GameState.set_var("season", maxi(1, int(GameState.get_var("season", 1))))
 	GameState.set_var("mission", 0)
 	SceneFlow.goto(GamePaths.MISSION_SELECT)

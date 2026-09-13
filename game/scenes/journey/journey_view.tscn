@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://src/journey/journey_view.gd" id="1_view"]
 [ext_resource type="PackedScene" path="res://scenes/ui/dialogue_box.tscn" id="2_box"]
+[ext_resource type="PackedScene" path="res://scenes/ui/portrait_slot.tscn" id="3_slot"]
 
 [node name="JourneyView" type="Control"]
 anchors_preset = 15
@@ -47,5 +48,11 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 28
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Speaker" parent="UI" instance=ExtResource("3_slot")]
+offset_left = 150.0
+offset_top = 130.0
+offset_right = 570.0
+offset_bottom = 750.0
 
 [node name="DialogueBox" parent="UI" instance=ExtResource("2_box")]

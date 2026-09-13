@@ -50,13 +50,11 @@ func _ready() -> void:
 		button.disabled = not unlocked
 		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 
+		# The name is always shown, locked or not. Hiding it made the season a
+		# column of "locked" with nothing to look forward to; the disabled state
+		# already says you cannot play it yet.
 		var headline := _season.headline(_season.missions[i])
-		if finished:
-			button.text = "%d. %s  (done)" % [i + 1, headline]
-		elif unlocked:
-			button.text = "%d. %s" % [i + 1, headline]
-		else:
-			button.text = "%d. locked" % [i + 1]
+		button.text = "%d. %s%s" % [i + 1, headline, "  (done)" if finished else ""]
 
 		if unlocked:
 			button.pressed.connect(_on_mission.bind(i))

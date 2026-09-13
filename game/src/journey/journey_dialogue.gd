@@ -30,7 +30,8 @@ const END_TARGET := "end"
 ## Builds a playable script from an event dictionary as it appears in
 ## `journey.json`. [param player_name] may be empty, in which case the token is
 ## left alone rather than replaced with nothing.
-static func build(run: JourneyData, event: Dictionary, player_name: String) -> DialogueScript:
+static func build(run: JourneyData, event: Dictionary, player_name: String,
+		document_name: String = "") -> DialogueScript:
 	var script := DialogueScript.new()
 	script.id = String(event.get("uuid", event.get("node", "journey")))
 	script.source_path = "journey://%s/%s" % [run.run_id, script.id]
@@ -39,7 +40,7 @@ static func build(run: JourneyData, event: Dictionary, player_name: String) -> D
 	for node_name: String in event_nodes:
 		var steps: Array = []
 		for step: Dictionary in event_nodes[node_name]:
-			var translated := _step(run, step, player_name)
+			var translated := _step(run, step, player_name, document_name)
 			if not translated.is_empty():
 				steps.append(translated)
 		script.nodes[node_name] = steps
@@ -83,7 +84,10 @@ static func build_stub(run: JourneyData, node_index: int) -> DialogueScript:
 	steps.append({
 		"kind": DialogueScript.CHOICES,
 		"options": [{
-			"text": "Go on" if is_good else "Take it",
+			# First person, and an action - the same rule the authored events
+			# follow. A generated beat that says "Go on" while every written one
+			# says "I take it" reads as a different game.
+			"text": "I let it happen." if is_good else "I take it.",
 			"condition": "",
 			"target": END_TARGET,
 		}],
@@ -100,14 +104,15 @@ static func _first(event_nodes: Dictionary) -> String:
 	return ""
 
 
-static func _step(run: JourneyData, step: Dictionary, player_name: String) -> Dictionary:
+static func _step(run: JourneyData, step: Dictionary, player_name: String,
+		document_name: String) -> Dictionary:
 	match int(step.get("k", -1)):
 		JourneyData.STEP_LINE:
 			return {
 				"kind": DialogueScript.LINE,
 				"speaker": String(step.get("who", "")),
 				"mood": String(step.get("mood", "")),
-				"text": run.render(String(step.get("text", "")), player_name),
+				"text": run.render(String(step.get("text", "")), player_name, document_name),
 			}
 		JourneyData.STEP_NARRATION:
 			# Narration is a line with no speaker; the box already italicises it.
@@ -115,13 +120,13 @@ static func _step(run: JourneyData, step: Dictionary, player_name: String) -> Di
 				"kind": DialogueScript.LINE,
 				"speaker": "",
 				"mood": "",
-				"text": run.render(String(step.get("text", "")), player_name),
+				"text": run.render(String(step.get("text", "")), player_name, document_name),
 			}
 		JourneyData.STEP_CHOICES:
 			var options: Array = []
 			for option: Dictionary in step.get("options", []):
 				options.append({
-					"text": run.render(String(option.get("text", "")), player_name),
+					"text": run.render(String(option.get("text", "")), player_name, document_name),
 					"condition": String(option.get("if", "")),
 					"target": String(option.get("to", END_TARGET)),
 				})

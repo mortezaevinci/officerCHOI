@@ -47,6 +47,9 @@ const DEFAULTS := {
 	# --- the journey -------------------------------------------------------
 	# The player types their own name; content refers to them as {player}.
 	"player_name": "",
+	# The spelling the state wrote down. Diverges from player_name at
+	# the registry and never converges again.
+	"document_name": "",
 	"journey_run": "iran",
 	"season": 1,
 	# How many missions of this season are finished. Mission n is unlocked when

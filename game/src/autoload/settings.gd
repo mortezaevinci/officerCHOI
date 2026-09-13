@@ -9,14 +9,19 @@ signal changed(key: String, value: Variant)
 const PATH := "user://settings.cfg"
 
 ## Characters per second for the typewriter effect. 0 means "instant".
-const TEXT_SPEEDS := {"slow": 25.0, "normal": 45.0, "fast": 80.0, "instant": 0.0}
+##
+## These used to top out at 80 with "normal" at 45, which makes an ordinary
+## hundred-character line take over two seconds to finish. That reads as the
+## game being broken rather than as atmosphere, and the natural response is to
+## mash the advance key - which skips the line before it can be read.
+const TEXT_SPEEDS := {"slow": 45.0, "normal": 90.0, "fast": 220.0, "instant": 0.0}
 
 const DEFAULTS := {
 	"audio/master": 0.9,
 	"audio/music": 0.7,
 	"audio/sfx": 0.9,
 	"display/fullscreen": false,
-	"gameplay/text_speed": "normal",
+	"gameplay/text_speed": "fast",
 	"gameplay/auto_advance": false,
 	"gameplay/language": "en",
 	"input/tap_to_move": true,  # touch devices walk by tapping the floor
