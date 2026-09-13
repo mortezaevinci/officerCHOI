@@ -20,10 +20,15 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	DirAccess.make_dir_recursive_absolute(DIR)
 
+	# Read before the headless check: setting state is useful without a display,
+	# capturing a screenshot is not.
+	var args := _user_args()
+	if args.has("set"):
+		_apply_state(String(args["set"]))
+
 	if _is_headless():
 		return
 
-	var args := _user_args()
 	if args.has("screenshot"):
 		_auto_capture(String(args["screenshot"]), int(args.get("shot-after", DEFAULT_DELAY_FRAMES)))
 
@@ -60,6 +65,29 @@ func _auto_capture(path: String, delay_frames: int) -> void:
 		await get_tree().process_frame
 	await capture(path)
 	get_tree().quit(0)
+
+
+## Writes `key:value` pairs straight into GameState, before the first scene
+## loads. This exists so a specific run can be started from the command line:
+##
+##     OfficerChoi.exe -- --set=journey_run:mexico --scene=res://... \
+##         --screenshot=C:\path\shot.png
+##
+## Development only, and inert unless --set is passed: with the flag absent
+## nothing here executes, so a shipped build behaves exactly as before. It runs
+## in DevTools rather than in GameState because this is a debugging affordance,
+## not a save-game feature, and it should be deletable without touching state.
+##
+## Integer-looking values are stored as integers, because `season` and `mission`
+## are compared numerically and a string "3" would silently fail those checks.
+func _apply_state(spec: String) -> void:
+	for pair: String in spec.split(";", false):
+		var key := pair.get_slice(":", 0).strip_edges()
+		var value := pair.get_slice(":", 1).strip_edges()
+		if key.is_empty():
+			continue
+		GameState.set_var(key, int(value) if value.is_valid_int() else value)
+		print("devtools: %s = %s" % [key, value])
 
 
 func _user_args() -> Dictionary:
