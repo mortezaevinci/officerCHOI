@@ -68,6 +68,53 @@ func test_a_mission_good_event_always_triggers_something() -> void:
 				% run.nodes[good]["id"])
 
 
+func test_a_season_starts_at_the_beginning_of_a_life() -> void:
+	# A life starts at birth. The document lists "any" first because it is the
+	# default stage, not because it happens first, and taking that order
+	# literally put 544 stage-agnostic events ahead of infancy - so season one
+	# opened on a holiday in Istanbul and the authored opening was unreachable.
+	var run := _run()
+	var season := JourneySeason.assemble(run, 1)
+	assert_false(season.missions.is_empty(), "season 1 has no missions")
+	if season.missions.is_empty():
+		return
+	var first: Dictionary = run.nodes[int(season.missions[0]["good"])]
+	var stage := String(first.get("stage", ""))
+	assert_true(stage == "infancy" or stage == "childhood",
+		"season 1 opens on a '%s' event ('%s') rather than the start of a life"
+			% [stage, first.get("title", "")])
+
+
+func test_the_authored_opening_is_reachable() -> void:
+	# The hand-written spine is what a new player meets. If assembly never picks
+	# any of it, twenty authored conversations are dead weight.
+	var run := _run()
+	var season := JourneySeason.assemble(run, 1)
+	var authored := 0
+	for mission: Dictionary in season.missions:
+		if not String(run.nodes[int(mission["good"])].get("event", "")).is_empty():
+			authored += 1
+	assert_true(authored > 0,
+		"season 1 picked no authored good events at all")
+
+
+func test_missions_run_forwards_through_a_life() -> void:
+	# Stages may repeat or sit at "any", but a season must not run backwards -
+	# adulthood before childhood would read as a shuffle rather than a life.
+	var run := _run()
+	var season := JourneySeason.assemble(run, 1)
+	var order := run.stage_order()
+	var furthest := -1
+	for mission: Dictionary in season.missions:
+		var stage := String(run.nodes[int(mission["good"])].get("stage", "any"))
+		if stage == "any":
+			continue
+		var rank := Array(order).find(stage)
+		assert_true(rank >= furthest,
+			"mission goes back to '%s' after a later stage" % stage)
+		furthest = maxi(furthest, rank)
+
+
 func test_assembly_is_deterministic() -> void:
 	# A save stores the season number, not the itinerary, so the same number
 	# must always rebuild the same life.

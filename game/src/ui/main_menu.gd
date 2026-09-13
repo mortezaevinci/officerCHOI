@@ -32,17 +32,22 @@ func _on_continue() -> void:
 		return
 	if not SaveGame.load_from_slot(slot):
 		return
-	var scene := GameState.current_scene
-	if scene.is_empty():
-		scene = GamePaths.NEW_GAME_SCENE
-	SceneFlow.goto(scene, GameState.current_spawn)
+
+	# Continue used to fall back to NEW_GAME_SCENE when the save had no scene
+	# recorded, which dropped the player into the abandoned prototype room: a
+	# backdrop, no conversation, and nothing that responded. A save from before
+	# the journey existed has no name and no run, so it resumes at the start of
+	# the journey rather than at a room that is no longer part of the game.
+	if String(GameState.get_var("player_name", "")).is_empty():
+		SceneFlow.goto(GamePaths.DIFFICULTY_SELECT)
+		return
+	SceneFlow.goto(GamePaths.MISSION_SELECT)
 
 
 func _on_new_game() -> void:
-	# A new game is a new life: name first, then ten missions, then Choi.
+	# A new game is a new life: difficulty, name, ten missions, then Choi.
 	GameState.reset()
-	GameState.set_var("journey_run", GamePaths.DEFAULT_RUN)
-	SceneFlow.goto(GamePaths.NAME_ENTRY)
+	SceneFlow.goto(GamePaths.DIFFICULTY_SELECT)
 
 
 func _on_settings() -> void:

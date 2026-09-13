@@ -73,7 +73,17 @@ static func assemble(source: JourneyData, number: int) -> JourneySeason:
 ## mission with no consequence is not a mission. Those nodes are the game's
 ## rest state and belong between missions, not as one.
 func _candidates() -> Array[int]:
-	var stages := run.stage_order()
+	# A life starts at birth. The document lists "any" first because it is the
+	# default value, not because it happens first - taking that order literally
+	# put 544 stage-agnostic events ahead of infancy and childhood, so a season
+	# opened on a holiday in Istanbul and the authored opening was unreachable.
+	# Real stages in order, then the stage-agnostic ones as filler.
+	var stages: PackedStringArray = []
+	for name: String in run.stage_order():
+		if name != "any":
+			stages.append(name)
+	stages.append("any")
+
 	var buckets: Dictionary = {}
 	for name: String in stages:
 		buckets[name] = [] as Array[int]

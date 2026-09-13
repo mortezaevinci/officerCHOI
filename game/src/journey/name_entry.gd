@@ -15,9 +15,16 @@ const MAX_NAME_LENGTH := 24
 @onready var _hint: Label = $Center/Rows/Hint
 
 
+## Used when the player presses Begin without typing anything. A disabled
+## button that looks broken is worse than a name the player can overwrite.
+const SUGGESTED := "Kaveh"
+
+
 func _ready() -> void:
 	_field.max_length = MAX_NAME_LENGTH
-	_field.text = String(GameState.get_var("player_name", ""))
+	var existing := String(GameState.get_var("player_name", ""))
+	_field.text = existing if not existing.is_empty() else SUGGESTED
+	_field.select_all()
 	_field.text_submitted.connect(_on_submitted)
 	_field.text_changed.connect(_on_changed)
 	_begin.pressed.connect(_on_begin)
@@ -36,8 +43,7 @@ func _on_submitted(_text: String) -> void:
 
 
 func _on_begin() -> void:
-	if _is_valid():
-		_start()
+	_start()
 
 
 func _is_valid() -> bool:
@@ -45,12 +51,14 @@ func _is_valid() -> bool:
 
 
 func _refresh() -> void:
-	_begin.disabled = not _is_valid()
+	# Begin is never disabled. An unresponsive button reads as a broken game
+	# rather than as a prompt, so an empty field falls back to the suggestion.
 	_hint.visible = not _is_valid()
 
 
 func _start() -> void:
-	GameState.set_var("player_name", _field.text.strip_edges())
+	var chosen := _field.text.strip_edges()
+	GameState.set_var("player_name", chosen if not chosen.is_empty() else SUGGESTED)
 	GameState.set_var("season", maxi(1, int(GameState.get_var("season", 1))))
 	GameState.set_var("mission", 0)
-	SceneFlow.goto(GamePaths.JOURNEY_VIEW)
+	SceneFlow.goto(GamePaths.MISSION_SELECT)

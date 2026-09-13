@@ -28,6 +28,10 @@ var _phase: Phase = Phase.GOOD
 var _boss_step: int = 0
 var _boss_order: Array[String] = []
 var _started: bool = false
+## Which mission of the season this scene was opened to play, and whether it was
+## opened for the boss instead. Set from the payload by [method scene_configure].
+var _mission_index: int = -1
+var _is_boss: bool = false
 
 
 func _ready() -> void:
@@ -62,13 +66,28 @@ func _ready() -> void:
 	if GameState.testing:
 		return
 	_started = true
+
+	if _is_boss:
+		_begin_boss()
+		return
+	# Opened for one mission. Anything else is a bug in whoever pushed us here,
+	# but resuming at the player's progress is better than a blank screen.
+	if _mission_index < 0:
+		_mission_index = clampi(int(GameState.get_var("mission", 0)),
+			0, maxi(0, _season.total() - 1))
+	_season.index = _mission_index
 	_advance_to_next_beat()
 
 
 ## Arguments from [method SceneFlow.goto], delivered before this enters the tree.
+## The mission select opens this scene for one mission at a time, or for the
+## boss once the whole season is behind the player.
 func scene_configure(payload: Dictionary) -> void:
 	if payload.has("run"):
 		GameState.set_var("journey_run", String(payload["run"]))
+	if payload.has("mission"):
+		_mission_index = int(payload["mission"])
+	_is_boss = bool(payload.get("boss", false))
 
 
 # --- the spine ---------------------------------------------------------------
@@ -102,10 +121,14 @@ func _on_finished(_script_id: String) -> void:
 			_phase = Phase.BAD
 			_advance_to_next_beat()
 		Phase.BAD:
+			# The mission is over. Unlock the next one and go back to the list
+			# rather than running ten missions together - the brief asks for
+			# short missions that each unlock the next, and returning somewhere
+			# is what makes finishing one feel like finishing something.
 			_phase = Phase.GOOD
-			_season.advance()
-			GameState.set_var("mission", _season.index)
-			_advance_to_next_beat()
+			var done := int(GameState.get_var("mission", 0))
+			GameState.set_var("mission", maxi(done, _mission_index + 1))
+			SceneFlow.goto(GamePaths.MISSION_SELECT)
 		Phase.BOSS:
 			_boss_step += 1
 			if _boss_step < _boss_order.size():

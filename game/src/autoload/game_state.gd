@@ -49,6 +49,8 @@ const DEFAULTS := {
 	"player_name": "",
 	"journey_run": "iran",
 	"season": 1,
+	# How many missions of this season are finished. Mission n is unlocked when
+	# n <= mission, so this is both the progress counter and the unlock gate.
 	"mission": 0,
 	"journey_ended": false,
 
