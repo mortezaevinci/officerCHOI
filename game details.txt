@@ -1,8 +1,70 @@
-1. Choice of immigration difficulty: Palestinian, Iranian, Nigerian, MExican, Canadian, US citizen
+This is how the game goes. The movement, character interactions are very limited, mostly showing some faces, and some wait in line situation, and interaction choices.
+You need to expand on this yourself, as best as you can, and contribute to the creation of a popular yet unforgiving ragebait game.
+
+game progress:
+
+1. Some start menu for Choice of immigration difficulty: 1.a. Palestinian, 1.b. US citizen, 1.c Nigerian, 1.d. Iranian, 1.e Mexican
+
+Example of how it can be in the game progress:
 
 1.a. Palestinian. Black screen, "You are born." . Opens eyes, looks around at a picture, burnt and ruined place. THen, black screen, "You are dead."
 
-2.b. US citizen. A picture of fun and women and parties. Start by many many life choices, 50 of them, each 50 choice leads to another 50 choices, each of them to another 50 choices, each time it could get a little bit or less worst. You complain you cannot have women, but then there are 50 choices of hot girls and nice girls: Then you choose them, then you abuse the woman and make her a single mother, and leave. If not, then you go to philipines, and have sex with a 14yo tgirl, and come back to your family in the us with your lovely wife, and two children, and dog. Then you have another 50 choices, and each round something ironic happens: Your dog bites you, and you decide that you either "Be cruel to him and let him live, or be kind to him and kill him." That is your mantra. Etc, make up many simulations. You end up getting some cancer, you decide to treat it or not. The results are all random like life is random. THen, you do a knee surgery, and you take care of your children and grandchildren. In the middle of these usually there is some choice of "caring for other races or other countries." The choice is small in the fine print. If you choose those fine print options, "You developed some conciousness about it. Now, it is time to stop caring, and coming back to your own life." Then the choice comes back to the same choices as before without the fine print.
+1.b. US citizen. A picture of fun and women and parties. Start by many many life choices, 50 of them, each 50 choice leads to another 50 choices, each of them to another 50 choices, each time it could get a little bit or less worst. You complain you cannot have women, but then there are 50 choices of hot girls and nice girls: Then you choose them, then you abuse the woman and make her a single mother, and leave. If not, then you go to philipines, and have sex with a 14yo tgirl, and come back to your family in the us with your lovely wife, and two children, and dog. Then you have another 50 choices, and each round something ironic happens: Your dog bites you, and you decide that you either "Be cruel to him and let him live, or be kind to him and kill him." That is your mantra. Etc, make up many simulations. You end up getting some cancer, you decide to treat it or not. The results are all random like life is random. THen, you do a knee surgery, and you take care of your children and grandchildren. In the middle of these usually there is some choice of "caring for other races or other countries." The choice is small in the fine print. If you choose those fine print options, "You developed some conciousness about it. Now, it is time to stop caring, and coming back to your own life." Then the choice comes back to the same choices as before without the fine print.
 
-3. c. Nigerian: This life starts as a woman. Whenever you go, some man abuses you. They are macho, they are hard, they are horny. You try to set boundaries, or choose better, but it is always the same result. Many choices of diferent boundaries, your boundaries add up and up and up, and finally fails the same way. So she ends up building boundaries. Finally, he gets a chance to come to Canada, so then there finally she loves only white men, and abandons middle easter men or blacks, and white men elaborate very well, and are lovely and fun, but they always leave without commitment. Until she becomes 40 and have had sex with many canadian men, to finally find herself lonely with many boundaries developed against brown and black men. She finally has other choice, white, brown black. White leads to the same life, brown leads to spiritual growth in different ways. Finally when he chooses a good black men during spiritual times learning from brown men, she finds a black men in nigeria, and comes back to nigeria and makes a family. So long as she chooses canadian or american, she loses.
+1.c. Nigerian: This life starts as a woman. Whenever you go, some man abuses you. They are macho, they are hard, they are horny. You try to set boundaries, or choose better, but it is always the same result. Many choices of diferent boundaries, your boundaries add up and up and up, and finally fails the same way. So she ends up building boundaries. Finally, he gets a chance to come to Canada, so then there finally she loves only white men, and abandons middle easter men or blacks, and white men elaborate very well, and are lovely and fun, but they always leave without commitment. Until she becomes 40 and have had sex with many canadian men, to finally find herself lonely with many boundaries developed against brown and black men. She finally has other choice, white, brown black. White leads to the same life, brown leads to spiritual growth in different ways. Finally when he chooses a good black men during spiritual times learning from brown men, she finds a black men in nigeria, and comes back to nigeria and makes a family. So long as she chooses canadian or american, she loses.
 
+Task1:
+
+Where these above info can come from:
+
+Use all information inside:
+assets\text\Iran\
+and 
+assets\text\general\
+assets\text\war\
+assets\text\goodlife
+
+what we want to do is to:
+And develop a character, who goes through all of the examples and issues in those text assets:
+The process is choose, something nice from "goodlife", but according to it, something bad from \iran\ or \general\ or \war\ happens.
+This should flow smoothly. For example, visiting somewhere nice in iran, wouldn't cause immigration issue, but going to paris should trigger a visa issue, etc. Consider the connections between events.
+
+For this purpuse:
+
+Under \assets\journey\iran:
+
+(develop scripts useful for the game, to read and write connection.bin)
+Create direction.bin, this is a directional graph, between all listissues/listlife events that could come directionally one after another in the list of issues or life.
+
+Create event.bin, this is similar to files under /details/*.csv. It consumes the examples provided, but has some more randomized examples, and the names are associated with the gamer (direct communication with the gamer, instead of some example about somebody else.) Unlike examples in \text\*\details\, this time you will develop interactive ocnversations that support the examples in \text\*\details\, so it is more like a conversation and real-life interaction.
+
+Create scenes.bin, this should be a bunch of identifiers about what is the background pixelart or picture of each event situation.
+
+create folder /scenes/ this should include pictures and assets for each scene identifier.
+
+
+Do not program end goal right now, but for you to understand the flow: We will create a simple game, that goes through event.bin from birth to adult life, and chooses different events. Based on users interactive choices on the screen, the next good life event is chosen, it maybe is sccuessful ot fails. Eitherway, some issue happens from list issues. And we proceed till the end. For each event, the details exist, now in binary in event.bin. For each of them, also there is a scene.bin, with assets in the folder /scenes/. Some minor movement interactions can exist in the game, but generally just showing conversations, and event scene, and decision making by user interactively.
+
+task2:
+assets\text\Palestine\
+and 
+assets\text\general\
+assets\text\war\
+assets\text\goodlife
+
+
+assets\text\Nigeria\
+and 
+assets\text\general\
+assets\text\war\
+assets\text\goodlife
+
+assets\text\Mexico\
+and 
+assets\text\general\
+assets\text\war\
+assets\text\goodlife
+
+//or canada and usa
+assets\text\general\
+assets\text\goodlife

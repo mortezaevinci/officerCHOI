@@ -1,0 +1,112 @@
+task1:
+
+make a of list (under listissue.csv, with id, with basic information, applicability etc) and details (details for eaci issue, issue_id.csv, which includes details provided in various columns, extra expenses in money, extra energy, extra time) of ALL hurdles in the way of an Iranian Male Immigrant (That is all hurdles for all immigrants, for all iranians, for all men)
+
+this must include obvious things, like needing visa and extra processing time, to specfici details like with discrimination canada sent 95% of iranian applications to Canada's intelligence agency, at the border they get extra scruty for carious reasons, bans for muslims or specific red flag countries, cannot do military service or security concern while you have to serve it and it is not a choice, universities in iran are good but deranked unfairly, need to translate material while official documents can be rejected, time to get residency, or citizenship, iranian bank accounts randomly closed, coudn't but gold for being iranian, couldn't go to job because of being iranian even if offered the job, to prove for lmia or special occupation, everything.... all of this in all different timelines from 2000 to 2026.
+
+
+task2:
+
+Include psychological effects of being seen as bad. Like women who dont date iranian men, or men who want to take advantage of iranian women and just dump them anyway, or how much the society thiks that immigrants are leeching on them, or are the problem, and how much canadian or american society is not exactly giving much, but thinks they require so much unwarranted appreciation. etc. List all these minor psychological effects on efficiency, growth, back pain, etc
+
+task3:
+
+Go back, and research deeper, into specific details and examples up to another 5 layers in the above sections. Use yandex.com, chinese agencies, german agencies, all sort of various weird parts of internet, and forums, to download stories of iranians, or immigrants..
+
+
+secondary added:
+ add unusually higher rate of "random checks" at US airport. Then also add examples inside each csv
+  in "C:\temp\officerchoi\assets\text\iran\details". In those examples add as many examples as you
+  can ffind in the resources you already searched. Do not stick only to the typical examples, and
+  find weird rare ones. For example, in 2022 lufthansa decided to hodl a plane back to iran, and make
+  many people including old people walk miles and go inside osme dirty facility, and leave with a
+  secondary unplaned plane back.
+
+
+
+
+task4:
+
+do the same as before ,but for other group of people:make a of list (under listissue.csv, with id, with basic information, applicability etc) and details (details for eaci issue, issue_id.csv, which includes details provided in various columns, extra expenses in money, extra energy, extra time) of ALL hurdles in the way of anyone (especially excluding immigrants, iranians nor male) ... list things that applies to every one.. put it all under "text/general"... this can include for example things like car accidents, typos, 
+
+
+
+ task5:
+
+
+make a of list (under listissue.csv, with id, with basic information, applicability etc) and details (details for eaci issue, issue_id.csv, which includes details provided in various columns, extra expenses in money, extra energy, extra time) of all psychological effects of war (All forms, including genocidial ,or just mild economic war, extreme sanctions, inability to move, unaccepted passport, bank accounts lcosed in secondary countries like UAE or Georgia or Armenia against average iranian citizens, effects of ear causing autism and adhd, and all sort of other permant mental or physical disabilities. effect of chemical weapons, its healing process, effect on children on all thwe senses above), temporary or permanent, and generational, including the fact that many mental illnesses end up becoming inherited by genes, by generational into the next.
+
+  I expect this to be a list of at least 300 issues,
+
+
+task6:
+
+similar to iran under /assets/text/iran
+do for Palestine under assets\text\palestine\
+
+make a of list (listissue.csv, with id, with basic information, applicability etc) and details (details for eaci issue, issue_id.csv, which includes details provided in various columns, extra expenses in money, extra energy, extra time) of ALL hurdles in the way of Palestinian women (That is all hurdles for all living in occupied Palestine, for all Palestinians, for all women)
+
+Similar to Iranian situation, find all of their specific problems)
+
+Include psychological effects of being seen as bad. Like women who dont date Palestinian women, or countries who want to take to destroy of Palestinian men and just dump them anyway. etc. List all these minor psychological effects on efficiency, growth, back pain, etc
+
+Go back, and research deeper, into specific details and examples up to another 5 layers in the above sections. Use yandex.com, chinese agencies, german agencies, all sort of various weird parts of internet, and forums, to download stories of palestinians, or living under occupation,..
+
+ add unusually higher rate of "random checks" at US airport. 
+
+ add examples inside each csv
+  in "C:\temp\officerchoi\assets\text\palestine\details". In those examples add as many examples as you
+  can ffind in the resources you already searched. Do not stick only to the typical examples, and
+  find weird rare ones. 
+
+
+task7:
+
+similar to iran under /assets/text/iran
+similar to iran under /assets/text/Palestine
+
+do for Nigeria under assets\text\Nigeria\
+
+make a of list (listissue.csv, with id, with basic information, applicability etc) and details (details for eaci issue, issue_id.csv, which includes details provided in various columns, extra expenses in money, extra energy, extra time) of ALL hurdles in the way of Nigerian women (That is all hurdles for all living in occupied Nigeria, for all Nigerians, for all women)
+
+Similar to Iranian situation, find all of their specific problems)
+
+Include psychological effects of being seen as bad. Like women who dont date Nigerian women, or countries who want to take to destroy of Nigerian men and just dump them anyway. etc. List all these minor psychological effects on efficiency, growth, back pain, etc
+
+Go back, and research deeper, into specific details and examples up to another 5 layers in the above sections. Use yandex.com, chinese agencies, german agencies, all sort of various weird parts of internet, and forums, to download stories of Nigerians, or living under occupation,..
+
+ add unusually higher rate of "random checks" at US airport. 
+
+ add examples inside each csv
+  in "C:\temp\officerchoi\assets\text\Nigeria\details". In those examples add as many examples as you
+  can ffind in the resources you already searched. Do not stick only to the typical examples, and
+  find weird rare ones. 
+
+  task8:
+
+
+similar to iran under /assets/text/iran
+do for Mexico under assets\text\Mexico\
+
+make a of list (listissue.csv, with id, with basic information, applicability etc) and details (details for eaci issue, issue_id.csv, which includes details provided in various columns, extra expenses in money, extra energy, extra time) of ALL hurdles in the way of an Mexican Men (That is all hurdles for all living in occupied Mexico, for all Mexicans, for all men)
+
+Similar to Iranian situation, find all of their specific problems)
+
+Include psychological effects of being seen as bad. Like men who dont date Mexican men, or countries who want to take to destroy of Mexican men and just dump them anyway. etc. List all these minor psychological effects on efficiency, growth, back pain, etc
+
+Go back, and research deeper, into specific details and examples up to another 5 layers in the above sections. Use yandex.com, chinese agencies, german agencies, all sort of various weird parts of internet, and forums, to download stories of Mexicans, or living under occupation,..
+
+ add unusually higher rate of "random checks" at US airport. 
+
+ add examples inside each csv
+  in "C:\temp\officerchoi\assets\text\Mexico\details". In those examples add as many examples as you
+  can ffind in the resources you already searched. Do not stick only to the typical examples, and
+  find weird rare ones. 
+
+task9:
+
+Similarly, make a new set under assets\text\goodlife
+
+Instead of listissues, listlife.csv that contains good stuff in life, everything you can and include many examples similarly (under /details/ folder)
+
+I expect this listlife includes thousands of different events
