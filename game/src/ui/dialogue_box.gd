@@ -119,8 +119,12 @@ func _on_line_shown(speaker: String, _mood: String, text: String) -> void:
 	_clear_choices()
 	_panel.visible = true
 
+	# The label keeps its slot whether or not there is a name in it. Toggling
+	# visible made the panel a different height on narration than on speech,
+	# which moved every line as the speaker changed.
 	_speaker.text = CharacterDb.display_name(speaker)
-	_speaker.visible = not _speaker.text.is_empty()
+	_speaker.visible = true
+	_speaker.modulate.a = 0.0 if _speaker.text.is_empty() else 1.0
 	_speaker.add_theme_color_override("font_color", CharacterDb.color(speaker))
 
 	# Narration reads better in italics; spoken lines stay upright.
