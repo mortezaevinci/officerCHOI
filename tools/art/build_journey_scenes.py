@@ -7,7 +7,11 @@ band - with a handful of props dropped on top. What goes where lives in
 art-source/journey_scenes.json, so re-dressing a scene is a config edit rather
 than an image edit.
 
-Output: assets/journey/iran/scenes/<scene_id>.png
+Output: game/assets/art/backgrounds/journey/<scene_id>.png
+
+It goes under game/assets/ because that is where docs/dev/adding-content.md puts
+conversation backdrops, and because Godot only imports - and only ships - images
+that live inside the project.
 
 Nothing here draws or synthesises pixels. Every tile is cut from Kenney's
 Roguelike Modern City pack (CC0), which is vendored under art-source/kenney/.
@@ -35,7 +39,7 @@ except ImportError:
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 ART_SOURCE = ROOT / "art-source"
 CONFIG = ART_SOURCE / "journey_scenes.json"
-OUT_DIR = ROOT / "assets" / "journey" / "iran" / "scenes"
+OUT_DIR = ROOT / "game" / "assets" / "art" / "backgrounds" / "journey"
 
 
 def cut(sheet: Image.Image, col: int, row: int, tile: int, stride: int) -> Image.Image:

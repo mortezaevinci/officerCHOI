@@ -1,41 +1,35 @@
 class_name JourneyData
 extends RefCounted
-## Reads the compiled journey files under assets/journey/<run>/.
+## Reads one journey run from content/journey/<run>/journey.json.
 ##
-## The format is defined and written by C:\temp\_script\journey_format.py; this
-## is the other half of it. Both sides must change together, which is why the
-## field order is spelled out in the same sequence in both files.
+## The document is written by C:\temp\_script\journey_build.py against the schema
+## in journey_schema.py. Both sides must change together, and
+## tests/cases/test_journey.gd is what makes them agree.
 ##
-## Nothing here decides what happens next - it only makes the graph, the
-## conversations and the backdrops available. Choosing a path is the caller's
-## job, so that the rule can be tested without a display attached.
+## Nothing here decides what happens next. It exposes the graph, the
+## conversations and the backdrops, and leaves choosing a path to the caller, so
+## the rule can be tested with no display attached.
 ##
-## Node ids are namespaced by dataset - "goodlife:TRV-143", "iran:VIS-001" -
-## because the four datasets collide on bare ids: FIN-001, PSY-001, DIS-001 and
-## EDU-001 each exist in more than one of them, and goodlife FAM-001 (a family
-## memory) is not iran FAM-001 (parents refused a visa).
+## RUNS ARE INDEPENDENT. Loading "iran" does not read, need or touch "mexico".
+## Each document carries its own cast, scenes and graph. Two runs may describe
+## the same experience - and where they do, the event UUIDs match on purpose -
+## but nothing is shared at load time and no run can break another.
+##
+## THE PLAYER TYPES THEIR OWN NAME. Text may contain the token "{player}"; call
+## [method render] before showing any line. Everyone else is invented and named
+## in the run's own cast.
 ##
 ## [codeblock]
-## var data := JourneyData.load_run("res://journey/iran")
-## if data.ok:
-##     var studying := data.index_of("goodlife:TRV-143")
-##     for i in data.successors(studying, JourneyData.EDGE_CONSEQUENCE):
-##         print(data.nodes[i].title)
+## var run := JourneyData.load_run("iran")
+## if run.ok:
+##     var studying := run.index_of("goodlife:TRV-143")
+##     for i in run.successors(studying, JourneyData.EDGE_CONSEQUENCE):
+##         print(run.nodes[i]["title"])
 ## [/codeblock]
 
-## The 7 magic bytes: "OCJRNY" followed by NUL. Held as bytes rather than as a
-## string constant because a NUL inside a GDScript string literal makes the
-## parser replace it and report "Unexpected NUL character" - which stops the
-## whole script compiling and takes `class_name` down with it.
-const MAGIC: PackedByteArray = [0x4F, 0x43, 0x4A, 0x52, 0x4E, 0x59, 0x00]
-const VERSION := 1
-
-const KIND_DIRECTION := 1
-const KIND_EVENT := 2
-const KIND_SCENES := 3
-
-const REC_NODE := 0
-const REC_EDGE := 1
+const CONTENT_ROOT := "res://content/journey"
+const ART_ROOT := "res://assets/art/backgrounds/journey"
+const SUPPORTED_VERSION := 2
 
 const NODE_GOOD := 0
 const NODE_BAD := 1
@@ -54,249 +48,154 @@ const STEP_BRANCH := 5
 const STEP_COMMAND := 6
 const STEP_END := 7
 
-## Kept in the same order as TRIGGERS in journey_format.py. The index is the bit.
-const TRIGGERS: PackedStringArray = [
-	"money", "work", "power", "family", "discretion", "documents", "visa",
-	"credential", "border", "airport", "land", "platform", "weather",
-	"security", "banking", "transport", "police", "care", "school", "health",
-	"registry", "gender", "body", "status", "maternity",
-]
+## Edges are flat arrays in this order. There are tens of thousands of them and
+## object keys would otherwise be most of the file.
+const E_SRC := 0
+const E_DST := 1
+const E_KIND := 2
+const E_WEIGHT := 3
+const E_VIA := 4
 
-const LIFE_STAGES: PackedStringArray = [
-	"any", "infancy", "childhood", "adolescence", "young_adult", "adult",
-	"midlife", "later_life",
-]
-
-const REQUIRES: PackedStringArray = [
-	"none", "others", "money_small", "money_large", "travel_local",
-	"travel_domestic", "travel_intl", "documents", "health", "time", "place",
-	"power", "institution",
-]
-
-const SOURCES: PackedStringArray = ["goodlife", "iran", "general", "war"]
-
+var run_id: String = ""
 var ok: bool = false
 var errors: PackedStringArray = []
 
-var nodes: Array[Dictionary] = []
-var edges: Array[Dictionary] = []
-var events: Dictionary = {}   ## event_id -> event dictionary
-var scenes: Dictionary = {}   ## scene_id -> scene dictionary
+var nodes: Array = []
+var edges: Array = []
+var events: Dictionary = {}
+var scenes: Dictionary = {}
+var cast: Dictionary = {}
+var triggers: Array = []
 
-var _by_id: Dictionary = {}   ## node_id -> index into `nodes`
-var _out: Dictionary = {}     ## node index -> Array[int] of edge indices
+var _player_token: String = "{player}"
+var _by_id: Dictionary = {}
+var _out: Dictionary = {}
 
 
-## Loads all three files from a run directory. Missing files are recorded in
-## `errors` rather than raised, so a half-built run still shows what it has.
-static func load_run(dir_path: String) -> JourneyData:
+## Loads a run by name. Problems land in `errors` rather than being raised, so a
+## half-built run still reports what it has.
+static func load_run(run: String) -> JourneyData:
 	var data := JourneyData.new()
-	data._load_direction("%s/direction.bin" % dir_path)
-	data._load_events("%s/event.bin" % dir_path)
-	data._load_scenes("%s/scenes.bin" % dir_path)
+	data.run_id = run
+	data._load("%s/%s/journey.json" % [CONTENT_ROOT, run])
 	data.ok = data.errors.is_empty()
 	return data
+
+
+## Which runs are present. Each is self-contained; there is no shared index.
+static func available_runs() -> PackedStringArray:
+	var found: PackedStringArray = []
+	var dir := DirAccess.open(CONTENT_ROOT)
+	if dir == null:
+		return found
+	for sub: String in dir.get_directories():
+		if FileAccess.file_exists("%s/%s/journey.json" % [CONTENT_ROOT, sub]):
+			found.append(sub)
+	found.sort()
+	return found
 
 
 func index_of(node_id: String) -> int:
 	return int(_by_id.get(node_id, -1))
 
 
-## Edge indices leaving a node, optionally of one kind. Pass -1 for all.
+## Node indices reachable from a node, optionally of one edge kind (-1 for all).
 func successors(node_index: int, kind: int = -1) -> PackedInt32Array:
 	var found: PackedInt32Array = []
 	for edge_index: int in _out.get(node_index, [] as Array):
-		var edge: Dictionary = edges[edge_index]
-		if kind == -1 or int(edge["kind"]) == kind:
-			found.append(int(edge["dst"]))
+		var edge: Array = edges[edge_index]
+		if kind == -1 or int(edge[E_KIND]) == kind:
+			found.append(int(edge[E_DST]))
 	return found
 
 
-## The trigger names a node exposes you to, decoded from its bitmask.
+## The trigger names a node exposes you to, decoded from its bitmask. A node
+## that triggers nothing cannot be followed by a hurdle - that is what makes a
+## pomegranate a rest rather than a trap.
 func trigger_names(node_index: int) -> PackedStringArray:
 	var out: PackedStringArray = []
-	var mask := int(nodes[node_index].get("triggers", 0))
-	for i: int in TRIGGERS.size():
+	var mask := int(nodes[node_index].get("trig", 0))
+	for i: int in triggers.size():
 		if mask & (1 << i):
-			out.append(TRIGGERS[i])
+			out.append(String(triggers[i]))
 	return out
 
 
 func event_for(node_index: int) -> Dictionary:
-	var event_id := String(nodes[node_index].get("event_id", ""))
-	return events.get(event_id, {})
+	return events.get(String(nodes[node_index].get("event", "")), {})
 
 
-# --- reading -----------------------------------------------------------------
+## Substitutes the name the player typed. Call this on every line before showing
+## it; text containing no token comes back unchanged.
+func render(text: String, player_name: String) -> String:
+	if player_name.is_empty():
+		return text
+	return text.replace(_player_token, player_name)
 
-func _open(path: String, expect_kind: int) -> Dictionary:
+
+## What a player reads for a speaker id. Falls back to the id, so an unlisted
+## speaker still shows something rather than an empty name.
+func display_name(speaker_id: String) -> String:
+	var entry: Dictionary = cast.get(speaker_id, {})
+	var shown := String(entry.get("display", ""))
+	return shown if not shown.is_empty() else speaker_id
+
+
+func speaker_color(speaker_id: String, fallback: Color = Color.WHITE) -> Color:
+	var entry: Dictionary = cast.get(speaker_id, {})
+	var value := String(entry.get("color", ""))
+	return Color(value) if value.begins_with("#") else fallback
+
+
+## Path to a scene's backdrop, or "" when the scene is unknown.
+func art_path(scene_id: String) -> String:
+	var scene: Dictionary = scenes.get(scene_id, {})
+	var art := String(scene.get("art", ""))
+	return "" if art.is_empty() else "%s/%s" % [ART_ROOT, art]
+
+
+func _load(path: String) -> void:
 	if not FileAccess.file_exists(path):
 		errors.append("missing: %s" % path)
-		return {}
+		return
 	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:
 		errors.append("cannot open: %s" % path)
-		return {}
-	var raw := file.get_buffer(file.get_length())
+		return
+	var text := file.get_as_text()
 	file.close()
-	if raw.size() < 32:
-		errors.append("%s: shorter than a header" % path)
-		return {}
 
-	for i: int in MAGIC.size():
-		if raw[i] != MAGIC[i]:
-			errors.append("%s: not a journey file" % path)
-			return {}
-
-	var kind := raw[7]
-	if kind != expect_kind:
-		errors.append("%s: expected kind %d, found %d" % [path, expect_kind, kind])
-		return {}
-	var version := raw.decode_u16(8)
-	if version > VERSION:
-		errors.append("%s: version %d, this reader knows %d" % [path, version, VERSION])
-		return {}
-
-	var count := raw.decode_u32(12)
-	var records_at := raw.decode_u32(16)
-	var strtab_at := raw.decode_u32(20)
-
-	var strings: PackedStringArray = []
-	var p := strtab_at
-	var string_count := raw.decode_u32(p)
-	p += 4
-	for _i: int in string_count:
-		var length := raw.decode_u16(p)
-		p += 2
-		strings.append(raw.slice(p, p + length).get_string_from_utf8())
-		p += length
-
-	var records: Array[PackedByteArray] = []
-	p = records_at
-	for _i: int in count:
-		var length := raw.decode_u32(p)
-		p += 4
-		records.append(raw.slice(p, p + length))
-		p += length
-
-	return {"strings": strings, "records": records}
-
-
-func _load_direction(path: String) -> void:
-	var opened := _open(path, KIND_DIRECTION)
-	if opened.is_empty():
+	var parsed: Variant = JSON.parse_string(text)
+	if not (parsed is Dictionary):
+		errors.append("%s: not a JSON object" % path)
 		return
-	var strings: PackedStringArray = opened["strings"]
-	for record: PackedByteArray in opened["records"]:
-		var c := _Cursor.new(record, strings)
-		if c.u8() == REC_NODE:
-			var node := {
-				"node_id": c.text(), "kind": c.u8(), "source": SOURCES[c.u8()],
-				"category": c.text(), "title": c.text(),
-				"stage": LIFE_STAGES[c.u8()], "weight": c.u8(),
-				"triggers": c.u32(), "requires": REQUIRES[c.u8()],
-				"event_id": c.text(),
-			}
-			_by_id[node["node_id"]] = nodes.size()
-			nodes.append(node)
-		else:
-			var edge := {
-				"src": c.u32(), "dst": c.u32(), "kind": c.u8(),
-				"weight": c.u16(), "via": c.u32(),
-				"min_stage": LIFE_STAGES[c.u8()], "note": c.text(),
-			}
-			var src := int(edge["src"])
-			if not _out.has(src):
-				_out[src] = [] as Array
-			_out[src].append(edges.size())
-			edges.append(edge)
+	var doc: Dictionary = parsed
 
-
-func _load_events(path: String) -> void:
-	var opened := _open(path, KIND_EVENT)
-	if opened.is_empty():
+	var version := int(doc.get("version", 0))
+	if version != SUPPORTED_VERSION:
+		errors.append("%s: version %d, this reader knows %d"
+			% [path, version, SUPPORTED_VERSION])
 		return
-	var strings: PackedStringArray = opened["strings"]
-	for record: PackedByteArray in opened["records"]:
-		var c := _Cursor.new(record, strings)
-		var event := {
-			"event_id": c.text(), "node_id": c.text(), "scene_id": c.text(),
-			"title": c.text(), "stage": LIFE_STAGES[c.u8()],
-			"source_detail": c.text(), "nodes": {},
-		}
-		var node_count := c.u16()
-		for _n: int in node_count:
-			var name := c.text()
-			var steps: Array[Dictionary] = []
-			var step_count := c.u16()
-			for _s: int in step_count:
-				steps.append(_read_step(c))
-			event["nodes"][name] = steps
-		events[event["event_id"]] = event
 
+	run_id = String(doc.get("run", run_id))
+	_player_token = String(doc.get("player_token", _player_token))
+	triggers = doc.get("triggers", [])
+	nodes = doc.get("nodes", [])
+	edges = doc.get("edges", [])
+	events = doc.get("events", {})
+	scenes = doc.get("scenes", {})
+	cast = doc.get("cast", {})
 
-func _read_step(c: _Cursor) -> Dictionary:
-	var kind := c.u8()
-	match kind:
-		STEP_LINE, STEP_NARRATION:
-			return {"kind": kind, "speaker": c.text(), "mood": c.text(), "text": c.text()}
-		STEP_CHOICES:
-			var options: Array[Dictionary] = []
-			var n := c.u16()
-			for _i: int in n:
-				options.append({"text": c.text(), "condition": c.text(),
-					"target": c.text(), "note": c.text()})
-			return {"kind": kind, "options": options}
-		STEP_SET:
-			return {"kind": kind, "name": c.text(), "op": c.text(), "expr": c.text()}
-		STEP_JUMP, STEP_BRANCH:
-			return {"kind": kind, "condition": c.text(), "target": c.text()}
-		STEP_COMMAND:
-			return {"kind": kind, "name": c.text(), "args": c.text()}
-		_:
-			return {"kind": STEP_END}
-
-
-func _load_scenes(path: String) -> void:
-	var opened := _open(path, KIND_SCENES)
-	if opened.is_empty():
+	if nodes.is_empty():
+		errors.append("%s: no nodes" % path)
 		return
-	var strings: PackedStringArray = opened["strings"]
-	for record: PackedByteArray in opened["records"]:
-		var c := _Cursor.new(record, strings)
-		var scene := {
-			"scene_id": c.text(), "art": c.text(), "location": c.text(),
-			"time_of_day": c.text(), "mood": c.text(), "palette": c.text(),
-			"tags": c.text(), "note": c.text(),
-		}
-		scenes[scene["scene_id"]] = scene
 
+	for i: int in nodes.size():
+		_by_id[String(nodes[i]["id"])] = i
 
-## Walks one record. Field order must match Packer in journey_format.py.
-class _Cursor extends RefCounted:
-	var _d: PackedByteArray
-	var _p: int = 0
-	var _s: PackedStringArray
-
-	func _init(data: PackedByteArray, strings: PackedStringArray) -> void:
-		_d = data
-		_s = strings
-
-	func u8() -> int:
-		var v := _d[_p]
-		_p += 1
-		return v
-
-	func u16() -> int:
-		var v := _d.decode_u16(_p)
-		_p += 2
-		return v
-
-	func u32() -> int:
-		var v := _d.decode_u32(_p)
-		_p += 4
-		return v
-
-	func text() -> String:
-		var i := u32()
-		return _s[i] if i < _s.size() else ""
+	for i: int in edges.size():
+		var edge: Array = edges[i]
+		var src := int(edge[E_SRC])
+		if not _out.has(src):
+			_out[src] = [] as Array
+		_out[src].append(i)
