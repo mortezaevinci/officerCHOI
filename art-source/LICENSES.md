@@ -39,6 +39,7 @@ acceptable licence. A character cannot quietly acquire a bad layer.
 |---|---|---|---|
 | [LPC — Universal Spritesheet collection](https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator) | **OGA-BY 3.0 / CC0 / CC-BY** per asset | Choi, Ward, Park — 4-direction walk sheets and conversation portraits | `lpc/` (not committed, ~400 MB) |
 | [Kenney — Roguelike Indoors](https://kenney.nl/assets/roguelike-indoors) | **CC0 1.0** | The desk, file shelf, hallway cabinet | `kenney/roguelike-indoors/` |
+| [Kenney — Roguelike Modern City](https://kenney.nl/assets/roguelike-modern-city) | **CC0 1.0** | Journey backdrops — street, courtyard, campus, consulate, airport, Pearson preclearance | `kenney/roguelike-modern-city/` |
 
 **Attribution owed:** the exact per-layer author and licence list is generated
 into **[CREDITS-USED.md](CREDITS-USED.md)** on every character build. Those
@@ -52,8 +53,8 @@ python.exe tools\art\fetch_assets.py --lpc     # LPC character art (~400 MB, nee
 python.exe tools\art\fetch_assets.py           # Kenney CC0 packs
 ```
 
-`kenney/roguelike-indoors` is committed so the props rebuild offline. LPC is too
-large to commit.
+`kenney/roguelike-indoors` and `kenney/roguelike-modern-city` are committed so
+the props and the journey backdrops rebuild offline. LPC is too large to commit.
 
 ## Available, not yet used
 
@@ -63,7 +64,6 @@ Not committed. Fetch when wanted.
 |---|---|---|
 | [Kenney — UI Pack](https://kenney.nl/assets/ui-pack) | **CC0 1.0** | Panels and buttons, if the theme moves off flat colour |
 | [Kenney — Input Prompts](https://kenney.nl/assets/input-prompts) | **CC0 1.0** | Key/button glyphs in the interact prompt |
-| [Kenney — Roguelike Modern City](https://kenney.nl/assets/roguelike-modern-city) | **CC0 1.0** | Exteriors, if the story leaves the building |
 
 ---
 
@@ -76,6 +76,7 @@ Built by the tools, not drawn. Regenerated, never edited:
 | `game/assets/art/characters/<id>_walk.png` | `tools/art/build_characters.py` | `characters.json` + LPC |
 | `game/assets/art/portraits/<id>[_mood].png` | same | same |
 | `game/assets/art/props/*.png` | `tools/art/build_props.py` | `props.json` + Kenney |
+| `assets/journey/iran/scenes/*.png` | `tools/art/build_journey_scenes.py` | `journey_scenes.json` + Kenney |
 | `CREDITS-USED.md` | `build_characters.py` | LPC `CREDITS.csv` |
 
 Editing those by hand is a mistake — the next build overwrites them.
