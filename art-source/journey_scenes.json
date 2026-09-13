@@ -657,6 +657,630 @@
 				]
 			],
 			"prompt": "airport US preclearance hall, queue barriers winding toward inspection booths, overhead signage blank, cold fluorescent light, empty"
+		},
+		"SC-CHECKPOINT": {
+			"_note": "The checkpoint on the way to school, and every journey after it. Cages, turnstiles, a queue that starts before dawn.",
+			"location": "checkpoint",
+			"time_of_day": "dawn",
+			"mood": "cold",
+			"palette": "cold_grey",
+			"tags": "exterior;institutional;queue",
+			"sky": "wall_grey",
+			"mid": "wall_grey",
+			"ground": "ground_road",
+			"place": [
+				[
+					"fence_green",
+					3,
+					8
+				],
+				[
+					"barrier",
+					7,
+					8
+				],
+				[
+					"sign",
+					10,
+					7
+				],
+				[
+					"crossing",
+					16,
+					9
+				]
+			],
+			"prompt": "empty military checkpoint terminal at dawn, steel turnstiles and caged walkways, concrete blast walls, floodlights on poles, long empty queueing lane, cold grey light"
+		},
+		"SC-PERMIT-WINDOW": {
+			"_note": "The District Coordination Office window. Where the tasreeh is applied for, and where the answer is usually nothing at all.",
+			"location": "permit_office",
+			"time_of_day": "day",
+			"mood": "flat",
+			"palette": "pale",
+			"tags": "interior;institutional;counter",
+			"sky": "wall_pale",
+			"mid": "window_glass",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"counter",
+					9,
+					8
+				],
+				[
+					"bench",
+					3,
+					9
+				],
+				[
+					"door_plain",
+					17,
+					8
+				]
+			],
+			"prompt": "bare government permit office interior, a single service window with thick glass and a metal speaking grille, plastic chairs bolted in a row, fluorescent light, pale institutional walls"
+		},
+		"SC-OLIVE-GROVE": {
+			"_note": "Terraced olive trees older than every document in this story. The harvest, and the one day a year it is allowed.",
+			"location": "olive_grove",
+			"time_of_day": "day",
+			"mood": "warm",
+			"palette": "warm_green",
+			"tags": "exterior;land;open",
+			"sky": "wall_pale",
+			"mid": "ground_grass",
+			"ground": "ground_dirt",
+			"place": [
+				[
+					"tree_green",
+					4,
+					7
+				],
+				[
+					"tree_green",
+					11,
+					7
+				],
+				[
+					"tree_autumn",
+					16,
+					7
+				],
+				[
+					"crate",
+					8,
+					9
+				]
+			],
+			"prompt": "ancient terraced olive grove on a West Bank hillside, dry stone terraces, gnarled silver-leaved olive trees, nets spread beneath them, hazy warm afternoon light, no people"
+		},
+		"SC-ALLENBY": {
+			"_note": "The King Hussein bridge terminal. The only way out, and it closes without notice.",
+			"location": "allenby",
+			"time_of_day": "day",
+			"mood": "tense",
+			"palette": "dusty",
+			"tags": "interior;border;queue",
+			"sky": "wall_tan",
+			"mid": "window_glass",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"bench",
+					4,
+					9
+				],
+				[
+					"counter",
+					12,
+					8
+				],
+				[
+					"sign",
+					16,
+					7
+				]
+			],
+			"prompt": "crowded border crossing terminal hall, worn tiled floor, rows of metal benches, luggage scanners, numbered booths behind glass, dusty sunlight through high windows, empty"
+		},
+		"SC-MIL-COURT": {
+			"_note": "A military courtroom inside a base. Nothing references this yet - it is here for the DET category.",
+			"location": "military_court",
+			"time_of_day": "day",
+			"mood": "grim",
+			"palette": "cold_grey",
+			"tags": "interior;institutional;small",
+			"sky": "wall_grey",
+			"mid": "window_glass",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"bench",
+					5,
+					9
+				],
+				[
+					"counter",
+					11,
+					8
+				],
+				[
+					"door_plain",
+					17,
+					8
+				]
+			],
+			"prompt": "small bare military courtroom interior, prefabricated walls, a plain raised bench, folding chairs, a caged dock at one side, strip lighting, olive drab and grey, empty"
+		},
+		"SC-HOSPITAL-GATE": {
+			"_note": "The hospital you can see and the permit you need to reach it.",
+			"location": "hospital",
+			"time_of_day": "day",
+			"mood": "worn",
+			"palette": "pale",
+			"tags": "exterior;institutional;entrance",
+			"sky": "wall_pale",
+			"mid": "window_glass",
+			"ground": "ground_pavement",
+			"place": [
+				[
+					"bench",
+					4,
+					9
+				],
+				[
+					"sign",
+					14,
+					7
+				],
+				[
+					"door_glass",
+					10,
+					8
+				]
+			],
+			"prompt": "entrance forecourt of a modest Middle Eastern public hospital, concrete canopy, ambulance bay, plastic chairs by the doors, worn signage, flat overcast daylight, no people"
+		},
+		"SC-ROOFTOP-TANKS": {
+			"_note": "Black water tanks and solar heaters on a flat roof. Where you go when the power is on six hours a day.",
+			"location": "rooftop",
+			"time_of_day": "dusk",
+			"mood": "quiet",
+			"palette": "warm_dim",
+			"tags": "exterior;domestic;high",
+			"sky": "wall_pale",
+			"mid": "wall_tan",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"crate",
+					7,
+					9
+				],
+				[
+					"crate",
+					14,
+					9
+				],
+				[
+					"bin",
+					11,
+					9
+				]
+			],
+			"prompt": "flat concrete rooftop crowded with black plastic water tanks and solar water heaters, tangled cables, satellite dishes, low city skyline beyond, dusk light, no people"
+		},
+		"SC-RUBBLE": {
+			"_note": "A house that had a building permit refused, and then had no house.",
+			"location": "demolition",
+			"time_of_day": "day",
+			"mood": "bleak",
+			"palette": "dusty",
+			"tags": "exterior;domestic;ruin",
+			"sky": "wall_pale",
+			"mid": "ground_dirt",
+			"ground": "ground_dirt",
+			"place": [
+				[
+					"crate",
+					5,
+					9
+				],
+				[
+					"crate",
+					12,
+					9
+				],
+				[
+					"bin",
+					15,
+					9
+				]
+			],
+			"prompt": "collapsed concrete house reduced to a mound of broken slabs and twisted rebar, domestic debris in the dust, intact houses standing nearby, harsh flat daylight, no people"
+		},
+		"SC-LAGOS-STREET": {
+			"_note": "A main road in Lagos: danfo buses, generators outside every shop, traders on the median.",
+			"location": "lagos_street",
+			"time_of_day": "day",
+			"mood": "busy",
+			"palette": "warm",
+			"tags": "exterior;street;crowded",
+			"sky": "wall_tan",
+			"mid": "shopfront_orange",
+			"ground": "ground_road",
+			"place": [
+				[
+					"car_green",
+					5,
+					8
+				],
+				[
+					"sign",
+					11,
+					7
+				],
+				[
+					"bin",
+					15,
+					9
+				],
+				[
+					"crossing",
+					17,
+					9
+				]
+			],
+			"prompt": "busy Lagos main road seen empty, yellow danfo minibuses parked at the kerb, painted shopfronts with hand-lettered signs, small petrol generators outside each unit, tangled overhead cables, humid hazy daylight"
+		},
+		"SC-GENERATOR-YARD": {
+			"_note": "The compound at night when the grid goes. Where the family sits and where the generator is started.",
+			"location": "compound",
+			"time_of_day": "night",
+			"mood": "close",
+			"palette": "warm_dim",
+			"tags": "exterior;domestic;dark",
+			"sky": "wall_brick",
+			"mid": "wall_brick",
+			"ground": "ground_dirt",
+			"place": [
+				[
+					"crate",
+					6,
+					9
+				],
+				[
+					"bin",
+					12,
+					9
+				],
+				[
+					"door_plain",
+					16,
+					8
+				]
+			],
+			"prompt": "small walled residential compound at night during a power cut, a petrol generator on a concrete slab, jerrycans, plastic chairs, a single bulb on an extension lead, warm dim light against deep darkness"
+		},
+		"SC-NYSC-CAMP": {
+			"_note": "NYSC orientation camp: the year the state assigns you, in khaki, on a parade ground.",
+			"location": "nysc_camp",
+			"time_of_day": "day",
+			"mood": "flat",
+			"palette": "dusty",
+			"tags": "exterior;institutional;open",
+			"sky": "wall_pale",
+			"mid": "ground_grass",
+			"ground": "ground_dirt",
+			"place": [
+				[
+					"fence_green",
+					3,
+					8
+				],
+				[
+					"sign",
+					10,
+					7
+				],
+				[
+					"tree_green",
+					16,
+					7
+				]
+			],
+			"prompt": "empty national youth service orientation camp, dusty parade ground, low whitewashed barrack blocks with green trim, a flagpole, wooden noticeboard, harsh midday light, no people"
+		},
+		"SC-MATERNITY": {
+			"_note": "A public labour ward. Where the cost of the delivery is settled in cash, on the night.",
+			"location": "maternity",
+			"time_of_day": "night",
+			"mood": "worn",
+			"palette": "pale",
+			"tags": "interior;institutional;small",
+			"sky": "wall_pale",
+			"mid": "window_glass",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"bench",
+					4,
+					9
+				],
+				[
+					"counter",
+					11,
+					8
+				],
+				[
+					"door_plain",
+					17,
+					8
+				]
+			],
+			"prompt": "public hospital labour ward corridor at night, metal bed frames, worn green curtains on rails, a nurses counter with paper files, fluorescent tubes with one flickering, pale scuffed walls, empty"
+		},
+		"SC-ROAD-BLOCK": {
+			"_note": "The police checkpoint on the expressway that wants twenty naira and will take an hour if it does not get it.",
+			"location": "road_block",
+			"time_of_day": "dusk",
+			"mood": "tense",
+			"palette": "dusty",
+			"tags": "exterior;road;stop",
+			"sky": "wall_grey",
+			"mid": "ground_grass",
+			"ground": "ground_road",
+			"place": [
+				[
+					"barrier",
+					7,
+					8
+				],
+				[
+					"sign",
+					12,
+					7
+				],
+				[
+					"car_grey",
+					15,
+					8
+				]
+			],
+			"prompt": "informal police checkpoint on a Nigerian expressway at dusk, oil drums and a plank laid across one lane, worn tyres, a faded signboard, scrub at the roadside, low orange light, no people"
+		},
+		"SC-PLAZA": {
+			"_note": "The plaza of the town you are from. Where the good half of this life happens.",
+			"location": "plaza",
+			"time_of_day": "evening",
+			"mood": "warm",
+			"palette": "warm",
+			"tags": "exterior;town;open",
+			"sky": "wall_tan",
+			"mid": "shopfront_orange",
+			"ground": "ground_pavement",
+			"place": [
+				[
+					"tree_green",
+					5,
+					7
+				],
+				[
+					"bench",
+					9,
+					9
+				],
+				[
+					"tree_green",
+					15,
+					7
+				]
+			],
+			"prompt": "central plaza of a small Mexican town in the evening, colonial arcades painted ochre and white, laurel trees clipped square, iron benches, a bandstand, string lights not yet lit, warm low sun, no people"
+		},
+		"SC-BORDER-BRIDGE": {
+			"_note": "The international bridge. Turned around here, or waved through, by whoever is in the booth.",
+			"location": "border_bridge",
+			"time_of_day": "day",
+			"mood": "tense",
+			"palette": "dusty",
+			"tags": "exterior;border;queue",
+			"sky": "wall_pale",
+			"mid": "wall_pale",
+			"ground": "ground_road",
+			"place": [
+				[
+					"fence_green",
+					3,
+					8
+				],
+				[
+					"barrier",
+					6,
+					8
+				],
+				[
+					"sign",
+					11,
+					7
+				],
+				[
+					"car_grey",
+					15,
+					8
+				]
+			],
+			"prompt": "vehicle lanes approaching a US-Mexico international border bridge inspection plaza, steel canopy over booths, lane signals, chain link and razor wire, faded road markings, harsh flat daylight, empty"
+		},
+		"SC-DESERT": {
+			"_note": "The crossing that is counted in bodies. Not romanticised, not staged.",
+			"location": "desert",
+			"time_of_day": "dawn",
+			"mood": "bleak",
+			"palette": "dusty",
+			"tags": "exterior;land;open",
+			"sky": "wall_pale",
+			"mid": "ground_dirt",
+			"ground": "ground_dirt",
+			"place": [
+				[
+					"crate",
+					7,
+					9
+				],
+				[
+					"bin",
+					13,
+					9
+				]
+			],
+			"prompt": "Sonoran desert at first light, creosote scrub and saguaro on stony ground, a dry wash, discarded water bottles and a torn backpack in the foreground, distant ridge, cold dawn light, no people"
+		},
+		"SC-CONSTRUCTION": {
+			"_note": "A roof in July. Where the workplace death rate stops being a statistic.",
+			"location": "construction",
+			"time_of_day": "day",
+			"mood": "hot",
+			"palette": "warm",
+			"tags": "exterior;work;high",
+			"sky": "wall_pale",
+			"mid": "wall_tan",
+			"ground": "ground_dirt",
+			"place": [
+				[
+					"crate",
+					4,
+					9
+				],
+				[
+					"crate",
+					11,
+					9
+				],
+				[
+					"barrier",
+					16,
+					8
+				]
+			],
+			"prompt": "half-framed suburban house under construction on a hot day, bare timber trusses, plywood decking, stacked shingle bundles, an extension ladder against the eave, bleached harsh sunlight, no people"
+		},
+		"SC-BUS-STATION": {
+			"_note": "Put down at the bridge after dark, in a city you have never been to.",
+			"location": "bus_station",
+			"time_of_day": "night",
+			"mood": "cold",
+			"palette": "cold_grey",
+			"tags": "exterior;transit;night",
+			"sky": "wall_grey",
+			"mid": "shopfront_green",
+			"ground": "ground_pavement",
+			"place": [
+				[
+					"bench",
+					5,
+					9
+				],
+				[
+					"bin",
+					10,
+					9
+				],
+				[
+					"sign",
+					14,
+					7
+				]
+			],
+			"prompt": "bus station forecourt in a Mexican border city at night, concrete apron, a shuttered ticket window, steel benches, sodium lamps making orange pools, closed shopfronts beyond, empty"
+		},
+		"SC-DETENTION": {
+			"_note": "The holding room. Civil detention, which is why there is no right to a lawyer.",
+			"location": "detention",
+			"time_of_day": "day",
+			"mood": "grim",
+			"palette": "cold_grey",
+			"tags": "interior;institutional;small",
+			"sky": "wall_grey",
+			"mid": "wall_grey",
+			"ground": "ground_tile",
+			"place": [
+				[
+					"bench",
+					4,
+					9
+				],
+				[
+					"door_plain",
+					16,
+					8
+				],
+				[
+					"bin",
+					11,
+					9
+				]
+			],
+			"prompt": "bare immigration holding room interior, painted cinder block walls, a fixed metal bench along one wall, a heavy door with a small window, strip lighting, a wall clock, no furniture otherwise, empty"
+		},
+		"SC-SUBURB-YARD": {
+			"_note": "The back yard of a house with a mortgage on it. Where the good half of the citizen's life happens.",
+			"location": "suburb",
+			"time_of_day": "evening",
+			"mood": "warm",
+			"palette": "warm",
+			"tags": "exterior;domestic;open",
+			"sky": "wall_pale",
+			"mid": "ground_grass",
+			"ground": "ground_grass",
+			"place": [
+				[
+					"tree_green",
+					4,
+					7
+				],
+				[
+					"bench",
+					10,
+					9
+				],
+				[
+					"fence_green",
+					16,
+					8
+				]
+			],
+			"prompt": "back yard of an ordinary North American suburban house in the early evening, clapboard siding, a wooden deck, folding chairs on cut grass, a chain link fence, a maple at the boundary, warm low sun, no people"
+		},
+		"SC-FREEWAY": {
+			"_note": "The commute, and the crash. Built so that not having a car is not an option.",
+			"location": "freeway",
+			"time_of_day": "day",
+			"mood": "flat",
+			"palette": "cold_grey",
+			"tags": "exterior;road;open",
+			"sky": "wall_pale",
+			"mid": "wall_grey",
+			"ground": "ground_road",
+			"place": [
+				[
+					"car_grey",
+					5,
+					8
+				],
+				[
+					"car_green",
+					11,
+					8
+				],
+				[
+					"sign",
+					15,
+					7
+				]
+			],
+			"prompt": "wide North American freeway interchange seen from the shoulder, concrete overpasses, lane markings, green overhead direction signs, sound barriers, scrubby verge, flat overcast daylight, no vehicles"
 		}
 	}
 }

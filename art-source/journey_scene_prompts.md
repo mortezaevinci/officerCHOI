@@ -13,21 +13,42 @@ Shared style suffix:
 |---|---|---|
 | `SC-AIRPORT` | 1753074654 | airport departures hall, check-in desks, large windows, polished floor, overhead signage blank, empty, cool daylight |
 | `SC-AIRPORT-SEC` | 269240710 | airport secondary screening room, bolted plastic chairs against a blank wall, no clock, harsh fluorescent light, institutional and empty |
+| `SC-ALLENBY` | 890687736 | crowded border crossing terminal hall, worn tiled floor, rows of metal benches, luggage scanners, numbered booths behind glass, dusty sunlight through high windows, empty |
 | `SC-BANK` | 1887253233 | modern European bank branch interior, glass partitions, service counter, muted corporate blue and grey, empty |
 | `SC-BARRACKS` | 908249045 | bare military administrative room, olive green painted walls, metal desk, filing cabinets, single barred window, cold light |
+| `SC-BORDER-BRIDGE` | 28926479 | vehicle lanes approaching a US-Mexico international border bridge inspection plaza, steel canopy over booths, lane signals, chain link and razor wire, faded road markings, harsh flat daylight, empty |
+| `SC-BUS-STATION` | 1236110897 | bus station forecourt in a Mexican border city at night, concrete apron, a shuttered ticket window, steel benches, sodium lamps making orange pools, closed shopfronts beyond, empty |
 | `SC-CAMPUS` | 2023619195 | modernist university engineering faculty courtyard in Tehran, concrete and brick, noticeboard, plane trees, clear day |
+| `SC-CHECKPOINT` | 1456748570 | empty military checkpoint terminal at dawn, steel turnstiles and caged walkways, concrete blast walls, floodlights on poles, long empty queueing lane, cold grey light |
 | `SC-CHOI-BACKROOM` | 81690476 | airport secondary inspection holding room, bolted chairs, blank poster frames, locked door, no windows, oppressive fluorescent light |
 | `SC-CHOI-BOOTH` | 122194207 | immigration inspection booth seen from the queue, high counter, monitor back, glass screen, institutional grey, cold light |
 | `SC-CHOI-DESK` | 1772420296 | small windowless immigration office, metal desk, monitor turned away, folders stacked, single overhead light, cold and bare |
 | `SC-CLASSROOM` | 781157313 | plain Iranian primary school classroom, rows of worn wooden desks, green chalkboard, tall windows, empty |
+| `SC-CONSTRUCTION` | 868948252 | half-framed suburban house under construction on a hot day, bare timber trusses, plywood decking, stacked shingle bundles, an extension ladder against the eave, bleached harsh sunlight, no people |
 | `SC-CONSULATE` | 1153257317 | consular waiting room with a glass service counter, numbered ticket display, rows of empty plastic chairs, flat institutional lighting |
 | `SC-COURTYARD` | 297946617 | traditional Iranian walled courtyard in late autumn, shallow turquoise tiled pool, pomegranate tree, brick paving, warm afternoon light |
+| `SC-DESERT` | 1796615760 | Sonoran desert at first light, creosote scrub and saguaro on stony ground, a dry wash, discarded water bottles and a torn backpack in the foreground, distant ridge, cold dawn light, no people |
 | `SC-DESK-NIGHT` | 883859979 | close view of a cluttered desk at night, laptop screen glow, papers and a cold cup of tea, dark room behind |
+| `SC-DETENTION` | 358057515 | bare immigration holding room interior, painted cinder block walls, a fixed metal bench along one wall, a heavy door with a small window, strip lighting, a wall clock, no furniture otherwise, empty |
 | `SC-EXAM-HALL` | 860488059 | vast examination hall with hundreds of identical single desks in strict rows, harsh overhead fluorescent light, empty |
+| `SC-FREEWAY` | 2091328720 | wide North American freeway interchange seen from the shoulder, concrete overpasses, lane markings, green overhead direction signs, sound barriers, scrubby verge, flat overcast daylight, no vehicles |
+| `SC-GENERATOR-YARD` | 148181172 | small walled residential compound at night during a power cut, a petrol generator on a concrete slab, jerrycans, plastic chairs, a single bulb on an extension lead, warm dim light against deep darkness |
 | `SC-HOME-DAY` | 957875254 | interior of a small modest Tehran apartment room in daylight, net curtains, patterned rug, low table, bright but soft light |
 | `SC-HOME-NIGHT` | 45256799 | interior of a small modest Tehran apartment room at night, paraffin heater glowing, one curtained window, patterned rug, warm dim lamplight |
+| `SC-HOSPITAL-GATE` | 2115224669 | entrance forecourt of a modest Middle Eastern public hospital, concrete canopy, ambulance bay, plastic chairs by the doors, worn signage, flat overcast daylight, no people |
+| `SC-LAGOS-STREET` | 440959448 | busy Lagos main road seen empty, yellow danfo minibuses parked at the kerb, painted shopfronts with hand-lettered signs, small petrol generators outside each unit, tangled overhead cables, humid hazy daylight |
+| `SC-MATERNITY` | 233815471 | public hospital labour ward corridor at night, metal bed frames, worn green curtains on rails, a nurses counter with paper files, fluorescent tubes with one flickering, pale scuffed walls, empty |
+| `SC-MIL-COURT` | 913809916 | small bare military courtroom interior, prefabricated walls, a plain raised bench, folding chairs, a caged dock at one side, strip lighting, olive drab and grey, empty |
+| `SC-NYSC-CAMP` | 1843763616 | empty national youth service orientation camp, dusty parade ground, low whitewashed barrack blocks with green trim, a flagpole, wooden noticeboard, harsh midday light, no people |
 | `SC-OFFICE` | 298187112 | cramped small electronics workshop office, circuit boards and tools on benches, cluttered shelves, warm desk lamp |
+| `SC-OLIVE-GROVE` | 453083038 | ancient terraced olive grove on a West Bank hillside, dry stone terraces, gnarled silver-leaved olive trees, nets spread beneath them, hazy warm afternoon light, no people |
 | `SC-PEARSON` | 1148024436 | airport US preclearance hall, queue barriers winding toward inspection booths, overhead signage blank, cold fluorescent light, empty |
+| `SC-PERMIT-WINDOW` | 17284836 | bare government permit office interior, a single service window with thick glass and a metal speaking grille, plastic chairs bolted in a row, fluorescent light, pale institutional walls |
 | `SC-PHARMACY` | 2033765541 | small Tehran pharmacy interior, white shelves half empty of boxes, glass counter, cold fluorescent light |
+| `SC-PLAZA` | 693917985 | central plaza of a small Mexican town in the evening, colonial arcades painted ochre and white, laurel trees clipped square, iron benches, a bandstand, string lights not yet lit, warm low sun, no people |
 | `SC-REGISTRY` | 1649511857 | civil registry office interior, wooden counter, ledgers and stamp pads, wall of index drawers, dusty afternoon light |
+| `SC-ROAD-BLOCK` | 1361512240 | informal police checkpoint on a Nigerian expressway at dusk, oil drums and a plank laid across one lane, worn tyres, a faded signboard, scrub at the roadside, low orange light, no people |
+| `SC-ROOFTOP-TANKS` | 1664303436 | flat concrete rooftop crowded with black plastic water tanks and solar water heaters, tangled cables, satellite dishes, low city skyline beyond, dusk light, no people |
+| `SC-RUBBLE` | 224551174 | collapsed concrete house reduced to a mound of broken slabs and twisted rebar, domestic debris in the dust, intact houses standing nearby, harsh flat daylight, no people |
 | `SC-STREET-DAY` | 24383110 | quiet residential street in Tehran, brick and concrete walls, parked cars, plane trees, hazy daylight, mountains faint on the horizon |
+| `SC-SUBURB-YARD` | 773928244 | back yard of an ordinary North American suburban house in the early evening, clapboard siding, a wooden deck, folding chairs on cut grass, a chain link fence, a maple at the boundary, warm low sun, no people |

@@ -52,3 +52,19 @@ steam_appid.txt
 *.swp
 Thumbs.db
 desktop.ini
+
+# Generated journey backdrops. Fetched from an image generator by
+# tools/art/fetch_scene_art.py - watermarked, and their licensing is not
+# settled, so they stay out of the history deliberately. Missing backdrops
+# in a fresh clone are the signal that they still need replacing.
+# Offline placeholders: tools/art/build_journey_scenes.py --replace
+game/assets/art/backgrounds/journey/*.png
+game/assets/art/backgrounds/journey/*.png.import
+
+# My own byproducts, not part of the game.
+# backup/ is the timestamped copies taken before editing data files.
+# preview/ is screenshots captured from built exes for eyeballing.
+# art-source/working/ is scratch output from the tile-index helpers.
+backup/
+preview/
+art-source/working/
