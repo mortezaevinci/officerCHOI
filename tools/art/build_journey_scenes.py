@@ -93,6 +93,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--only", help="build a single scene by id")
     parser.add_argument("--list", action="store_true", help="list scene ids and exit")
+    parser.add_argument("--replace", action="store_true",
+                        help="overwrite backdrops that are already there, "
+                             "including generated ones")
     args = parser.parse_args()
 
     if not CONFIG.exists():
@@ -113,6 +116,18 @@ def main() -> None:
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     wanted = [args.only] if args.only else sorted(scenes)
+
+    # Both this and fetch_scene_art.py write to OUT_DIR. This one composes Kenney
+    # tiles offline; that one downloads generated paintings. Whichever runs last
+    # wins, and the difference is obvious on screen but not in a file listing -
+    # so say so rather than silently replacing better art with worse.
+    existing = sorted(p.name for p in OUT_DIR.glob("*.png"))
+    if existing and not args.replace:
+        print(f"{len(existing)} backdrop(s) already in {OUT_DIR.relative_to(ROOT)}.")
+        print("This composes them from Kenney tiles and will overwrite whatever")
+        print("is there, including anything fetched by fetch_scene_art.py.")
+        print("Pass --replace if that is what you want.")
+        return
     built = 0
     for scene_id in wanted:
         if scene_id not in scenes:
