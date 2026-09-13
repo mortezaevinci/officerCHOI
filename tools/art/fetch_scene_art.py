@@ -23,8 +23,10 @@ ANONYMOUS OUTPUT IS NOT USABLE, AND HERE IS WHY, SO NOBODY RETRIES IT:
     exactly where the dialogue box sits.
   - Adding `referrer=` and a Referer header does not remove it either. Also
     tested. Removal is tied to a registered account.
-  - Anonymous requests are additionally downscaled - asking for 1920x1080
-    returned 1024x576.
+  - Downscaling was recorded here as a third problem. It is not one, and the
+    claim was wrong: measured over a full anonymous run, every scene came
+    back at the full 1920x1080 that was asked for. The watermark is the only
+    thing standing between anonymous output and shippable art.
 
 So this needs a token from https://auth.pollinations.ai (free) passed via
 --token or the POLLINATIONS_TOKEN environment variable. With one, the run is
@@ -132,8 +134,9 @@ def main() -> None:
 
     if not args.token:
         print("WARNING: no token. Output will carry a pollinations.ai watermark\n"
-              "         in the bottom-right and be downscaled. Fine for looking\n"
-              "         at; not fine to ship. See the module docstring.\n")
+              "         in the bottom-right, which is where the dialogue box\n"
+              "         sits. Full resolution otherwise. Fine for looking at;\n"
+              "         not fine to ship. See the module docstring.\n")
 
     config = json.loads(CONFIG.read_text(encoding="utf-8"))
     scenes = {k: v for k, v in config["scenes"].items() if not k.startswith("_")}
