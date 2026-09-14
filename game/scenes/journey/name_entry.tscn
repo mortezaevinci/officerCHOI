@@ -36,7 +36,7 @@ horizontal_alignment = 1
 theme_override_colors/font_color = Color(0.909804, 0.921569, 0.937255, 1)
 
 [node name="Blurb" type="Label" parent="Center/Rows"]
-text = "Somebody is going to spend four months choosing this."
+text = "Somebody is going to spend four months choosing your name. Type it here."
 horizontal_alignment = 1
 autowrap_mode = 3
 theme_override_colors/font_color = Color(0.658824, 0.686275, 0.729412, 1)
