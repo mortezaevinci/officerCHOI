@@ -50,19 +50,21 @@ theme_override_font_sizes/font_size = 28
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Speaker" parent="UI" instance=ExtResource("3_slot")]
-offset_left = 150.0
-offset_top = 130.0
-offset_right = 570.0
-offset_bottom = 750.0
+custom_minimum_size = Vector2(240, 354)
+offset_left = 96.0
+offset_top = 40.0
+offset_right = 336.0
+offset_bottom = 394.0
 
 [node name="Player" parent="UI" instance=ExtResource("3_slot")]
+custom_minimum_size = Vector2(240, 354)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 grow_horizontal = 0
-offset_left = -570.0
-offset_top = 130.0
-offset_right = -150.0
-offset_bottom = 750.0
+offset_left = -336.0
+offset_top = 40.0
+offset_right = -96.0
+offset_bottom = 394.0
 
 [node name="DialogueBox" parent="UI" instance=ExtResource("2_box")]
