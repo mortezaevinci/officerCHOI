@@ -27,8 +27,17 @@ extends RefCounted
 
 const MISSIONS_PER_SEASON := 10
 
-## The run that ends every season, whichever life was lived.
+## The run that ends a season. Choi treats people differently depending on the
+## passport in front of him, and that difference is the point of the game - so
+## each nationality has its own encounter, `choi_<run>`. Falls back to the
+## shared "choi" for any run without one authored yet.
 const BOSS_RUN := "choi"
+
+
+## The boss run for a given life.
+static func boss_run_for(run_id: String) -> String:
+	var specific := "choi_%s" % run_id
+	return specific if JourneyData.available_runs().has(specific) else BOSS_RUN
 
 var run: JourneyData
 var season_number: int = 1

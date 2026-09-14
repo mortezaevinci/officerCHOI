@@ -189,7 +189,9 @@ func _begin_boss() -> void:
 	_phase = Phase.BOSS
 	_boss_step = 0
 
-	_boss = JourneyData.load_run(JourneySeason.BOSS_RUN)
+	var boss_id := JourneySeason.boss_run_for(
+		String(GameState.get_var("journey_run", GamePaths.DEFAULT_RUN)))
+	_boss = JourneyData.load_run(boss_id)
 	if not _boss.ok:
 		push_error("boss run failed to load:\n  %s" % "\n  ".join(_boss.errors))
 		_finish_life()
