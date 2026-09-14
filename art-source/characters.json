@@ -818,7 +818,7 @@
 					"color": "forest"
 				},
 				{
-					"path": "hair/unkempt/adult/{anim}.png",
+					"path": "hair/curly_short/adult/{anim}.png",
 					"palette": "hair",
 					"color": "black"
 				}
