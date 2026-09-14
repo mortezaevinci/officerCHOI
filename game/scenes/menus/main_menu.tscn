@@ -35,15 +35,15 @@ theme_override_constants/separation = 18
 [node name="Title" type="Label" parent="Center/Rows"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.968627, 0.788235, 0.470588, 1)
-theme_override_font_sizes/font_size = 88
-text = "OFFICER CHOI"
+theme_override_font_sizes/font_size = 52
+text = "Toronto Pearson's\nUS Immigration\nOfficer CHOI"
 horizontal_alignment = 1
 
 [node name="Tagline" type="Label" parent="Center/Rows"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.607843, 0.658824, 0.741176, 1)
 theme_override_font_sizes/font_size = 26
-text = "a night shift, and the things people say"
+text = "Officer CHOI protects the \"American dream\" from all of us nasty immigrants!"
 horizontal_alignment = 1
 
 [node name="Spacer" type="Control" parent="Center/Rows"]

@@ -20,6 +20,19 @@ func _ready() -> void:
 	_settings_button.pressed.connect(_on_settings)
 	_quit_button.pressed.connect(_on_quit)
 
+	# On a phone the BUTTONS sit toward the right, under a thumb, while the
+	# title and tagline stay centred where they read properly. A landscape
+	# handheld is held at the edges, so the middle of the screen is the
+	# hardest place to reach - but moving the whole menu right just leaves a
+	# dead area on the left and crowds the version label.
+	if OS.has_feature("mobile"):
+		var rows := $Center/Rows as VBoxContainer
+		rows.custom_minimum_size.x = 1100
+		for button: Button in [_continue_button, _new_game_button,
+				_settings_button, _quit_button]:
+			button.custom_minimum_size = Vector2(560, 104)
+			button.size_flags_horizontal = Control.SIZE_SHRINK_END
+
 	# Consoles and phones have no window to close.
 	_quit_button.visible = not OS.has_feature("mobile") and not OS.has_feature("web")
 
