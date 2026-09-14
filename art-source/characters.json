@@ -777,6 +777,15 @@
 					"color": "navy"
 				},
 				{
+					"path": "eyes/human/adult/{mood}/{anim}.png",
+					"palette": "eye",
+					"color": "brown",
+					"mood_map": {
+						"happy": "neutral",
+						"default": "neutral"
+					}
+				},
+				{
 					"path": "hair/plain/adult/{anim}.png",
 					"palette": "hair",
 					"color": "black"
@@ -816,6 +825,15 @@
 					"path": "torso/clothes/longsleeve/longsleeve/male/{anim}.png",
 					"palette": "cloth",
 					"color": "forest"
+				},
+				{
+					"path": "eyes/human/adult/{mood}/{anim}.png",
+					"palette": "eye",
+					"color": "brown",
+					"mood_map": {
+						"happy": "neutral",
+						"default": "neutral"
+					}
 				},
 				{
 					"path": "hair/curly_short/adult/{anim}.png",
@@ -859,6 +877,15 @@
 					"color": "navy"
 				},
 				{
+					"path": "eyes/human/adult/{mood}/{anim}.png",
+					"palette": "eye",
+					"color": "brown",
+					"mood_map": {
+						"happy": "neutral",
+						"default": "neutral"
+					}
+				},
+				{
 					"path": "hair/twists_fade/adult/{anim}.png",
 					"palette": "hair",
 					"color": "black"
@@ -900,6 +927,15 @@
 					"color": "forest"
 				},
 				{
+					"path": "eyes/human/adult/{mood}/{anim}.png",
+					"palette": "eye",
+					"color": "green",
+					"mood_map": {
+						"happy": "neutral",
+						"default": "neutral"
+					}
+				},
+				{
 					"path": "hair/curly_short/adult/{anim}.png",
 					"palette": "hair",
 					"color": "black"
@@ -939,6 +975,15 @@
 					"path": "torso/clothes/longsleeve/longsleeve/male/{anim}.png",
 					"palette": "cloth",
 					"color": "navy"
+				},
+				{
+					"path": "eyes/human/adult/{mood}/{anim}.png",
+					"palette": "eye",
+					"color": "blue",
+					"mood_map": {
+						"happy": "neutral",
+						"default": "neutral"
+					}
 				},
 				{
 					"path": "hair/buzzcut/adult/{anim}.png",

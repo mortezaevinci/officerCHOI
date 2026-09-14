@@ -1,8 +1,6 @@
 {
 	"_comment": "Speaker ids used in .dlg files. 'portrait_prefix' picks the art file: portraits/<prefix>_<mood>.png, falling back to portraits/<prefix>.png, and to a labelled placeholder card when neither exists yet.",
-
 	"_player": "There is no entry for the player. They type their own name at the start of a run, and content refers to them with the token {player}. Do not add one.",
-
 	"choi": {
 		"display_name": "Officer Choi",
 		"color": "#c0504d",
@@ -20,5 +18,25 @@
 		"color": "#8fc99a",
 		"portrait_prefix": "park",
 		"notes": "Desk sergeant. Runs the shift, and the gossip."
+	},
+	"player_iran": {
+		"display": "You",
+		"color": "#e8c98a"
+	},
+	"player_mexico": {
+		"display": "You",
+		"color": "#e8c98a"
+	},
+	"player_nigeria": {
+		"display": "You",
+		"color": "#e8c98a"
+	},
+	"player_palestine": {
+		"display": "You",
+		"color": "#e8c98a"
+	},
+	"player_usa": {
+		"display": "You",
+		"color": "#e8c98a"
 	}
 }

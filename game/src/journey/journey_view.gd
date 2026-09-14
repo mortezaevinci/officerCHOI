@@ -21,6 +21,7 @@ enum Phase { GOOD, BAD, BOSS, DONE }
 @onready var _background: TextureRect = $Background
 @onready var _progress: Label = $Progress
 @onready var _speaker: PortraitSlot = $UI/Speaker
+@onready var _player_slot: PortraitSlot = $UI/Player
 
 var _run: JourneyData
 var _boss: JourneyData
@@ -49,6 +50,13 @@ func _ready() -> void:
 	# characters.json, so that the nationalities stay independent. Announce them
 	# so the dialogue box prints "Farideh" rather than "farideh".
 	CharacterDb.register_cast(_run.cast)
+
+	# The player's own face, for the whole run. Five were built per
+	# nationality and nothing displayed them: this slot only ever showed the
+	# current speaker, and narration cleared even that.
+	if _player_slot != null:
+		_player_slot.set_character("player_%s" % run_id)
+		_player_slot.set_speaking(false)
 
 	_season = JourneySeason.assemble(_run, int(GameState.get_var("season", 1)))
 	_season.restore({"index": int(GameState.get_var("mission", 0))})
@@ -240,9 +248,13 @@ func _on_line_shown(speaker: String, mood: String, _text: String) -> void:
 		return
 	if speaker.is_empty():
 		_speaker.set_character("")
+		if _player_slot != null:
+			_player_slot.set_speaking(true)
 		return
 	_speaker.set_character(speaker, mood)
 	_speaker.set_speaking(true)
+	if _player_slot != null:
+		_player_slot.set_speaking(false)
 
 
 # --- presentation ------------------------------------------------------------

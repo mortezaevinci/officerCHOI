@@ -55,4 +55,14 @@ offset_top = 130.0
 offset_right = 570.0
 offset_bottom = 750.0
 
+[node name="Player" parent="UI" instance=ExtResource("3_slot")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+offset_left = -570.0
+offset_top = 130.0
+offset_right = -150.0
+offset_bottom = 750.0
+
 [node name="DialogueBox" parent="UI" instance=ExtResource("2_box")]

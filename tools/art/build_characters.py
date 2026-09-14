@@ -143,6 +143,11 @@ def recolour(image: Image.Image, mapping: dict) -> Image.Image:
 
 
 def resolve(layer: dict, anim: str, mood: str, head: str) -> str:
+    # A layer may remap the mood for itself. The eye sheets, for instance, have
+    # no `happy` expression while the shared mood map emits one - without this
+    # the eyes would be silently dropped from every amused portrait, because
+    # compose() skips whatever it cannot find.
+    mood = layer.get("mood_map", {}).get(mood, mood)
     return layer["path"].format(anim=anim, mood=mood, head=head)
 
 
