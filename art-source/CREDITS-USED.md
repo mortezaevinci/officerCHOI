@@ -11,6 +11,9 @@ option), which avoids share-alike and permits DRM. See `LICENSES.md`.
 | Layer | Authors | Licences offered |
 |---|---|---|
 | `body/bodies/male/walk.png` | bluecarrot16,JaidynReiman,Benjamin K. Smith (BenCreating),Evert,Eliza Wyatt (ElizaWy),TheraHedwig,MuffinElZangano,Durrani,Johannes Sjölund (wulax),Stephen Challener (Redshrike) | OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 |
+| `eyes/human/adult/anger/walk.png` | *not listed* | *unknown* |
+| `eyes/human/adult/neutral/walk.png` | *not listed* | *unknown* |
+| `eyes/human/adult/sad/walk.png` | *not listed* | *unknown* |
 | `feet/shoes/basic/male/walk.png` | JaidynReiman,bluecarrot16,Johannes Sjölund (wulax) | OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 |
 | `hair/buzzcut/adult/walk.png` | ElizaWy | OGA-BY 3.0 |
 | `head/faces/male/anger/walk.png` | JaidynReiman,ElizaWy,Stephen Challener (Redshrike) | OGA-BY 3.0 |
@@ -24,3 +27,9 @@ option), which avoids share-alike and permits DRM. See `LICENSES.md`.
 ## Combined author list, for the credits screen
 
 Benjamin K. Smith (BenCreating), Bluecarrot16, Durrani, Eliza Wyatt (ElizaWy), ElizaWy, Evert, JaidynReiman, Johannes Sjölund (wulax), MuffinElZangano, Stephen Challener (Redshrike), TheraHedwig, bluecarrot16
+
+## NEEDS ATTENTION
+
+- eyes/human/adult/anger/walk.png — not listed in CREDITS.csv
+- eyes/human/adult/neutral/walk.png — not listed in CREDITS.csv
+- eyes/human/adult/sad/walk.png — not listed in CREDITS.csv
