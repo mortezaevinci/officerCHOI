@@ -741,6 +741,211 @@
 					"color": "ash"
 				}
 			]
+		},
+		"player_iran": {
+			"display_name": "You (Iranian)",
+			"head": "male",
+			"layers": [
+				{
+					"path": "body/bodies/male/{anim}.png",
+					"palette": "body",
+					"color": "brown"
+				},
+				{
+					"path": "head/heads/human/male/{anim}.png",
+					"palette": "body",
+					"color": "brown"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/male/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve/male/{anim}.png",
+					"palette": "cloth",
+					"color": "navy"
+				},
+				{
+					"path": "hair/plain/adult/{anim}.png",
+					"palette": "hair",
+					"color": "black"
+				}
+			]
+		},
+		"player_mexico": {
+			"display_name": "You (Mexican)",
+			"head": "male",
+			"layers": [
+				{
+					"path": "body/bodies/male/{anim}.png",
+					"palette": "body",
+					"color": "brown"
+				},
+				{
+					"path": "head/heads/human/male/{anim}.png",
+					"palette": "body",
+					"color": "brown"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/male/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve/male/{anim}.png",
+					"palette": "cloth",
+					"color": "forest"
+				},
+				{
+					"path": "hair/unkempt/adult/{anim}.png",
+					"palette": "hair",
+					"color": "black"
+				}
+			]
+		},
+		"player_nigeria": {
+			"display_name": "You (Nigerian)",
+			"head": "male",
+			"layers": [
+				{
+					"path": "body/bodies/male/{anim}.png",
+					"palette": "body",
+					"color": "bronze"
+				},
+				{
+					"path": "head/heads/human/male/{anim}.png",
+					"palette": "body",
+					"color": "bronze"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/male/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve/male/{anim}.png",
+					"palette": "cloth",
+					"color": "navy"
+				},
+				{
+					"path": "hair/twists_fade/adult/{anim}.png",
+					"palette": "hair",
+					"color": "black"
+				}
+			]
+		},
+		"player_palestine": {
+			"display_name": "You (Palestinian)",
+			"head": "male",
+			"layers": [
+				{
+					"path": "body/bodies/male/{anim}.png",
+					"palette": "body",
+					"color": "light"
+				},
+				{
+					"path": "head/heads/human/male/{anim}.png",
+					"palette": "body",
+					"color": "light"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/male/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve/male/{anim}.png",
+					"palette": "cloth",
+					"color": "forest"
+				},
+				{
+					"path": "hair/curly_short/adult/{anim}.png",
+					"palette": "hair",
+					"color": "black"
+				}
+			]
+		},
+		"player_usa": {
+			"display_name": "You (US citizen)",
+			"head": "male",
+			"layers": [
+				{
+					"path": "body/bodies/male/{anim}.png",
+					"palette": "body",
+					"color": "light"
+				},
+				{
+					"path": "head/heads/human/male/{anim}.png",
+					"palette": "body",
+					"color": "light"
+				},
+				{
+					"path": "head/faces/{head}/{mood}/{anim}.png",
+					"palette": null,
+					"color": null
+				},
+				{
+					"path": "legs/pants2/male/{anim}.png",
+					"palette": "cloth",
+					"color": "charcoal"
+				},
+				{
+					"path": "feet/shoes/basic/male/{anim}.png",
+					"palette": "cloth",
+					"color": "black"
+				},
+				{
+					"path": "torso/clothes/longsleeve/longsleeve/male/{anim}.png",
+					"palette": "cloth",
+					"color": "navy"
+				},
+				{
+					"path": "hair/buzzcut/adult/{anim}.png",
+					"palette": "hair",
+					"color": "sandy"
+				}
+			]
 		}
 	}
 }

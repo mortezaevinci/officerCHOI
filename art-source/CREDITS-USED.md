@@ -10,45 +10,17 @@ option), which avoids share-alike and permits DRM. See `LICENSES.md`.
 
 | Layer | Authors | Licences offered |
 |---|---|---|
-| `body/bodies/female/walk.png` | Benjamin K. Smith (BenCreating),bluecarrot16,TheraHedwig,Evert,MuffinElZangano,Durrani,Pierre Vigier (pvigier),ElizaWy,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike) | OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 |
 | `body/bodies/male/walk.png` | bluecarrot16,JaidynReiman,Benjamin K. Smith (BenCreating),Evert,Eliza Wyatt (ElizaWy),TheraHedwig,MuffinElZangano,Durrani,Johannes Sjölund (wulax),Stephen Challener (Redshrike) | OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 |
 | `feet/shoes/basic/male/walk.png` | JaidynReiman,bluecarrot16,Johannes Sjölund (wulax) | OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 |
-| `feet/shoes/basic/thin/walk.png` | JaidynReiman,Joe White,Johannes Sjölund (wulax) | OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 |
-| `hair/balding/adult/walk.png` | ElizaWy | OGA-BY 3.0 |
-| `hair/bob/adult/walk.png` | ElizaWy,bluecarrot16 | CC0 |
 | `hair/buzzcut/adult/walk.png` | ElizaWy | OGA-BY 3.0 |
-| `hair/flat_top_straight/adult/walk.png` | ElizaWy,bluecarrot16 | CC0 |
-| `hair/long/adult/walk.png` | JaidynReiman,Manuel Riecke (MrBeast) | CC-BY-SA 3.0,GPL 3.0 |
-| `hair/messy1/adult/walk.png` | JaidynReiman,Manuel Riecke (MrBeast) | CC-BY-SA 3.0,GPL 3.0 |
-| `hair/page/adult/walk.png` | Page,Johannes Sjölund (wulax) | OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 |
-| `head/faces/elderly/anger/walk.png` | JaidynReiman,ElizaWy,Stephen Challener (Redshrike) | OGA-BY 3.0 |
-| `head/faces/elderly/happy/walk.png` | JaidynReiman,ElizaWy,Stephen Challener (Redshrike) | OGA-BY 3.0 |
-| `head/faces/elderly/neutral/walk.png` | JaidynReiman,ElizaWy,Stephen Challener (Redshrike) | OGA-BY 3.0 |
-| `head/faces/elderly/sad/walk.png` | JaidynReiman,ElizaWy,Stephen Challener (Redshrike) | OGA-BY 3.0 |
-| `head/faces/female/anger/walk.png` | JaidynReiman,ElizaWy,Stephen Challener (Redshrike) | OGA-BY 3.0 |
-| `head/faces/female/happy/walk.png` | JaidynReiman,ElizaWy,Stephen Challener (Redshrike) | OGA-BY 3.0 |
-| `head/faces/female/neutral/walk.png` | JaidynReiman,ElizaWy,Stephen Challener (Redshrike) | OGA-BY 3.0 |
-| `head/faces/female/sad/walk.png` | JaidynReiman,ElizaWy,Stephen Challener (Redshrike) | OGA-BY 3.0 |
 | `head/faces/male/anger/walk.png` | JaidynReiman,ElizaWy,Stephen Challener (Redshrike) | OGA-BY 3.0 |
 | `head/faces/male/happy/walk.png` | JaidynReiman,ElizaWy,Stephen Challener (Redshrike) | OGA-BY 3.0 |
 | `head/faces/male/neutral/walk.png` | JaidynReiman,ElizaWy,Stephen Challener (Redshrike) | OGA-BY 3.0 |
 | `head/faces/male/sad/walk.png` | JaidynReiman,ElizaWy,Stephen Challener (Redshrike) | OGA-BY 3.0 |
-| `head/heads/human/female/walk.png` | bluecarrot16,Benjamin K. Smith (BenCreating),Stephen Challener (Redshrike) | OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 |
 | `head/heads/human/male/walk.png` | bluecarrot16,Benjamin K. Smith (BenCreating),Stephen Challener (Redshrike) | OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 |
-| `head/heads/human/male_elderly/walk.png` | Benjamin K. Smith (BenCreating),Eliza Wyatt (ElizaWy),Stephen Challener (Redshrike) | OGA-BY 3.0,CC-BY 3.0 |
 | `legs/pants2/male/walk.png` | JaidynReiman,ElizaWy,Bluecarrot16,Johannes Sjölund (wulax),Stephen Challener (Redshrike) | OGA-BY 3.0,GPL 3.0 |
-| `legs/pants2/thin/walk.png` | ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike) | OGA-BY 3.0 |
 | `torso/clothes/longsleeve/longsleeve/male/walk.png` | JaidynReiman,Johannes Sjölund (wulax) | OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 |
-| `torso/clothes/longsleeve/longsleeve2/male/walk.png` | ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax) | OGA-BY 3.0 |
-| `torso/clothes/longsleeve/longsleeve2_scoop/female/walk.png` | ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax) | OGA-BY 3.0 |
-| `torso/clothes/longsleeve/longsleeve2_vneck/female/walk.png` | ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax) | OGA-BY 3.0 |
-| `torso/waist/belt_leather/male/walk.png` | bluecarrot16,Johannes Sjölund (wulax),Matthew Krohn (makrohn) | OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 |
 
 ## Combined author list, for the credits screen
 
-Benjamin K. Smith (BenCreating), Bluecarrot16, Durrani, Eliza Wyatt (ElizaWy), ElizaWy, Evert, JaidynReiman, Joe White, Johannes Sjölund (wulax), Manuel Riecke (MrBeast), Matthew Krohn (makrohn), MuffinElZangano, Page, Pierre Vigier (pvigier), Stephen Challener (Redshrike), TheraHedwig, bluecarrot16
-
-## NEEDS ATTENTION
-
-- hair/long/adult/walk.png — only offers: CC-BY-SA 3.0,GPL 3.0
-- hair/messy1/adult/walk.png — only offers: CC-BY-SA 3.0,GPL 3.0
+Benjamin K. Smith (BenCreating), Bluecarrot16, Durrani, Eliza Wyatt (ElizaWy), ElizaWy, Evert, JaidynReiman, Johannes Sjölund (wulax), MuffinElZangano, Stephen Challener (Redshrike), TheraHedwig, bluecarrot16
