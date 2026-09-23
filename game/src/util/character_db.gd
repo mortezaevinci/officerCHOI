@@ -95,6 +95,50 @@ static func color(id: String) -> Color:
 
 ## Portrait path for a mood, e.g. ("park", "worried"). Returns "" when there is
 ## no art yet - callers are expected to fall back to a placeholder.
+## Where the 3x3 mood sheets live, and which cell each mood is.
+##
+## One image per character rather than nine, because a face generated nine
+## separate times comes back as nine different people - the portrait would
+## change identity mid-conversation. Drawn as one sheet it is the same face in
+## every cell, and the region is picked here.
+const SHEET_FOLDER := "res://assets/art/portraits/sheets"
+const SHEET_COLS := 3
+const SHEET_ROWS := 3
+## Row-major, matching _script/officerchoi/mood_sheet.py. Keep the two in step.
+const SHEET_MOODS := ["neutral", "amused", "angry",
+					  "cold", "tense", "tired",
+					  "wary", "worried", "quiet"]
+## `flat` is not drawn; for a face it is the same thing as neutral.
+const MOOD_ALIAS := {"flat": "neutral", "": "neutral"}
+
+
+## The portrait to show, as a texture. Prefers the character's mood sheet and
+## falls back to the individual files, so a character without a sheet yet still
+## renders. Returns null when there is no art at all - the caller shows the
+## name card instead.
+static func portrait_texture(id: String, mood: String = "") -> Texture2D:
+	var entry := get_character(id)
+	var slug := String(entry.get("portrait_prefix", canonical_id(id)))
+	var sheet_path := "%s/%s.png" % [SHEET_FOLDER, slug]
+	if ResourceLoader.exists(sheet_path):
+		var sheet: Texture2D = load(sheet_path)
+		if sheet != null:
+			var want := String(MOOD_ALIAS.get(mood, mood))
+			var cell := SHEET_MOODS.find(want)
+			if cell < 0:
+				cell = 0
+			var w := float(sheet.get_width()) / SHEET_COLS
+			var h := float(sheet.get_height()) / SHEET_ROWS
+			var atlas := AtlasTexture.new()
+			atlas.atlas = sheet
+			atlas.region = Rect2(float(cell % SHEET_COLS) * w,
+								 float(cell / SHEET_COLS) * h, w, h)
+			return atlas
+
+	var path := portrait_path(id, mood)
+	return load(path) if not path.is_empty() else null
+
+
 static func portrait_path(id: String, mood: String = "") -> String:
 	var entry := get_character(id)
 	var folder := String(entry.get("portrait_folder", "res://assets/art/portraits"))

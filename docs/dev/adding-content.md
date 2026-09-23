@@ -14,7 +14,7 @@ Four recipes. None of them need new code.
 To read it back without playing to it:
 
 ```powershell
-tools\godot\Godot_v4.7.2-stable_win64.exe --path game -- --dialogue=my_scene.dlg --left=choi --right=ward --auto
+C:\temp\godotsetup\engine\godot\Godot_v4.7.2-stable_win64.exe --path game -- --dialogue=my_scene.dlg --left=choi --right=ward --auto
 ```
 
 ---

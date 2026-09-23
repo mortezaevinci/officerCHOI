@@ -147,7 +147,7 @@ clicked into the Input Map panel, so they are reviewable in a diff and identical
 on every machine. Edit the table there and re-run it:
 
 ```powershell
-tools\godot\Godot_v4.7.2-stable_win64_console.exe --headless --path game --script res://tools/bootstrap_input_map.gd
+C:\temp\godotsetup\engine\godot\Godot_v4.7.2-stable_win64_console.exe --headless --path game --script res://tools/bootstrap_input_map.gd
 ```
 
 | Action | Keyboard | Gamepad |

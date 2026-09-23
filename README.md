@@ -41,7 +41,7 @@ chapter can be added without touching a line of code.
 Everything is already installed and the project already runs. To open it:
 
 ```powershell
-tools\godot\Godot_v4.7.2-stable_win64.exe --path game --editor
+C:\temp\godotsetup\engine\godot\Godot_v4.7.2-stable_win64.exe --path game --editor
 ```
 
 There are **two** editors in `tools\`, on purpose. `godot\` is the standard
@@ -52,7 +52,7 @@ needed only by the ai-game.dev AI addon and for producing release builds. See
 To play it without the editor:
 
 ```powershell
-tools\godot\Godot_v4.7.2-stable_win64.exe --path game
+C:\temp\godotsetup\engine\godot\Godot_v4.7.2-stable_win64.exe --path game
 ```
 
 To run the tests (do this before every commit):
@@ -73,10 +73,10 @@ builds these switches skip all of it:
 
 ```powershell
 # straight into a room, at a named spawn point
-tools\godot\Godot_v4.7.2-stable_win64.exe --path game -- --scene=res://scenes/rooms/precinct.tscn --spawn=desk
+C:\temp\godotsetup\engine\godot\Godot_v4.7.2-stable_win64.exe --path game -- --scene=res://scenes/rooms/precinct.tscn --spawn=desk
 
 # straight into one conversation, with two characters on screen
-tools\godot\Godot_v4.7.2-stable_win64.exe --path game -- --dialogue=desk_ward.dlg --left=choi --right=ward
+C:\temp\godotsetup\engine\godot\Godot_v4.7.2-stable_win64.exe --path game -- --dialogue=desk_ward.dlg --left=choi --right=ward
 
 # ...and let it read itself to you
 ... -- --dialogue=desk_ward.dlg --left=choi --right=ward --auto

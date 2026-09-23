@@ -1328,7 +1328,7 @@
 					9
 				]
 			],
-			"prompt": "a UNRWA school classroom in the West Bank, breeze-block walls, double desks, a blackboard, one window with the glass taped, war-damaged, concrete rubble and exposed rebar at the edges of frame, an enormous unexploded aerial bomb standing absurdly in view, dust-grey and bleached, improvised repairs, plastic sheeting, no people"
+			"prompt": "a UNRWA school classroom in the West Bank, breeze-block walls, double desks, a blackboard, one window with the glass taped, no people"
 		},
 		"SC-CLASSROOM-NG": {
 			"_note": "NG variant of SC-CLASSROOM. A nigerian public primary classroom, sixty wooden desks packed wall to wall, a cracked blackboard, louvred windows, no fans turning.",
@@ -1404,7 +1404,7 @@
 					9
 				]
 			],
-			"prompt": "the front room of a Palestinian family house in daylight, tiled floor, low couches against three walls, a framed photograph, war-damaged, concrete rubble and exposed rebar at the edges of frame, an enormous unexploded aerial bomb standing absurdly in view, dust-grey and bleached, improvised repairs, plastic sheeting, no people"
+			"prompt": "the front room of a Palestinian family house in daylight, tiled floor, low couches against three walls, a framed photograph, no people"
 		},
 		"SC-HOME-DAY-NG": {
 			"_note": "NG variant of SC-HOME-DAY. The parlour of a lagos flat in daylight, velvet-covered settee under plastic, a standing fan, louvre windows, a wall clock.",
@@ -1543,7 +1543,7 @@
 					11
 				]
 			],
-			"prompt": "a street in Nablus in daylight, stone buildings, shuttered shops, steep steps, water tanks on every roof, war-damaged, concrete rubble and exposed rebar at the edges of frame, an enormous unexploded aerial bomb standing absurdly in view, dust-grey and bleached, improvised repairs, plastic sheeting, no people"
+			"prompt": "a street in Nablus in daylight, stone buildings, shuttered shops, steep steps, water tanks on every roof, no people"
 		},
 		"SC-REGISTRY-PS": {
 			"_note": "PS variant of SC-REGISTRY. A palestinian authority civil registry counter, arabic forms in trays, a ledger, a queue rail.",
@@ -1567,7 +1567,7 @@
 					9
 				]
 			],
-			"prompt": "a Palestinian Authority civil registry counter, Arabic forms in trays, a ledger, a queue rail, war-damaged, concrete rubble and exposed rebar at the edges of frame, an enormous unexploded aerial bomb standing absurdly in view, dust-grey and bleached, improvised repairs, plastic sheeting, no people"
+			"prompt": "a Palestinian Authority civil registry counter, Arabic forms in trays, a ledger, a queue rail, no people"
 		},
 		"SC-REGISTRY-MX": {
 			"_note": "MX variant of SC-REGISTRY. A mexican registro civil office, a wooden counter, bound ledgers, a framed seal on the wall.",
@@ -1610,7 +1610,7 @@
 					9
 				]
 			],
-			"prompt": "a cluttered desk at night in a West Bank flat, laptop glow, papers, a glass of tea, war-damaged, concrete rubble and exposed rebar at the edges of frame, an enormous unexploded aerial bomb standing absurdly in view, dust-grey and bleached, improvised repairs, plastic sheeting, no people"
+			"prompt": "a cluttered desk at night in a West Bank flat, laptop glow, papers, a glass of tea, no people"
 		},
 		"SC-DESK-NIGHT-NG": {
 			"_note": "NG variant of SC-DESK-NIGHT. A cluttered desk at night in lagos, laptop glow, an inverter and cables, a phone charging.",
@@ -1696,7 +1696,7 @@
 					10
 				]
 			],
-			"prompt": "a walled courtyard of a Palestinian village house, a fig tree, olive oil tins stacked by the door, stone paving, war-damaged, concrete rubble and exposed rebar at the edges of frame, an enormous unexploded aerial bomb standing absurdly in view, dust-grey and bleached, improvised repairs, plastic sheeting, no people"
+			"prompt": "a walled courtyard of a Palestinian village house, a fig tree, olive oil tins stacked by the door, stone paving, no people"
 		},
 		"SC-OFFICE-NG": {
 			"_note": "NG variant of SC-OFFICE. A lagos fintech office, desks close together, an inverter humming, a whiteboard, blinds against the glare.",

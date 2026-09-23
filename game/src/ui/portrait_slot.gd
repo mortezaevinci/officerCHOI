@@ -30,13 +30,16 @@ func set_character(id: String, mood: String = "") -> void:
 	_placeholder.visible = true
 	_placeholder.modulate = CharacterDb.color(id)
 
-	var path := CharacterDb.portrait_path(id, mood)
-	if path.is_empty():
+	# A mood sheet is one image holding all nine faces; this hands back the right
+	# cell as an AtlasTexture, and falls back to the single-file portrait for a
+	# character who has no sheet yet.
+	var art := CharacterDb.portrait_texture(id, mood)
+	if art == null:
 		_texture.visible = false
 		_placeholder_label.text = CharacterDb.display_name(id)
 		_placeholder_label.visible = true
 	else:
-		_texture.texture = load(path)
+		_texture.texture = art
 		_texture.visible = true
 		_placeholder_label.visible = false
 

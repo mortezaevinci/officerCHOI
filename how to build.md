@@ -56,7 +56,7 @@ The name misspellings (Kaveh -> Gaveh, Jose -> Hose) come from a CSV and need
 their own compile step after you edit it:
 
 ```powershell
-python C:\temp\_script\names_build.py
+python C:\temp\_script\officerchoi\names_build.py
 ```
 
 Source: `assets\text\names\misspellings.csv`

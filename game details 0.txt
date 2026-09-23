@@ -59,11 +59,13 @@ Go back, and research deeper, into specific details and examples up to another 5
   can ffind in the resources you already searched. Do not stick only to the typical examples, and
   find weird rare ones. 
 
+  Create, the /details/ folder to include details, and examples. Search for it for 5 more layers online and find more details, and examples, and include. Makeup examples that sound reasonable (verification is not necessary. This is for a game, so we wnat all possible examples.)
+
 
 task7:
 
 similar to iran under /assets/text/iran
-similar to iran under /assets/text/Palestine
+similar to Palestine under /assets/text/Palestine
 
 do for Nigeria under assets\text\Nigeria\
 
@@ -82,10 +84,16 @@ Go back, and research deeper, into specific details and examples up to another 5
   can ffind in the resources you already searched. Do not stick only to the typical examples, and
   find weird rare ones. 
 
+Create, the /details/ folder to include details, and examples. Search for it for 5 more layers online and find more details, and examples, and include. Makeup examples that sound reasonable (verification is not necessary. This is for a game, so we wnat all possible examples.)
+
   task8:
 
 
-similar to iran under /assets/text/iran
+similar to /assets/text/iran
+ /assets/text/Palestine
+ assets\text\Nigeria\
+
+then
 do for Mexico under assets\text\Mexico\
 
 make a of list (listissue.csv, with id, with basic information, applicability etc) and details (details for eaci issue, issue_id.csv, which includes details provided in various columns, extra expenses in money, extra energy, extra time) of ALL hurdles in the way of an Mexican Men (That is all hurdles for all living in occupied Mexico, for all Mexicans, for all men)
@@ -103,10 +111,26 @@ Go back, and research deeper, into specific details and examples up to another 5
   can ffind in the resources you already searched. Do not stick only to the typical examples, and
   find weird rare ones. 
 
+  Create, the /details/ folder to include details, and examples. Search for it for 5 more layers online and find more details, and examples, and include. Makeup examples that sound reasonable (verification is not necessary. This is for a game, so we wnat all possible examples.)
+
 task9:
 
 Similarly, make a new set under assets\text\goodlife
 
 Instead of listissues, listlife.csv that contains good stuff in life, everything you can and include many examples similarly (under /details/ folder)
+Create, the /details/ folder to include details, and examples. Search for it for 5 more layers online and find more details, and examples, and include. Makeup examples that sound reasonable (verification is not necessary. This is for a game, so we wnat all possible examples.)
 
 I expect this listlife includes thousands of different events
+
+
+task10:
+
+Similar to the same structure
+
+make a new list under
+
+/assets/text/abuse/
+
+listissues.csv should contain all forms of possible abuse, and specify if it can be done using abuse of position of power. This should include all forms and all places, in the government, at work, manager, student, professor, men, women etc. For example, it should include even all tiny little details, like a man in position of power calling women customers "babe", or us immigration officer denying a TN visa on any excuse from transcript, not complying with abusive language, or what is the name of end client, or data scientist is not a valid job, or etc. Include all obvious abuse but do not forget about subtle ones.
+
+Create, the /details/ folder to include details, and examples. Search for it for 5 more layers online and find more details, and examples, and include. Makeup examples that sound reasonable (verification is not necessary. This is for a game, so we wnat all possible examples.)

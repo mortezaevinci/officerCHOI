@@ -1,7 +1,7 @@
 {
-	"_comment": "Who each character is, as a stack of LPC layers. Paths are relative to art-source/lpc/spritesheets. {anim} is the animation sheet (walk), {mood} the facial expression, {head} the head type for that character. Layers draw in the order listed, so hair goes last.",
+	"_comment": "Who each character is, as a stack of LPC layers. Paths are relative to C:/temp/godotsetup/assets/lpc/spritesheets. {anim} is the animation sheet (walk), {mood} the facial expression, {head} the head type for that character. Layers draw in the order listed, so hair goes last.",
 	"_licensing": "Every layer here is licence-clean for a commercial release: its CREDITS.csv entry offers CC0, OGA-BY or CC-BY, so we elect one of those and avoid CC-BY-SA's share-alike and anti-DRM terms. build_characters.py re-checks this on every run and shouts if a layer is not clean. Do not add a layer without running it.",
-	"_colours": "LPC ships every sheet in one reference palette and the web generator recolours it. We do the same offline: 'palette' names the ramp family, 'color' the target ramp, from art-source/lpc/palette_definitions/<family>/<family>_ulpc.json. null/null keeps a sheet as shipped.",
+	"_colours": "LPC ships every sheet in one reference palette and the web generator recolours it. We do the same offline: 'palette' names the ramp family, 'color' the target ramp, from C:/temp/godotsetup/assets/lpc/palette_definitions/<family>/<family>_ulpc.json. null/null keeps a sheet as shipped.",
 	"source": {
 		"sheets": "lpc/spritesheets",
 		"palettes": "lpc/palette_definitions",

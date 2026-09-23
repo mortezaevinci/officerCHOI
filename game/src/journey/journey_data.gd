@@ -2,7 +2,7 @@ class_name JourneyData
 extends RefCounted
 ## Reads one journey run from content/journey/<run>/journey.json.
 ##
-## The document is written by C:\temp\_script\journey_build.py against the schema
+## The document is written by C:\temp\_script\officerchoi\journey_build.py against the schema
 ## in journey_schema.py. Both sides must change together, and
 ## tests/cases/test_journey.gd is what makes them agree.
 ##

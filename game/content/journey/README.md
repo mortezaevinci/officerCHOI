@@ -8,12 +8,12 @@ content/journey/<run>/journey.json     the whole run
 assets/art/backgrounds/journey/*.png   the backdrops it names
 ```
 
-Built by `C:\temp\_script\journey_build.py` from `journey_schema.py` and
+Built by `C:\temp\_script\officerchoi\journey_build.py` from `journey_schema.py` and
 `journey_<run>_events.py`. **Edit those and re-run; never hand-edit the JSON.**
 
 ```powershell
-python.exe C:\temp\_script\journey_build.py --run iran
-python.exe C:\temp\_script\journey_build.py --run choi
+python.exe C:\temp\_script\officerchoi\journey_build.py --run iran
+python.exe C:\temp\_script\officerchoi\journey_build.py --run choi
 python.exe tools\art\build_journey_scenes.py
 ```
 
@@ -178,7 +178,7 @@ and `test_scenes` only checks a scene can be instantiated.
 New scripts need an import pass before the headless runner sees them:
 
 ```
-tools\godot\Godot_v4.7.2-stable_win64_console.exe --headless --path game --import
+C:\temp\godotsetup\engine\godot\Godot_v4.7.2-stable_win64_console.exe --headless --path game --import
 ```
 
 ## Not done yet

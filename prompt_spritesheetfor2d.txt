@@ -1,0 +1,13 @@
+Generate a 2D pixel art sprite sheet for a side-scrolling platformer game
+
+- Individual sprite size: Exactly 64x64 pixels per tile.
+- Total sheet dimensions: 360 pixels wide x 360 pixels tall (to accommodate a 5x5 grid with 5-pixel transparent gutters).
+- Background: Completely transparent (PNG format). No background scenery, no water, no shadows cast outside the tiles.
+- Grid layout: Strictly ordered in 5 rows and 5 columns, with exactly 5 pixels of empty transparent space between each tile (top, bottom, left, and right gutters).
+- Art style: Flat-shaded pixel art with 2-3 distinct shades per color, crisp 1px black outlines, high contrast, and vibrant saturated colors so sprites pop clearly in a game engine. Top-down isometric is NOT allowed; this must be a strict 2D SIDE-VIEW (profile) for a platformer.
+
+The main character is a Dolphin. The game is about catching different ingredients thrown at the Dolphin in the air or floating and immersing in water until all the required ingredients for a famous dish is completed. Here, it is about Istanbul famous dishes. 
+
+so, create 6 frames animations for different actions you think might be needed for the dolphin in the horizontal scrolling platformer. 
+
+Besides, create the ingredients for at least 5 Istanbul famous dishes, and the design for the completed dish as well. They must be in a way that make them plausible to be caught by the Dolphin in the Air and water.

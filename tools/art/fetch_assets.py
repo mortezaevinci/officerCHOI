@@ -1,4 +1,4 @@
-"""Downloads the CC0 source art packs into art-source/kenney/.
+"""Downloads the CC0 source art packs into C:/temp/godotsetup/assets/kenney/.
 
     python.exe tools\\art\\fetch_assets.py
     python.exe tools\\art\\fetch_assets.py --force

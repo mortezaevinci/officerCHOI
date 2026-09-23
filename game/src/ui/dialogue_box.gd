@@ -19,6 +19,9 @@ const AUTO_ADVANCE_DELAY := 1.4
 @onready var _text: RichTextLabel = $Panel/Margin/Rows/Text
 @onready var _continue: Control = $Panel/Margin/Rows/Continue
 @onready var _choices: VBoxContainer = $Choices
+## The advance button, on the RIGHT. Choices are on the LEFT, so a reflexive
+## tap where "I understand" usually sits can never pick an option by accident.
+@onready var _understand: Button = $Understand
 
 var _typing: bool = false
 var _awaiting_choice: bool = false
@@ -33,6 +36,11 @@ func _ready() -> void:
 	# appearing, so finishing a line does not reflow the panel.
 	_continue.visible = true
 	_continue.modulate.a = 0.0
+	# Hidden until there is a line to acknowledge. Pressing it does exactly
+	# what tapping the box does: finish the line if it is still typing,
+	# otherwise move on.
+	_understand.visible = false
+	_understand.pressed.connect(_step)
 	set_process(false)
 
 	Dialogue.started.connect(_on_started)
@@ -118,6 +126,7 @@ func _on_line_shown(speaker: String, _mood: String, text: String) -> void:
 	_awaiting_choice = false
 	_clear_choices()
 	_panel.visible = true
+	_understand.visible = true
 
 	# The label keeps its slot whether or not there is a name in it. Toggling
 	# visible made the panel a different height on narration than on speech,
@@ -140,6 +149,10 @@ func _on_line_shown(speaker: String, _mood: String, text: String) -> void:
 func _on_choices_offered(options: Array) -> void:
 	_awaiting_choice = true
 	_continue.modulate.a = 0.0
+	# The advance button goes away entirely while a choice is up: there is
+	# nothing to acknowledge, and leaving it there is what would invite the
+	# accidental press this layout exists to prevent.
+	_understand.visible = false
 	_clear_choices()
 
 	for option: Dictionary in options:
@@ -175,4 +188,5 @@ func _on_ended(_script_id: String) -> void:
 	set_process(false)
 	_typing = false
 	_awaiting_choice = false
+	_understand.visible = false
 	_clear_choices()

@@ -3,7 +3,7 @@ extends TestCase
 ## halves of their format.
 ##
 ## content/journey/<run>/journey.json is written by Python
-## (C:\temp\_script\journey_build.py) and read by GDScript
+## (C:\temp\_script\officerchoi\journey_build.py) and read by GDScript
 ## (src/journey/journey_data.gd). Nothing but this file makes the two agree:
 ## rename a key on one side and every record still parses, into nothing.
 ##

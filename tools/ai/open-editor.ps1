@@ -7,7 +7,7 @@
 #
 # Use the .NET editor whenever you want the addon live. For ordinary work -
 # writing dialogue, running the game, running tests - the standard editor in
-# tools\godot is faster and quieter.
+# C:\temp\godotsetup\engine\godot is faster and quieter.
 
 param(
     [int]$Port = 24777,
@@ -20,7 +20,7 @@ $ErrorActionPreference = "Stop"
 
 $root   = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $game   = Join-Path $root "game"
-$editor = Join-Path $root "tools\godot-mono\Godot_v4.7.2-stable_mono_win64\Godot_v4.7.2-stable_mono_win64.exe"
+$editor = "C:\temp\godotsetup\engine\godot-mono\Godot_v4.7.2-stable_mono_win64\Godot_v4.7.2-stable_mono_win64.exe"
 
 if (-not (Test-Path $editor)) {
     Write-Error "The .NET Godot editor is missing. Run tools\setup\install-godot.ps1 -Mono"

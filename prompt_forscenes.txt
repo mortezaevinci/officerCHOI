@@ -1,0 +1,56 @@
+pictures in C:\temp\officerchoi\game\assets\art\backgrounds\journey are terrible.
+
+Regenerate them based on scene descriptions inside new locations:
+
+background file locations:
+C:\temp\officerchoi\game\assets\art\backgrounds\journey
+
+new locations
+C:\temp\officerchoi\game\assets\art\backgrounds\journey2
+
+Scene descriptions:
+
+"scenes":{"SC-CHECKPOINT":{"art":"SC-CHECKPOINT.png","location":"checkpoint","time":"dawn","mood":"cold","note":"The
+	{"checkpoint on the way to school, and every journey after it. Cages,
+	{"turnstiles, a queue that starts before
+	{"dawn."},"SC-PERMIT-WINDOW":{"art":"SC-PERMIT-WINDOW.png","location":"permit_office","time":"day","mood":"flat","note":"The
+	{"District Coordination Office window. Where the tasreeh is applied for, and
+	{"where the answer is usually nothing at
+	{"all."},"SC-OLIVE-GROVE":{"art":"SC-OLIVE-GROVE.png","location":"olive_grove","time":"day","mood":"warm","note":"Terraced
+	{"olive trees older than every document in this story. The harvest, and the
+	{"one day a year it is
+	{"allowed."},"SC-ALLENBY":{"art":"SC-ALLENBY.png","location":"allenby","time":"day","mood":"tense","note":"The
+	{"King Hussein bridge terminal. The only way out, and it closes without
+	{"notice."},"SC-HOSPITAL-GATE":{"art":"SC-HOSPITAL-GATE.png","location":"hospital","time":"day","mood":"worn","note":"The
+	{"hospital you can see and the permit you need to reach
+	{"it."},"SC-ROOFTOP-TANKS":{"art":"SC-ROOFTOP-TANKS.png","location":"rooftop","time":"dusk","mood":"quiet","note":"Black
+	{"water tanks and solar heaters on a flat roof. Where you go when the power
+	{"is on six hours a
+	{"day."},"SC-RUBBLE":{"art":"SC-RUBBLE.png","location":"demolition","time":"day","mood":"bleak","note":"A
+	{"house that had a building permit refused, and then had no
+	{"house."},"SC-BOMBED-ROOM":{"art":"SC-BOMBED-ROOM.png","location":"bombed_room","time":"day","mood":"bleak","note":"Where
+	{"the Palestinian run opens and, thirty seconds later, ends. A domestic room
+	{"with the ceiling gone and an unexploded bomb standing in the middle of it,
+	{"absurdly large. The absurdity is the point: it is too big to be a surprise
+	{"and nobody in the room is reacting to
+	{"it."},"SC-CLASSROOM-PS":{"art":"SC-CLASSROOM-PS.png","location":"school","time":"day","mood":"flat","note":"PS
+	{"variant of SC-CLASSROOM. A unrwa school classroom in the west bank,
+	{"breeze-block walls, double desks, a blackboard, one window with the glass
+	{"taped."},"SC-HOME-DAY-PS":{"art":"SC-HOME-DAY-PS.png","location":"home","time":"day","mood":"warm","note":"PS
+	{"variant of SC-HOME-DAY. The front room of a palestinian family house in
+	{"daylight, tiled floor, low couches against three walls, a framed
+	{"photograph."},"SC-STREET-DAY-PS":{"art":"SC-STREET-DAY-PS.png","location":"street","time":"day","mood":"open","note":"PS
+	{"variant of SC-STREET-DAY. A street in nablus in daylight, stone buildings,
+	{"shuttered shops, steep steps, water tanks on every
+	{"roof."},"SC-REGISTRY-PS":{"art":"SC-REGISTRY-PS.png","location":"registry","time":"day","mood":"flat","note":"PS
+	{"variant of SC-REGISTRY. A palestinian authority civil registry counter,
+	{"arabic forms in trays, a ledger, a queue
+	{"rail."},"SC-DESK-NIGHT-PS":{"art":"SC-DESK-NIGHT-PS.png","location":"desk","time":"night","mood":"tense","note":"PS
+	{"variant of SC-DESK-NIGHT. A cluttered desk at night in a west bank flat,
+	{"laptop glow, papers, a glass of
+	{"tea."},"SC-COURTYARD-PS":{"art":"SC-COURTYARD-PS.png","location":"courtyard","time":"day","mood":"warm","note":"PS
+	{"variant of SC-COURTYARD. A walled courtyard of a palestinian village house,
+	{"a fig tree, olive oil tins stacked by the door, stone
+	{"paving."},"SC-PEARSON-PS":{"art":"SC-PEARSON-PS.png","location":"pearson_preclearance","time":"day","mood":"cold","note":"PS
+	{"variant of SC-PEARSON. A us preclearance hall at toronto pearson, winding
+	{"queue barriers, inspection booths, overhead

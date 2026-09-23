@@ -6,9 +6,9 @@
 #
 # Two editors, on purpose:
 #
-#   tools\godot\        standard build. Day-to-day work: writing, playing,
+#   C:\temp\godotsetup\engine\godot\        standard build. Day-to-day work: writing, playing,
 #                       running tests. Fast, and no .NET startup cost.
-#   tools\godot-mono\   .NET build. Required for the ai-game.dev godot_mcp
+#   C:\temp\godotsetup\engine\godot-mono\   .NET build. Required for the ai-game.dev godot_mcp
 #                       addon (it is C# and will not load in the standard
 #                       build) and used for producing release builds, because
 #                       the project has a .csproj.
@@ -38,7 +38,7 @@ else { $editions = @($false) }
 foreach ($isMono in $editions) {
 
     $label   = if ($isMono) { ".NET (mono)" } else { "standard" }
-    $dir     = if ($isMono) { Join-Path $root "tools\godot-mono" } else { Join-Path $root "tools\godot" }
+    $dir     = if ($isMono) { "C:\temp\godotsetup\engine\godot-mono" } else { "C:\temp\godotsetup\engine\godot" }
     New-Item -ItemType Directory -Force -Path $dir | Out-Null
 
     Write-Host "`n=== Godot $Version - $label ===" -ForegroundColor Cyan

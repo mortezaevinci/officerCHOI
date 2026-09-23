@@ -61,10 +61,10 @@ dialogue in the game.
 
 ## Git
 
-- `game\.godot\`, `build\`, `tools\godot\` and `*.translation` are generated.
+- `game\.godot\`, `build\`, `C:\temp\godotsetup\engine\godot\` and `*.translation` are generated.
   They are in `.gitignore`; keep them there.
 - `.tscn` and `.tres` are text and diff readably — as long as everyone is on the
-  same Godot build. That is why the editor is pinned in `tools\godot`.
+  same Godot build. That is why the editor is pinned in `C:\temp\godotsetup\engine\godot`.
 - Commit content and the code that serves it separately when you can. "Add
   chapter 2 dialogue" and "add a condition type" are different reviews.
 

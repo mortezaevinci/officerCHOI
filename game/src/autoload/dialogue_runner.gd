@@ -14,8 +14,10 @@ signal started(script_id: String)
 ## Show this line, then call [method advance] when the player is ready.
 signal line_shown(speaker: String, mood: String, text: String)
 ## Offer these options, then call [method choose] with the index picked.
-## Each option is `{"text": String, "index": int}`; hidden options are already
-## filtered out, and `index` is the index to pass back.
+## Each option is `{"text": String, "index": int, "locked": bool}`, and `index`
+## is the index to pass back. Options whose condition is false are filtered out
+## - except with the `cheat_unlock_all` flag set, which shows them with
+## `locked` true and "[locked] " in front of the text.
 signal choices_offered(options: Array)
 ## A `@command` line the scene should act on (music, camera, animation...).
 signal command_issued(name: String, args: PackedStringArray)
@@ -182,22 +184,60 @@ func _execute(step: Dictionary) -> void:
 			line_shown.emit(speaker, mood, text)
 
 		DialogueScript.CHOICES:
+			# With the cheat word typed, an option whose condition is false is
+			# shown anyway and marked [locked], so every branch of a scene can
+			# be read and played in one sitting instead of replayed from the
+			# start with different answers. With the cheat off this is the
+			# ordinary filter and a shipped game behaves exactly as before.
+			var reveal := bool(GameState.get_var("cheat_unlock_all", false))
 			_options = []
+			var locked: Array[bool] = []
+			# Gated branches are written as the SAME line twice with opposite
+			# conditions - one going to the safe answer, one to the door. In
+			# normal play exactly one of a pair survives the filter, so nobody
+			# ever sees both. With the cheat on both do, and the menu showed the
+			# identical sentence twice.
+			#
+			# Collapsing them to one row was worse: a row has one target, so the
+			# gated branch became unreachable and the cheat stopped doing the one
+			# thing it is for. Instead, drop only rows that are identical in BOTH
+			# text and destination, and let the rendering below name where a
+			# repeated line actually goes.
+			var seen: Dictionary = {}
 			for option: Dictionary in step["options"]:
-				if DialogueExpression.is_true(String(option.get("condition", "")), GameState.vars):
-					_options.append(option)
+				var passes := DialogueExpression.is_true(
+					String(option.get("condition", "")), GameState.vars)
+				if not (passes or reveal):
+					continue
+				var key := "%s->%s" % [option.get("text", ""), option.get("target", "")]
+				if seen.has(key):
+					continue
+				seen[key] = true
+				_options.append(option)
+				locked.append(not passes)
 			if _options.is_empty():
 				# Every option was filtered out. Better to walk on than to hang.
 				push_warning("dialogue '%s' node '%s': no choice was available"
 					% [current.id, _node_id])
 				return
+			# A line that appears twice is a gated pair the cheat has revealed.
+			# Saying where each one goes is what makes them tellable apart -
+			# without it the menu is the same sentence twice and the player is
+			# guessing which is which.
+			var repeated: Dictionary = {}
+			for option: Dictionary in _options:
+				var t := String(option.get("text", ""))
+				repeated[t] = repeated.get(t, 0) + 1
+
 			var offered: Array = []
 			for i: int in _options.size():
-				offered.append({
-					"text": DialogueExpression.interpolate(
-						String(_options[i]["text"]), GameState.vars),
-					"index": i,
-				})
+				var raw := String(_options[i]["text"])
+				var text := DialogueExpression.interpolate(raw, GameState.vars)
+				if locked[i]:
+					text = "[locked] " + text
+				if int(repeated.get(raw, 0)) > 1:
+					text += "  → %s" % String(_options[i].get("target", "?"))
+				offered.append({"text": text, "index": i, "locked": locked[i]})
 			_waiting = true
 			choices_offered.emit(offered)
 

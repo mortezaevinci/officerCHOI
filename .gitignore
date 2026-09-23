@@ -68,3 +68,20 @@ game/assets/art/backgrounds/journey/*.png.import
 backup/
 preview/
 art-source/working/
+
+# Timestamped snapshots taken before regenerating a batch of art - backdrops,
+# iran, palestine, runs, sheets. They are copies of what is already in
+# game/assets/art, ~355 MB of them, and nothing reads them.
+backup/
+
+# Generated previews: screenshots of every screen plus the text dumps
+# (all_text.csv / .html). Produced on demand by the preview tooling, ~21 MB.
+preview/
+
+# Large files that are neither source nor needed to run: keep video and archive
+# formats out, they belong in C:\temp\_assets or C:\temp\_graphics.
+*.mp4
+*.mov
+*.zip
+*.7z
+*.rar

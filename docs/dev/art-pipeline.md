@@ -74,7 +74,7 @@ type.
 **Colours are palette swaps.** LPC ships each sheet in one reference ramp and
 recolours it; the tool does the same offline. `palette` picks the family
 (`body`, `hair`, `cloth`), `color` the target ramp from
-`art-source/lpc/palette_definitions/<family>/<family>_ulpc.json`. The tool works
+`C:/temp/godotsetup/assets/lpc/palette_definitions/<family>/<family>_ulpc.json`. The tool works
 out which ramp a sheet was drawn in rather than assuming — some sheets ship in
 their own colours — and falls back to a luminance-ranked mapping if the sheet
 matches no known ramp at all.
@@ -125,7 +125,7 @@ python.exe tools\art\sheet_grid.py kenney/roguelike-indoors/Tilesheets/roguelike
 ```
 
 (LPC needs no grid tool — its assets are separate files in named folders. Browse
-`art-source/lpc/spritesheets/`, or try combinations in the upstream
+`C:/temp/godotsetup/assets/lpc/spritesheets/`, or try combinations in the upstream
 [web generator](https://liberatedpixelcup.github.io/Universal-LPC-Spritesheet-Character-Generator/)
 and copy the paths across. Check the licence before adopting one — the build
 will refuse it otherwise.)
@@ -140,13 +140,13 @@ It writes `C:\temp\_samples\officerchoi\sheet-grid.png` with every cell labelled
 Godot picks new PNGs up when it next has focus. Headless, force it:
 
 ```powershell
-tools\godot\Godot_v4.7.2-stable_win64_console.exe --headless --path game --import
+C:\temp\godotsetup\engine\godot\Godot_v4.7.2-stable_win64_console.exe --headless --path game --import
 ```
 
 Then look at it, rather than assuming:
 
 ```powershell
-tools\godot\Godot_v4.7.2-stable_win64.exe --path game -- --scene=res://scenes/rooms/precinct.tscn --spawn=desk --screenshot=C:\temp\_samples\officerchoi\room.png --shot-after=110
+C:\temp\godotsetup\engine\godot\Godot_v4.7.2-stable_win64.exe --path game -- --scene=res://scenes/rooms/precinct.tscn --spawn=desk --screenshot=C:\temp\_samples\officerchoi\room.png --shot-after=110
 ```
 
 ---

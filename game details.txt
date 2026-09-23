@@ -13,6 +13,17 @@ Example of how it can be in the game progress:
 
 1.c. Nigerian: This life starts as a woman. Whenever you go, some man abuses you. They are macho, they are hard, they are horny. You try to set boundaries, or choose better, but it is always the same result. Many choices of diferent boundaries, your boundaries add up and up and up, and finally fails the same way. So she ends up building boundaries. Finally, he gets a chance to come to Canada, so then there finally she loves only white men, and abandons middle easter men or blacks, and white men elaborate very well, and are lovely and fun, but they always leave without commitment. Until she becomes 40 and have had sex with many canadian men, to finally find herself lonely with many boundaries developed against brown and black men. She finally has other choice, white, brown black. White leads to the same life, brown leads to spiritual growth in different ways. Finally when he chooses a good black men during spiritual times learning from brown men, she finds a black men in nigeria, and comes back to nigeria and makes a family. So long as she chooses canadian or american, she loses.
 
+2. Many events happen according to tasks below.
+
+3. Eventually, all game players should encounter the Final Boss "Toronto Pearson's US Immigration Officer CHOI". He is obnoxious, abusive, and his only plan is to reject all applications, and do not give them entry to the US by any excuse possible. He uses the approaches inside assets\text\abuse\ and rejects people the worst ways, and the game ends. Officer CHOI is man, kinda tall, bad mouth, loud, kinda Korean-American, with black hair but some streams of white hair. shaved. In all his interactions in the office, he first abuses and refuses entry to a few people, including a Korean immigrant, then it is the turn of the player.
+
+NOTE: THe game should be in the format of simple very short missions that unlock the nextm ission. Each mission is a simple walk around and interaction, preferbly minimize walking around or automate it and only go to the conversations and events.
+
+Do not develop the end-program now. Just consider this strcture, and build the structure. I will task you with more details first.
+
+ for images, use other github or online packages that generate them. do not generate pictures
+    yourself.
+
 Task1:
 
 Where these above info can come from:
@@ -21,12 +32,17 @@ Use all information inside:
 assets\text\Iran\
 and 
 assets\text\general\
+and
 assets\text\war\
+as bad events
+
+use
 assets\text\goodlife
+as good events
 
 what we want to do is to:
 And develop a character, who goes through all of the examples and issues in those text assets:
-The process is choose, something nice from "goodlife", but according to it, something bad from \iran\ or \general\ or \war\ happens.
+The process is choose, some good event, but according to the flow that relates afterwards, choose a bad event that happens.
 This should flow smoothly. For example, visiting somewhere nice in iran, wouldn't cause immigration issue, but going to paris should trigger a visa issue, etc. Consider the connections between events.
 
 For this purpuse:
@@ -50,21 +66,167 @@ assets\text\Palestine\
 and 
 assets\text\general\
 assets\text\war\
-assets\text\goodlife
+as bad events.
 
+assets\text\goodlife
+as good events.
+
+what we want to do is to:
+And develop a character, who goes through all of the examples and issues in those text assets:
+The process is choose, some good event, but according to the flow that relates afterwards, choose a bad event that happens.
+This should flow smoothly. For example, visiting somewhere nice in iran, wouldn't cause immigration issue, but going to paris should trigger a visa issue, etc. Consider the connections between events.
+
+For this purpuse:
+
+Under \assets\journey\iran:
+
+(develop scripts useful for the game, to read and write connection.bin)
+Create direction.bin, this is a directional graph, between all listissues/listlife events that could come directionally one after another in the list of issues or life.
+
+Create event.bin, this is similar to files under /details/*.csv. It consumes the examples provided, but has some more randomized examples, and the names are associated with the gamer (direct communication with the gamer, instead of some example about somebody else.) Unlike examples in \text\*\details\, this time you will develop interactive ocnversations that support the examples in \text\*\details\, so it is more like a conversation and real-life interaction.
+
+Create scenes.bin, this should be a bunch of identifiers about what is the background pixelart or picture of each event situation.
+
+create folder /scenes/ this should include pictures and assets for each scene identifier.
+
+
+Do not program end goal right now, but for you to understand the flow: We will create a simple game, that goes through event.bin from birth to adult life, and chooses different events. Based on users interactive choices on the screen, the next good life event is chosen, it maybe is sccuessful ot fails. Eitherway, some issue happens from list issues. And we proceed till the end. For each event, the details exist, now in binary in event.bin. For each of them, also there is a scene.bin, with assets in the folder /scenes/. Some minor movement interactions can exist in the game, but generally just showing conversations, and event scene, and decision making by user interactively.
+
+task3:
 
 assets\text\Nigeria\
 and 
 assets\text\general\
 assets\text\war\
+as bad events.
+
 assets\text\goodlife
+as good events.
+
+what we want to do is to:
+And develop a character, who goes through all of the examples and issues in those text assets:
+The process is choose, some good event, but according to the flow that relates afterwards, choose a bad event that happens.
+This should flow smoothly. For example, visiting somewhere nice in iran, wouldn't cause immigration issue, but going to paris should trigger a visa issue, etc. Consider the connections between events.
+
+For this purpuse:
+
+Under \assets\journey\iran:
+
+(develop scripts useful for the game, to read and write connection.bin)
+Create direction.bin, this is a directional graph, between all listissues/listlife events that could come directionally one after another in the list of issues or life.
+
+Create event.bin, this is similar to files under /details/*.csv. It consumes the examples provided, but has some more randomized examples, and the names are associated with the gamer (direct communication with the gamer, instead of some example about somebody else.) Unlike examples in \text\*\details\, this time you will develop interactive ocnversations that support the examples in \text\*\details\, so it is more like a conversation and real-life interaction.
+
+Create scenes.bin, this should be a bunch of identifiers about what is the background pixelart or picture of each event situation.
+
+create folder /scenes/ this should include pictures and assets for each scene identifier.
+
+
+Do not program end goal right now, but for you to understand the flow: We will create a simple game, that goes through event.bin from birth to adult life, and chooses different events. Based on users interactive choices on the screen, the next good life event is chosen, it maybe is sccuessful ot fails. Eitherway, some issue happens from list issues. And we proceed till the end. For each event, the details exist, now in binary in event.bin. For each of them, also there is a scene.bin, with assets in the folder /scenes/. Some minor movement interactions can exist in the game, but generally just showing conversations, and event scene, and decision making by user interactively.
+
+task4:
 
 assets\text\Mexico\
 and 
 assets\text\general\
 assets\text\war\
+as bad events.
+
 assets\text\goodlife
+as good events.
+
+what we want to do is to:
+And develop a character, who goes through all of the examples and issues in those text assets:
+The process is choose, some good event, but according to the flow that relates afterwards, choose a bad event that happens.
+This should flow smoothly. For example, visiting somewhere nice in iran, wouldn't cause immigration issue, but going to paris should trigger a visa issue, etc. Consider the connections between events.
+
+For this purpuse:
+
+Under \assets\journey\iran:
+
+(develop scripts useful for the game, to read and write connection.bin)
+Create direction.bin, this is a directional graph, between all listissues/listlife events that could come directionally one after another in the list of issues or life.
+
+Create event.bin, this is similar to files under /details/*.csv. It consumes the examples provided, but has some more randomized examples, and the names are associated with the gamer (direct communication with the gamer, instead of some example about somebody else.) Unlike examples in \text\*\details\, this time you will develop interactive ocnversations that support the examples in \text\*\details\, so it is more like a conversation and real-life interaction.
+
+Create scenes.bin, this should be a bunch of identifiers about what is the background pixelart or picture of each event situation.
+
+create folder /scenes/ this should include pictures and assets for each scene identifier.
+
+
+Do not program end goal right now, but for you to understand the flow: We will create a simple game, that goes through event.bin from birth to adult life, and chooses different events. Based on users interactive choices on the screen, the next good life event is chosen, it maybe is sccuessful ot fails. Eitherway, some issue happens from list issues. And we proceed till the end. For each event, the details exist, now in binary in event.bin. For each of them, also there is a scene.bin, with assets in the folder /scenes/. Some minor movement interactions can exist in the game, but generally just showing conversations, and event scene, and decision making by user interactively.
+
+task5:
 
 //or canada and usa
 assets\text\general\
+as bad events.
+
 assets\text\goodlife
+as good events.
+
+what we want to do is to:
+And develop a character, who goes through all of the examples and issues in those text assets:
+The process is choose, some good event, but according to the flow that relates afterwards, choose a bad event that happens.
+This should flow smoothly. For example, visiting somewhere nice in iran, wouldn't cause immigration issue, but going to paris should trigger a visa issue, etc. Consider the connections between events.
+
+For this purpuse:
+
+Under \assets\journey\iran:
+
+(develop scripts useful for the game, to read and write connection.bin)
+Create direction.bin, this is a directional graph, between all listissues/listlife events that could come directionally one after another in the list of issues or life.
+
+Create event.bin, this is similar to files under /details/*.csv. It consumes the examples provided, but has some more randomized examples, and the names are associated with the gamer (direct communication with the gamer, instead of some example about somebody else.) Unlike examples in \text\*\details\, this time you will develop interactive ocnversations that support the examples in \text\*\details\, so it is more like a conversation and real-life interaction.
+
+Create scenes.bin, this should be a bunch of identifiers about what is the background pixelart or picture of each event situation.
+
+create folder /scenes/ this should include pictures and assets for each scene identifier.
+
+
+Do not program end goal right now, but for you to understand the flow: We will create a simple game, that goes through event.bin from birth to adult life, and chooses different events. Based on users interactive choices on the screen, the next good life event is chosen, it maybe is sccuessful ot fails. Eitherway, some issue happens from list issues. And we proceed till the end. For each event, the details exist, now in binary in event.bin. For each of them, also there is a scene.bin, with assets in the folder /scenes/. Some minor movement interactions can exist in the game, but generally just showing conversations, and event scene, and decision making by user interactively.
+
+task6:
+
+refer to text/abuse/
+
+what we want to do is to:
+And develop the final boss character "Toronto Pearson's US Immigration Officer CHOI",  who uses an abuse method to abuse the player, and rejects their entry to the US.
+
+The process is choose, some good event, but according to the flow that relates afterwards, choose a bad event that happens.
+This should flow smoothly.
+
+He ends the player's journey, by reminding him/her that only US citizens has rights, and he as an alien has no right, and needs to understand this.
+For this purpuse:
+
+Under \assets\journey\choi:
+
+(develop scripts useful for the game, to read and write connection.bin)
+Create direction.bin, this is a directional graph, between all abuse events that could come directionally one after another in the list against the player
+
+Create event.bin, this is similar to files under /details/*.csv. It consumes the examples provided, but has some more randomized examples, and the names are associated with the gamer (direct communication with the gamer, instead of some example about somebody else.) Unlike examples in \text\*\details\, this time you will develop interactive ocnversations that support the examples in \text\*\details\, so it is more like a conversation and real-life interaction.
+
+Create scenes.bin, this should be a bunch of identifiers about what is the background pixelart or picture of each event situation.
+
+create folder /scenes/ this should include pictures and assets for each scene identifier.
+
+
+Do not program end goal right now, but for you to understand the flow: We will create a simple game, that goes through event.bin from birth to adult life, and chooses different events. Based on users interactive choices on the screen, the next good life event is chosen, it maybe is sccuessful ot fails. Eitherway, some issue happens from list issues. And we proceed till the end. For each event, the details exist, now in binary in event.bin. For each of them, also there is a scene.bin, with assets in the folder /scenes/. Some minor movement interactions can exist in the game, but generally just showing conversations, and event scene, and decision making by user interactively.
+
+
+task7:
+
+we will come back to task 2 to 5 later.
+
+put it altogether, and make the game work while having multiples of separate missions each lead to one another. Each mission is a good event, interaction, ohhh some bad event happens, and continues. After 10 missions, there is final boss CHOI, and end game. Then, you can reset and try a new life, which leads to a new season, with 10 new missions, and rinse and repeat.
+
+Only make the first 10 missions. For now this is only for Iranian journey/difficulty, we will add the rest later.
+
+task8:
+
+install components required for android app generation.
+Have the andorid version of game working using emulator.
+
+task9:
+
+Add another 100 missions for each immigration difficulty.

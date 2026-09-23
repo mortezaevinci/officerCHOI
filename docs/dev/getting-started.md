@@ -4,8 +4,8 @@
 
 The machine this was set up on has everything:
 
-- Godot **4.7.2-stable** in `tools\godot\` (pinned; not the system-wide one).
-- Godot **4.7.2-stable .NET** in `tools\godot-mono\`, for the AI addon and for
+- Godot **4.7.2-stable** in `C:\temp\godotsetup\engine\godot\` (pinned; not the system-wide one).
+- Godot **4.7.2-stable .NET** in `C:\temp\godotsetup\engine\godot-mono\`, for the AI addon and for
   producing builds.
 - Both sets of export templates in `%APPDATA%\Godot\export_templates\`.
 - The ai-game.dev **godot_mcp** addon, `godot-cli`, and the local MCP server —
@@ -37,7 +37,7 @@ Everything green means you are set up.
 ## Opening the project
 
 ```powershell
-tools\godot\Godot_v4.7.2-stable_win64.exe --path game --editor
+C:\temp\godotsetup\engine\godot\Godot_v4.7.2-stable_win64.exe --path game --editor
 ```
 
 Open `game`, not the repo root — the repo root is not a Godot project.
@@ -49,7 +49,7 @@ generated and is not committed.
 
 | What | Command |
 |---|---|
-| The game | `tools\godot\Godot_v4.7.2-stable_win64.exe --path game` |
+| The game | `C:\temp\godotsetup\engine\godot\Godot_v4.7.2-stable_win64.exe --path game` |
 | Straight into a room | `... --path game -- --scene=res://scenes/rooms/precinct.tscn --spawn=desk` |
 | Straight into a conversation | `... --path game -- --dialogue=desk_ward.dlg --left=choi --right=ward` |
 | ...reading itself aloud | add `--auto` |
@@ -67,7 +67,7 @@ Note the bare `--`: everything after it goes to the game rather than to Godot.
 `game\tools\bootstrap_input_map.gd`. Change the table there and re-run:
 
 ```powershell
-tools\godot\Godot_v4.7.2-stable_win64_console.exe --headless --path game --script res://tools/bootstrap_input_map.gd
+C:\temp\godotsetup\engine\godot\Godot_v4.7.2-stable_win64_console.exe --headless --path game --script res://tools/bootstrap_input_map.gd
 ```
 
 Editing them in the Input Map panel works too, but the next person to run the

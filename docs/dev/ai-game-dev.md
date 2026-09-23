@@ -10,7 +10,7 @@ Installed here: **godot_mcp addon v0.22.0**, **godot-cli 0.22.0**,
 **gamedev-mcp-server 9.2.5**.
 
 - Upstream: <https://github.com/IvanMurzak/Godot-MCP>
-- Tool catalogue: <https://ai-game.dev/docs/tools/godot>
+- Tool catalogue: <https://ai-game.dev/docs/C:/temp/godotsetup/engine/godot>
 
 ---
 
@@ -27,7 +27,7 @@ Our game is GDScript and was on the standard build. So installing it meant:
 |---|---|
 | The project is now also a C# project | `game/OfficerChoi.csproj` |
 | `[dotnet]` section and the `C#` feature flag | `game/project.godot` |
-| A second editor, the .NET edition | `tools/godot-mono/` |
+| A second editor, the .NET edition | `C:/temp/godotsetup/engine/godot-mono/` |
 | A second set of export templates, `4.7.2.stable.mono` | `%APPDATA%\Godot\...` |
 | Builds go through the .NET toolchain | `tools/build/build.ps1` |
 | A NuGet workaround for this machine | `game/nuget.config` |
@@ -120,10 +120,10 @@ netsh int ipv4 show excludedportrange protocol=tcp
 
 | Doing | Editor |
 |---|---|
-| Writing dialogue, editing scenes, playing the game | `tools\godot\` (standard) |
-| Running tests | `tools\godot\` — `run-tests.ps1` |
-| Letting the AI agent drive the editor | `tools\godot-mono\` — `open-editor.ps1` |
-| Producing a release build | `tools\godot-mono\` — `build.ps1` |
+| Writing dialogue, editing scenes, playing the game | `C:\temp\godotsetup\engine\godot\` (standard) |
+| Running tests | `C:\temp\godotsetup\engine\godot\` — `run-tests.ps1` |
+| Letting the AI agent drive the editor | `C:\temp\godotsetup\engine\godot-mono\` — `open-editor.ps1` |
+| Producing a release build | `C:\temp\godotsetup\engine\godot-mono\` — `build.ps1` |
 
 The standard editor still opens the project perfectly well and ignores the C#
 side, so it stays the fast path for everyday work.
@@ -143,7 +143,7 @@ $env:GODOT_MCP_LOG_LEVEL = "None"
 |---|---|
 | `game/addons/godot_mcp/` (2.5 MB — everyone gets the same version) | `game/.ai-game-dev/` (99 MB server binary, logs, **credentials**) |
 | `game/.claude/skills/` (42 generated per-tool skill docs) | `game/.godot-mcp/` (local tool enable/disable state) |
-| `game/.mcp.json`, `game/OfficerChoi.csproj`, `game/nuget.config` | `tools/godot-mono/` |
+| `game/.mcp.json`, `game/OfficerChoi.csproj`, `game/nuget.config` | `C:/temp/godotsetup/engine/godot-mono/` |
 
 The credential file is why `game/.ai-game-dev/` must stay ignored.
 
@@ -160,7 +160,7 @@ godot-cli remove-plugin C:\temp\officerchoi\game
 Then delete `game/addons/godot_mcp/`, `game/OfficerChoi.csproj`,
 `game/.mcp.json`, `game/.ai-game-dev/`, the `[dotnet]` section and the `C#`
 feature flag from `game/project.godot`, and point `build.ps1` back at
-`tools\godot`. The game itself never depended on any of it.
+`C:\temp\godotsetup\engine\godot`. The game itself never depended on any of it.
 
 ---
 

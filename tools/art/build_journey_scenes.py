@@ -14,7 +14,7 @@ conversation backdrops, and because Godot only imports - and only ships - images
 that live inside the project.
 
 Nothing here draws or synthesises pixels. Every tile is cut from Kenney's
-Roguelike Modern City pack (CC0), which is vendored under art-source/kenney/.
+Roguelike Modern City pack (CC0), which is vendored under C:/temp/godotsetup/assets/kenney/.
 That is the same rule build_props.py follows, and the reason the art in this
 repo can ship in a paid build without anybody having to trace provenance later.
 

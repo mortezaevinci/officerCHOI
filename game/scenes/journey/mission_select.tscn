@@ -46,10 +46,14 @@ theme_override_font_sizes/font_size = 24
 text = "0 of 10"
 horizontal_alignment = 1
 
+; Exactly five rows tall: 5 buttons of 64 plus 4 separations of 10. A height
+; that is not a whole number of rows slices the last one through the middle of
+; its text, which reads as broken rather than as scrollable. The expand flag is
+; deliberately absent - letting this take leftover space put the cut straight
+; back in, wherever the window happened to end.
 [node name="Scroll" type="ScrollContainer" parent="Center/Rows"]
-custom_minimum_size = Vector2(0, 320)
+custom_minimum_size = Vector2(0, 360)
 layout_mode = 2
-size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
 [node name="List" type="VBoxContainer" parent="Center/Rows/Scroll"]

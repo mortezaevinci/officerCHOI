@@ -3,7 +3,7 @@
 ## The short version
 
 ```bash
-bash /mnt/c/temp/_script/run-android.sh --build --shot
+bash /mnt/c/temp/_script/officerchoi/run-android.sh --build --shot
 ```
 
 That builds the APK, starts the emulator if it is not already running, waits
@@ -21,14 +21,14 @@ the screenshot.
 
 ```powershell
 cd C:\temp\officerchoi
-tools\godot\Godot_v4.7.2-stable_win64_console.exe --headless ^
+C:\temp\godotsetup\engine\godot\Godot_v4.7.2-stable_win64_console.exe --headless ^
   --path game --export-debug Android build\android\OfficerChoi.apk
 ```
 
 Output: `build\android\OfficerChoi.apk` (~112 MB, signed, runs on both the
 emulator and a real phone).
 
-> **Use `tools\godot\`, not `tools\godot-mono\`.** `build.ps1` uses the .NET
+> **Use `C:\temp\godotsetup\engine\godot\`, not `C:\temp\godotsetup\engine\godot-mono\`.** `build.ps1` uses the .NET
 > editor for Windows and Linux, but it cannot export Android here: Godot
 > rejects a net8.0 C# project against a net9.0 Android template. The C# in this
 > project is only the `godot_mcp` editor addon - no gameplay code, and the
@@ -37,7 +37,7 @@ emulator and a real phone).
 ### 2. Start the emulator
 
 ```
-C:\temp\_script\bootemu2.bat
+C:\temp\_script\officerchoi\bootemu2.bat
 ```
 
 **Use that script, or pass `-gpu host` yourself.** With software rendering the

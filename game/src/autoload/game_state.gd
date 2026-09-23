@@ -93,6 +93,16 @@ const DEFAULTS := {
 	"saw_choi_work": false,
 
 	# Set during the Choi encounter.
+	#
+	# How many times you have answered Choi as an equal rather than submitted.
+	# Every question that is not "yes sir" counts one; the second one is the
+	# door. Declared here and not merely set in dialogue for the reason stated
+	# at the top of this block: a condition naming a variable that does not
+	# exist fails to parse and falls back to false, which would HIDE the
+	# escalated choice instead of showing it.
+	"choi_strikes": 0,
+	# He has thrown you out. The encounter stops where it stands.
+	"choi_ejected": false,
 	"noticed_early": false,
 	"saw_the_method": false,
 	"told_to_calm_down": false,

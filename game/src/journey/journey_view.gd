@@ -140,6 +140,14 @@ func _on_finished(_script_id: String) -> void:
 			GameState.set_var("mission", maxi(done, _mission_index + 1))
 			SceneFlow.goto(GamePaths.MISSION_SELECT)
 		Phase.BOSS:
+			# Choi can end the encounter early. Asking him a second question as
+			# though you were entitled to an answer gets you ejected, and an
+			# ejection ends the life then and there. Without this the remaining
+			# beats would play anyway - "THE DOOR IS THAT WAY. GOODBYE." and
+			# then, cheerfully, two more scenes with the man who just said it.
+			if bool(GameState.get_var("choi_ejected", false)):
+				_finish_life()
+				return
 			_boss_step += 1
 			if _boss_step < _boss_order.size():
 				_play_event(_boss, _boss_order[_boss_step])
@@ -188,6 +196,13 @@ func _begin_boss() -> void:
 		return
 	_phase = Phase.BOSS
 	_boss_step = 0
+
+	# Every encounter starts you at zero with him, and must: these persist in
+	# GameState, and _finish_life() does not clear them. Without this an
+	# ejection in one life would still be set at the start of the next, and the
+	# check in _on_finished would end that encounter after its first scene.
+	GameState.set_var("choi_strikes", 0)
+	GameState.set_var("choi_ejected", false)
 
 	var boss_id := JourneySeason.boss_run_for(
 		String(GameState.get_var("journey_run", GamePaths.DEFAULT_RUN)))
