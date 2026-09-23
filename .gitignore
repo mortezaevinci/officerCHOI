@@ -53,13 +53,15 @@ steam_appid.txt
 Thumbs.db
 desktop.ini
 
-# Generated journey backdrops. Fetched from an image generator by
-# tools/art/fetch_scene_art.py - watermarked, and their licensing is not
-# settled, so they stay out of the history deliberately. Missing backdrops
-# in a fresh clone are the signal that they still need replacing.
-# Offline placeholders: tools/art/build_journey_scenes.py --replace
-game/assets/art/backgrounds/journey/*.png
-game/assets/art/backgrounds/journey/*.png.import
+# Journey backdrops WERE excluded here: the originals came from an image
+# generator with a visible watermark and unsettled licensing, and a missing
+# backdrop in a fresh clone was the signal that it still needed replacing.
+#
+# That reason expired on 2026-09-22. All 69 were regenerated through kling
+# (C:\temp\aitools), unwatermarked, same provenance as the journey2 set that
+# is already tracked. journey.json names every backdrop by scene id, so a
+# clone without them cannot run - which is why they are tracked now.
+# Offline placeholders, if ever needed: tools/art/build_journey_scenes.py --replace
 
 # My own byproducts, not part of the game.
 # backup/ is the timestamped copies taken before editing data files.
