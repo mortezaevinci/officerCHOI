@@ -66,10 +66,10 @@ desktop.ini
 # My own byproducts, not part of the game.
 # backup/ is the timestamped copies taken before editing data files.
 # preview/ is screenshots captured from built exes for eyeballing.
-# art-source/working/ is scratch output from the tile-index helpers.
 backup/
 preview/
-art-source/working/
+# art-source/working/ was excluded here as "scratch output from the tile-index
+# helpers". It is kept now, on instruction: 35 images, 876 KB, and it is art.
 
 # Timestamped snapshots taken before regenerating a batch of art - backdrops,
 # iran, palestine, runs, sheets. They are copies of what is already in
